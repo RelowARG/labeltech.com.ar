@@ -1200,19 +1200,21 @@ textarea {
    LOGO IMAGES (navbar + footer)
 ============================================ */
 .logo-img {
-    height: 48px;
+    height: 80px;
     width: auto;
     display: block;
     object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
 .footer-logo-img {
-    height: 90px;
-    width: auto;
+    height: auto;
+    width: 200px;
     display: block;
     object-fit: contain;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: 8px;
     filter: brightness(0) invert(1); /* Invierte a blanco para fondo oscuro del footer */
+    transition: transform 0.3s ease;
 }
 
 /* ============================================
