@@ -346,3 +346,80 @@ if (window.performance) {
         }, 0);
     });
 }
+
+// ============================================
+// FAQ Accordion
+// ============================================
+document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        
+        // Close all
+        document.querySelectorAll('.faq-question').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            b.nextElementSibling.classList.remove('open');
+        });
+        
+        // Open clicked if it was closed
+        if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            btn.nextElementSibling.classList.add('open');
+        }
+    });
+});
+
+// ============================================
+// Animate trust numbers on scroll
+// ============================================
+const trustObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const numbers = entry.target.querySelectorAll('.trust-number');
+            numbers.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+                el.style.transition = 'all 0.5s ease-out';
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100);
+            });
+            trustObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+
+const trustBar = document.querySelector('.trust-bar');
+if (trustBar) trustObserver.observe(trustBar);
+
+// ============================================
+// Hero background image rotation
+// Paths: guardá las fotos en public/images/
+// ============================================
+(function() {
+    const heroImages = [
+        'public/images/hero-bg-1.jpg',  // scanning-barcode-label-with-laser-scanner
+        'public/images/hero-bg-2.jpg',  // scanning-qr-code-with-barcode-scanner
+    ];
+
+    const heroBg = document.querySelector('.hero-background');
+    if (!heroBg) return;
+
+    // Elegir imagen aleatoria en cada carga
+    const randomIndex = Math.floor(Math.random() * heroImages.length);
+    const chosen = heroImages[randomIndex];
+
+    // Precargar antes de mostrar para evitar flash
+    const img = new Image();
+    img.onload = function() {
+        heroBg.style.backgroundImage = `url('${chosen}')`;
+    };
+    img.onerror = function() {
+        // Si la imagen no carga, fallback al gradiente
+        heroBg.style.background = `
+            radial-gradient(circle at 20% 50%, rgba(59,130,246,0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(168,85,247,0.05) 0%, transparent 50%)
+        `;
+    };
+    img.src = chosen;
+})();
