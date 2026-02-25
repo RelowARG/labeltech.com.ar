@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Tech | Etiquetas Adhesivas e Insumos de Calidad</title>
+    <meta name="description" content="Empresa Argentina con más de 10 años de experiencia en etiquetas adhesivas personalizadas para todas las industrias.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <span class="logo-text">LABEL</span>
+                    <span class="logo-accent">TECH</span>
+                </a>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li class="nav-dropdown">
+                        <a href="#industrias" class="nav-link">Industrias</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#industria-transporte">Transporte y Logística</a></li>
+                            <li><a href="#industria-textil">Textil</a></li>
+                            <li><a href="#industria-higiene">Cuidado Personal e Higiene</a></li>
+                            <li><a href="#industria-quimica">Química</a></li>
+                            <li><a href="#industria-alimenticia">Alimenticia</a></li>
+                            <li><a href="#industria-automotriz">Automotriz</a></li>
+                            <li><a href="#industria-farmaceutica">Farmacéutica</a></li>
+                            <li><a href="#industria-general">General</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#productos" class="nav-link">Productos</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <div class="nav-social">
+                    <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/labeltech.ar/" target="_blank" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/labeltech-ar/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">+10 años de experiencia</div>
+                <h1 class="hero-title">
+                    <span class="title-line">UN SOLO PROVEEDOR,</span>
+                    <span class="title-line highlight">TODAS LAS SOLUCIONES</span>
+                </h1>
+                <p class="hero-description">
+                    Somos Label Tech, una empresa Argentina líder en etiquetas adhesivas personalizadas. 
+                    Tecnología de vanguardia y calidad inigualable para todas las industrias.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <div class="feature-text">
+                            <strong>Máquinas modernas</strong>
+                            <span>Prensas flexográficas hasta 8 tintas</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <strong>Soluciones completas</strong>
+                            <span>Amplio catálogo para todas las industrias</span>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⭐</div>
+                        <div class="feature-text">
+                            <strong>Calidad inigualable</strong>
+                            <span>Mejores proveedores y marcas mundiales</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="https://wa.me/541122656818" class="btn btn-primary" target="_blank">
+                        Contactá a un experto
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <a href="#productos" class="btn btn-secondary">
+                        Ver productos
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 5v14m0 0l7-7m-7 7l-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Industrias Section -->
+    <section class="industries" id="industrias">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Sectores</span>
+                <h2 class="section-title">Industrias que atendemos</h2>
+                <p class="section-description">Soluciones especializadas para cada sector industrial</p>
+            </div>
+
+            <div class="industries-grid">
+                <a href="#industria-quimica" class="industry-card" data-industry="quimica">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 3v6l-3 6h12l-3-6V3M6 21h12M8 21V15M16 21V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria Química</h3>
+                    <p class="industry-description">Etiquetas resistentes a químicos y condiciones extremas</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-textil" class="industry-card" data-industry="textil">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l3-4M3 7h18M21 7l-3-4M6 3l3 4M18 3l-3 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria Textil</h3>
+                    <p class="industry-description">Etiquetas para prendas y productos textiles</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-transporte" class="industry-card" data-industry="transporte">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 17l-2 2M17 17l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Transporte y Logística</h3>
+                    <p class="industry-description">Soluciones para tracking y trazabilidad</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-alimenticia" class="industry-card" data-industry="alimenticia">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria Alimenticia</h3>
+                    <p class="industry-description">Etiquetas aprobadas para contacto con alimentos</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-general" class="industry-card" data-industry="general">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria General</h3>
+                    <p class="industry-description">Soluciones versátiles para múltiples aplicaciones</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-higiene" class="industry-card" data-industry="higiene">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 3v1H4v2h1v13a2 2 0 002 2h10a2 2 0 002-2V6h1V4h-5V3H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Cuidado Personal</h3>
+                    <p class="industry-description">Etiquetas para productos de higiene y cosmética</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-farmaceutica" class="industry-card" data-industry="farmaceutica">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria Farmacéutica</h3>
+                    <p class="industry-description">Etiquetas con normativas sanitarias</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+
+                <a href="#industria-automotriz" class="industry-card" data-industry="automotriz">
+                    <div class="industry-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 17h14v2H5v-2zM3 5h18v8H3V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="industry-title">Industria Automotriz</h3>
+                    <p class="industry-description">Etiquetas de alta resistencia para autopartes</p>
+                    <span class="industry-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section class="products" id="productos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Catálogo</span>
+                <h2 class="section-title">Nuestros productos</h2>
+                <p class="section-description">Equipos, insumos y soluciones completas para etiquetado</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Zebra</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <path d="M150 60h100v80h-100V60z" stroke="#64748b" stroke-width="4" fill="none"/>
+                            <circle cx="200" cy="100" r="20" fill="#64748b"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Impresoras Zebra</h3>
+                        <p class="product-description">Impresoras industriales de alta calidad para etiquetas de código de barras y RFID.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Honeywell</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <path d="M150 60h100v80h-100V60z" stroke="#64748b" stroke-width="4" fill="none"/>
+                            <circle cx="200" cy="100" r="20" fill="#64748b"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Impresoras Honeywell</h3>
+                        <p class="product-description">Equipos robustos para entornos industriales exigentes.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Ribbons</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <circle cx="200" cy="100" r="40" stroke="#64748b" stroke-width="4" fill="none"/>
+                            <circle cx="200" cy="100" r="25" stroke="#64748b" stroke-width="4" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Ribbons</h3>
+                        <p class="product-description">Cintas de transferencia térmica para impresión de etiquetas.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Lectores</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <rect x="140" y="80" width="120" height="40" rx="8" stroke="#64748b" stroke-width="4" fill="none"/>
+                            <line x1="180" y1="120" x2="180" y2="150" stroke="#64748b" stroke-width="4"/>
+                            <line x1="220" y1="120" x2="220" y2="150" stroke="#64748b" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Lectores de Códigos</h3>
+                        <p class="product-description">Lectores de códigos de barras para gestión de inventario.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Etiquetadoras</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <path d="M150 70l50 30-50 30V70z" fill="#64748b"/>
+                            <rect x="200" y="90" width="50" height="20" fill="#64748b"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Pistolas y Etiquetadoras</h3>
+                        <p class="product-description">Aplicadores manuales para etiquetas adhesivas.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">Insumos</div>
+                        <svg class="product-placeholder" width="100%" height="200" viewBox="0 0 400 200" fill="none">
+                            <rect width="400" height="200" fill="#f1f5f9"/>
+                            <rect x="130" y="70" width="140" height="60" rx="4" stroke="#64748b" stroke-width="4" fill="none"/>
+                            <line x1="150" y1="100" x2="250" y2="100" stroke="#64748b" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Insumos Varios</h3>
+                        <p class="product-description">Hilos plásticos, rollos, entintadores y agujas.</p>
+                        <a href="https://wa.me/541122656818" class="product-link">Consultar →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Servicios</span>
+                <h2 class="section-title">Soluciones integrales</h2>
+                <p class="section-description">Acompañamos tu negocio de principio a fin</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 21h10M12 21V7M12 7L8 3M12 7l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Servicio de Impresión</h3>
+                    <p class="service-description">Impresión flexográfica de alta calidad hasta 8 tintas. Diseño personalizado según tus especificaciones y necesidades de marca.</p>
+                    <ul class="service-features">
+                        <li>Diseño personalizado</li>
+                        <li>Múltiples materiales</li>
+                        <li>Tiradas cortas y largas</li>
+                        <li>Acabados especiales</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Servicio Técnico</h3>
+                    <p class="service-description">Mantenimiento y reparación de equipos de impresión y etiquetado. Soporte técnico especializado para garantizar la continuidad de tus operaciones.</p>
+                    <ul class="service-features">
+                        <li>Mantenimiento preventivo</li>
+                        <li>Reparación de equipos</li>
+                        <li>Soporte on-site</li>
+                        <li>Asesoramiento técnico</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Software de Diseño</h3>
+                    <p class="service-description">Software especializado para diseño y gestión de etiquetas. Integración con sistemas de impresión y base de datos.</p>
+                    <ul class="service-features">
+                        <li>Diseño de etiquetas</li>
+                        <li>Gestión de variables</li>
+                        <li>Integración con ERP</li>
+                        <li>Capacitación incluida</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">¿Listo para optimizar tu etiquetado?</h2>
+                <p class="cta-description">Descubre cómo nuestros servicios pueden mejorar la eficiencia y calidad de tus operaciones</p>
+                <a href="https://wa.me/541122656818" class="btn btn-primary" target="_blank">
+                    Solicitar cotización
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <span class="section-badge">Contacto</span>
+                    <h2 class="section-title">Hablemos de tu proyecto</h2>
+                    <p class="contact-text">Estamos para ayudarte con tus necesidades de etiquetado. Contáctanos y te responderemos a la brevedad.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <a href="mailto:info@labeltech.com.ar" class="contact-value">info@labeltech.com.ar</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">WhatsApp</div>
+                                <a href="https://wa.me/541122656818" class="contact-value" target="_blank">+54 11 2265-6818</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="contact-label">Ubicación</div>
+                                <div class="contact-value">Buenos Aires, Argentina</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <a href="https://www.instagram.com/labeltech.ar/" target="_blank" class="social-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="currentColor"/>
+                            </svg>
+                            Instagram
+                        </a>
+                        <a href="https://www.facebook.com/labeltech.arg" target="_blank" class="social-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Facebook
+                        </a>
+                        <a href="https://www.linkedin.com/company/labeltech-ar/" target="_blank" class="social-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+54 11 1234-5678">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Empresa</label>
+                        <input type="text" id="company" name="company" placeholder="Nombre de tu empresa">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Contanos sobre tu proyecto o necesidad"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        Enviar mensaje
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-text">LABEL</span>
+                        <span class="logo-accent">TECH</span>
+                    </div>
+                    <p class="footer-description">
+                        Más de 10 años brindando soluciones de etiquetado de calidad para todas las industrias.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Productos</h4>
+                        <ul class="footer-list">
+                            <li><a href="#productos">Impresoras Zebra</a></li>
+                            <li><a href="#productos">Impresoras Honeywell</a></li>
+                            <li><a href="#productos">Ribbons</a></li>
+                            <li><a href="#productos">Lectores de Códigos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-title">Servicios</h4>
+                        <ul class="footer-list">
+                            <li><a href="#servicios">Servicio de Impresión</a></li>
+                            <li><a href="#servicios">Servicio Técnico</a></li>
+                            <li><a href="#servicios">Software</a></li>
+                            <li><a href="#stickers">Stickers</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4 class="footer-title">Empresa</h4>
+                        <ul class="footer-list">
+                            <li><a href="#inicio">Acerca de</a></li>
+                            <li><a href="#industrias">Industrias</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 Label Tech. Todos los derechos reservados.</p>
+                <div class="footer-badges">
+                    <span class="footer-badge">Hecho en Argentina 🇦🇷</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
