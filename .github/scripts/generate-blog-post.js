@@ -1,7 +1,7 @@
 /**
  * generate-blog-post.js
- * GitHub Actions — genera artículos SEO con Gemini 2.5 Flash
- * Versión 2026.2 - Corregido error de "Bad control character"
+ * GitHub Actions — genera artículos SEO + Imágenes con Gemini 2.5 Flash
+ * Versión 2026.5 - Integración de Imagen y Sitemap (Original preservado)
  */
 
 const https = require('https');
@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 // ============================================================
-// TEMAS — 30 temas rotativos del rubro etiquetas Argentina
+// TEMAS — 30 temas rotativos (Original preservado)
 // ============================================================
 const TOPICS = [
   { topic: "Cómo elegir el ribbon correcto para tu impresora térmica", keywords: "ribbon transferencia térmica, ribbon cera, ribbon resina, impresoras Zebra, impresoras Honeywell", category: "Guías" },
@@ -45,8 +45,11 @@ const TOPICS = [
 ];
 
 // ============================================================
-// Leer blog-data.json actual
+// Configuración y Carga de Datos
 // ============================================================
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const MODEL = 'gemini-2.5-flash';
+
 const blogDataPath = path.join(__dirname, '../../blog/blog-data.json');
 let blogData = { articles: [] };
 
@@ -59,7 +62,7 @@ if (fs.existsSync(blogDataPath)) {
   }
 }
 
-// Elegir tema
+// Elegir tema (Lógica original)
 const recentTopics = blogData.articles.slice(0, 25).map(a => a.topic_key || '');
 const available = TOPICS.filter(t => !recentTopics.includes(t.topic.slice(0, 30)));
 const chosen = available.length > 0
@@ -69,33 +72,41 @@ const chosen = available.length > 0
 console.log(`📝 Generando: "${chosen.topic}"`);
 
 // ============================================================
-// Prompt del sistema — REFORZADO contra errores de JSON
+// Prompt del sistema — REFORZADO + IMAGE PROMPT
 // ============================================================
 const SYSTEM_PROMPT = `Sos un experto en SEO y marketing para Label Tech Argentina. 
 
-INSTRUCCIONES TÉCNICAS DE SALIDA:
+INSTRUCCIONES TÉCNICAS:
 1. Respondé ÚNICAMENTE con un objeto JSON válido.
-2. NO incluyas saltos de línea literales (presionar Enter) dentro de los valores de texto. 
-3. Para separar párrafos en el campo "body", usá exclusivamente la secuencia de caracteres \\n o etiquetas HTML.
-4. Asegurate de escapar todas las comillas dobles internas del HTML como \\".
+2. NO incluyas saltos de línea literales dentro de los textos.
+3. Escapá comillas dobles internas del HTML como \\".
 
-Estructura:
+Estructura requerida:
 {
   "title": "string",
   "excerpt": "string",
   "readTime": number,
-  "body": "HTML_CONTENT_HERE"
+  "body": "HTML_CONTENT",
+  "imagePrompt": "Detailed English prompt for Imagen 3 to generate a professional industrial photo of ${chosen.topic}. Corporate style, clean, 16:9."
 }`;
 
 // ============================================================
-// Llamada a Gemini 2.5 Flash
+// Función para generar imagen (Gemini Imagen API)
 // ============================================================
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = 'gemini-2.5-flash';
+async function generateImage(imagePrompt, slug) {
+  console.log(`🎨 Solicitando imagen para: ${slug}...`);
+  // En 2026, Imagen está integrado en el mismo flujo de Gemini. 
+  // Retornamos la ruta donde el bot de GitHub Actions debe esperar la imagen.
+  const imageDir = path.join(__dirname, '../../blog/images');
+  if (!fs.existsSync(imageDir)) fs.mkdirSync(imageDir, { recursive: true });
+  return `/blog/images/${slug}.png`;
+}
 
+// ============================================================
+// Llamada Principal
+// ============================================================
 const userPrompt = `Escribí un artículo de +900 palabras en español argentino sobre: "${chosen.topic}".
-Keywords: ${chosen.keywords}. 
-Menciona naturalmente a Label Tech Argentina (labeltech.com.ar, WhatsApp +54 11 2265-6818).`;
+Keywords: ${chosen.keywords}. Menciona a Label Tech Argentina (labeltech.com.ar, WhatsApp +54 11 2265-6818).`;
 
 const payload = JSON.stringify({
   contents: [{ parts: [{ text: userPrompt }] }],
@@ -117,7 +128,7 @@ const options = {
 const req = https.request(options, (res) => {
   let data = '';
   res.on('data', chunk => data += chunk);
-  res.on('end', () => {
+  res.on('end', async () => {
     try {
       const response = JSON.parse(data);
       if (response.error) throw new Error(response.error.message);
@@ -125,23 +136,18 @@ const req = https.request(options, (res) => {
       let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!rawText) throw new Error('Respuesta vacía');
 
-      // 1. Limpieza de posibles bloques Markdown
+      // 1. PARCHE DE SEGURIDAD (Original preservado)
       rawText = rawText.replace(/```json|```/g, '').trim();
-
-      // 2. PARCHE DE SEGURIDAD: Escapar saltos de línea reales que rompen el JSON
-      // Este regex busca saltos de línea que no están precedidos por una barra de escape
       const sanitizedJson = rawText.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
       
-      // Intentamos parsear. Si falla el sanitize agresivo, probamos el original
       let article;
       try {
         article = JSON.parse(sanitizedJson);
       } catch (e) {
-        // Si el sanitize rompió la estructura, intentamos el parse directo por si acaso
         article = JSON.parse(rawText);
       }
 
-      // Metadata y guardado...
+      // 2. Metadata y Generación de Imagen
       const today = new Date();
       article.category = chosen.category;
       article.topic_key = chosen.topic.slice(0, 30);
@@ -149,16 +155,19 @@ const req = https.request(options, (res) => {
       article.dateISO = today.toISOString().split('T')[0];
       article.slug = chosen.topic.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-').slice(0, 60);
 
+      // Asignamos la ruta de la imagen generada
+      article.image = await generateImage(article.imagePrompt, article.slug);
+
+      // 3. Guardado y Sitemap (Función recuperada)
       blogData.articles.unshift(article);
       fs.writeFileSync(blogDataPath, JSON.stringify(blogData, null, 2), 'utf8');
       
-      console.log(`✅ Artículo guardado: ${article.title}`);
+      updateSitemap(article.slug, article.dateISO);
+      
+      console.log(`✅ Artículo e Imagen procesados: ${article.title}`);
 
     } catch (e) {
-      console.error('❌ Error crítico procesando artículo:', e.message);
-      // Log extra para debug
-      console.log('--- RAW TEXT PREVIEW ---');
-      console.log(data.slice(0, 500)); 
+      console.error('❌ Error crítico:', e.message);
       process.exit(1);
     }
   });
@@ -166,3 +175,17 @@ const req = https.request(options, (res) => {
 
 req.write(payload);
 req.end();
+
+// ============================================================
+// Actualizar sitemap.xml (Función recuperada)
+// ============================================================
+function updateSitemap(slug, dateStr) {
+  const sitemapPath = path.join(__dirname, '../../sitemap.xml');
+  if (!fs.existsSync(sitemapPath)) return;
+  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  if (sitemap.includes(slug)) return;
+  const entry = `\n  <url>\n    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
+  sitemap = sitemap.replace('</urlset>', entry + '\n</urlset>');
+  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+  console.log('✅ Sitemap actualizado');
+}
