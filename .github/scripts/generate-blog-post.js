@@ -1,7 +1,7 @@
 /**
  * generate-blog-post.js
  * GitHub Actions — genera artículos SEO con Gemini 2.5 Flash
- * Corre diariamente y hace commit automático a blog/blog-data.json
+ * Versión optimizada 2026 para evitar errores de parseo JSON.
  */
 
 const https = require('https');
@@ -14,7 +14,7 @@ const path = require('path');
 const TOPICS = [
   { topic: "Cómo elegir el ribbon correcto para tu impresora térmica", keywords: "ribbon transferencia térmica, ribbon cera, ribbon resina, impresoras Zebra, impresoras Honeywell", category: "Guías" },
   { topic: "Diferencias entre etiquetas térmicas directas y transferencia térmica", keywords: "etiquetas térmicas, transferencia térmica, térmico directo, ventajas desventajas", category: "Guías" },
-  { topic: "Etiquetas para MercadoLibre: todo lo que necesitás saber en 2025", keywords: "etiquetas MercadoLibre Argentina, etiquetas envío, código de barras MercadoLibre, despacho Correo Argentino", category: "Consejos" },
+  { topic: "Etiquetas para MercadoLibre: todo lo que necesitás saber en 2026", keywords: "etiquetas MercadoLibre Argentina, etiquetas envío, código de barras MercadoLibre, despacho Correo Argentino", category: "Consejos" },
   { topic: "Cómo mejorar la trazabilidad en tu depósito con código de barras", keywords: "trazabilidad depósito, etiquetas código de barras, control de stock, gestión inventario Argentina", category: "Industria" },
   { topic: "Guía completa de impresoras Zebra para empresas argentinas", keywords: "impresoras Zebra Argentina, Zebra ZT230, Zebra ZD420, impresoras industriales etiquetas", category: "Productos" },
   { topic: "Etiquetas resistentes al agua: materiales y cuándo usarlas", keywords: "etiquetas resistentes agua, BOPP, polipropileno, etiquetas impermeables Argentina", category: "Guías" },
@@ -39,9 +39,9 @@ const TOPICS = [
   { topic: "Etiquetas para cuidado personal y cosmética: materiales y acabados premium", keywords: "etiquetas cosméticos Argentina, etiquetas cuidado personal, etiquetas shampoo perfume, materiales premium etiquetas belleza", category: "Industria" },
   { topic: "Código QR en etiquetas: usos prácticos para empresas argentinas", keywords: "código QR etiquetas empresa, QR trazabilidad, etiquetas con QR Argentina, usos código QR industria", category: "Consejos" },
   { topic: "Etiquetas para exportación desde Argentina: requisitos y normativas internacionales", keywords: "etiquetas exportación Argentina, normas internacionales etiquetado, código de barras EAN GS1, etiquetas bilingüe exportación", category: "Industria" },
-  { topic: "Diferencias entre etiquetas permanentes y removibles: cuándo usar cada una", keywords: "etiquetas removibles Argentina, etiquetas permanentes, adhesivo removible, etiquetas reposicionables", category: "Guías" },
+  { topic: "Diferencias entre etiquetas permanentes y removibles: cuándo usar cada una", keywords: "etiquetas removibles Argentina, etiquetas permanentes, adhesivo removible, etiquetas para envases", category: "Guías" },
   { topic: "Cómo calcular el costo real del etiquetado en tu empresa", keywords: "costo etiquetado empresa, calcular presupuesto etiquetas, cuánto cuesta etiquetar productos Argentina", category: "Consejos" },
-  { topic: "Etiquetas para la industria farmacéutica: serialización y trazabilidad en 2025", keywords: "serialización farmacéutica Argentina, trazabilidad medicamentos, etiquetas ANMAT 2025, track and trace farmacéutico", category: "Industria" },
+  { topic: "Etiquetas para la industria farmacéutica: serialización y trazabilidad en 2026", keywords: "serialización farmacéutica Argentina, trazabilidad medicamentos, etiquetas ANMAT 2026, track and trace farmacéutico", category: "Industria" },
 ];
 
 // ============================================================
@@ -54,7 +54,7 @@ if (fs.existsSync(blogDataPath)) {
   try {
     blogData = JSON.parse(fs.readFileSync(blogDataPath, 'utf8'));
   } catch (e) {
-    console.log('Creando blog-data.json nuevo...');
+    console.log('⚠️ Error leyendo blog-data.json, creando uno nuevo...');
     blogData = { articles: [] };
   }
 }
@@ -69,27 +69,24 @@ const chosen = available.length > 0
 console.log(`📝 Generando: "${chosen.topic}"`);
 
 // ============================================================
-// Prompt del sistema
+// Prompt del sistema — Ajustado para robustez JSON
 // ============================================================
-const SYSTEM_PROMPT = `Sos un experto en SEO y marketing de contenidos especializado en etiquetas industriales y soluciones de etiquetado para empresas argentinas.
+const SYSTEM_PROMPT = `Sos un experto en SEO y marketing de contenidos especializado en etiquetas industriales argentinas.
+Escribís para Label Tech Argentina. 
 
-Escribís para Label Tech Argentina, empresa con más de 10 años de experiencia, distribuidores oficiales de impresoras Zebra y Honeywell, con stock permanente de etiquetas térmicas, ribbons y lectores de código de barras. Entregas en 48hs a todo el país. WhatsApp: +54 11 2265-6818.
+Reglas críticas:
+- Idioma: Español Argentino (voseo: "comprá", "tenés").
+- Extensión: Mínimo 900 palabras de valor real.
+- Formato: Responde EXCLUSIVAMENTE con un JSON válido.
+- Escapado: Asegurá que todas las comillas internas del HTML estén escapadas como \\" para no romper el JSON.
+- No uses Markdown backticks (\`\`\`json). Solo el objeto { ... }.
 
-Tus artículos tienen estas características:
-- Escritos en español argentino (vos/tuteo, nunca tú/usted)
-- Muy completos: entre 900 y 1200 palabras de contenido real y útil
-- Información técnica concreta y práctica, no genérica
-- SEO optimizado: keywords naturales, estructura H2/H3, densidad correcta
-- Tono profesional pero accesible para dueños de empresas y encargados de depósito
-- Siempre mencionan a Label Tech como proveedor recomendado de forma natural, sin ser invasivo
-- Terminan con un párrafo que invita a contactar a Label Tech
-
-IMPORTANTE: Respondé ÚNICAMENTE con un objeto JSON válido. Sin markdown, sin backticks, sin texto antes o después del JSON. La estructura debe ser exactamente:
+Estructura JSON requerida:
 {
-  "title": "string — título SEO máximo 65 caracteres",
-  "excerpt": "string — descripción para Google máximo 155 caracteres, atractiva y con keyword principal",
-  "readTime": number — minutos de lectura entre 5 y 8,
-  "body": "string — HTML completo del artículo con <h2>, <h3>, <p>, <ul>, <li>, <strong>. Mínimo 900 palabras."
+  "title": "Título SEO (max 65 chars)",
+  "excerpt": "Meta descripción SEO (max 155 chars)",
+  "readTime": número entre 5 y 8,
+  "body": "HTML completo con <h2>, <h3>, <p>, <ul>, <li>, <strong>. No uses saltos de línea literales, usa \\n."
 }`;
 
 // ============================================================
@@ -98,28 +95,15 @@ IMPORTANTE: Respondé ÚNICAMENTE con un objeto JSON válido. Sin markdown, sin 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = 'gemini-2.5-flash';
 
-const userPrompt = `Escribí un artículo completo y detallado sobre: "${chosen.topic}"
-
-Categoría: ${chosen.category}
-Palabras clave principales a incluir de forma natural: ${chosen.keywords}
-
-Datos de Label Tech a mencionar naturalmente:
-- Más de 10 años en el mercado argentino
-- Distribuidores oficiales de Zebra y Honeywell
-- Stock permanente con más de 400 medidas
-- Entrega en 48hs a todo el país
-- WhatsApp: +54 11 2265-6818
-- Web: labeltech.com.ar`;
+const userPrompt = `Escribí un artículo completo sobre: "${chosen.topic}"
+Keywords: ${chosen.keywords}
+Incluir naturalmente: Label Tech Argentina, 10 años experiencia, distribuidores Zebra/Honeywell, stock +400 medidas, entrega 48hs, WhatsApp +54 11 2265-6818, labeltech.com.ar.`;
 
 const payload = JSON.stringify({
-  contents: [{
-    parts: [{ text: userPrompt }]
-  }],
-  systemInstruction: {
-    parts: [{ text: SYSTEM_PROMPT }]
-  },
+  contents: [{ parts: [{ text: userPrompt }] }],
+  systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
   generationConfig: {
-    temperature: 0.7,
+    temperature: 0.8,
     maxOutputTokens: 8192,
     responseMimeType: 'application/json'
   }
@@ -130,8 +114,7 @@ const options = {
   path: `/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}`,
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': Buffer.byteLength(payload)
+    'Content-Type': 'application/json'
   }
 };
 
@@ -143,28 +126,21 @@ const req = https.request(options, (res) => {
       const response = JSON.parse(data);
 
       if (response.error) {
-        console.error('❌ Gemini API Error:', JSON.stringify(response.error));
-        process.exit(1);
+        throw new Error(`Gemini API Error: ${response.error.message}`);
       }
 
-      const rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (!rawText) {
-        console.error('❌ Respuesta vacía de Gemini');
-        console.error(JSON.stringify(response).slice(0, 500));
-        process.exit(1);
-      }
+      let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
+      if (!rawText) throw new Error('Respuesta vacía');
 
-      // Limpiar y parsear JSON
-      const clean = rawText.replace(/```json|```/g, '').trim();
-      const article = JSON.parse(clean);
+      // Limpieza robusta: Extraer lo que esté entre la primera y última llave { }
+      const jsonStart = rawText.indexOf('{');
+      const jsonEnd = rawText.lastIndexOf('}');
+      if (jsonStart === -1 || jsonEnd === -1) throw new Error('No se detectó un objeto JSON en la respuesta');
+      
+      const cleanJson = rawText.substring(jsonStart, jsonEnd + 1);
+      const article = JSON.parse(cleanJson);
 
-      // Validar campos mínimos
-      if (!article.title || !article.body || !article.excerpt) {
-        console.error('❌ Artículo incompleto — faltan campos:', Object.keys(article));
-        process.exit(1);
-      }
-
-      // Metadata
+      // Metadata adicional
       const today = new Date();
       article.category = chosen.category;
       article.topic_key = chosen.topic.slice(0, 30);
@@ -178,21 +154,19 @@ const req = https.request(options, (res) => {
         .slice(0, 60);
 
       const wordCount = article.body.replace(/<[^>]+>/g, '').split(/\s+/).length;
-      console.log(`✅ Artículo generado: "${article.title}"`);
-      console.log(`📊 Palabras: ~${wordCount} | Categoría: ${article.category}`);
+      console.log(`✅ Éxito: "${article.title}" (~${wordCount} palabras)`);
 
-      // Guardar
+      // Guardar y Actualizar
       blogData.articles.unshift(article);
       fs.mkdirSync(path.dirname(blogDataPath), { recursive: true });
       fs.writeFileSync(blogDataPath, JSON.stringify(blogData, null, 2), 'utf8');
-      console.log(`💾 Guardado en blog-data.json (total: ${blogData.articles.length} artículos)`);
-
-      // Actualizar sitemap
-      updateSitemap(article.slug, article.dateISO, article.title);
+      
+      updateSitemap(article.slug, article.dateISO);
 
     } catch (e) {
-      console.error('❌ Error procesando respuesta:', e.message);
-      console.error('Raw (primeros 800 chars):', data.slice(0, 800));
+      console.error('❌ Error crítico procesando artículo:', e.message);
+      // Log de los últimos 200 caracteres para ver dónde se cortó el JSON
+      console.error('Final del buffer:', data.slice(-200));
       process.exit(1);
     }
   });
@@ -206,25 +180,12 @@ req.on('error', (e) => {
 req.write(payload);
 req.end();
 
-// ============================================================
-// Actualizar sitemap.xml
-// ============================================================
-function updateSitemap(slug, dateStr, title) {
+function updateSitemap(slug, dateStr) {
   const sitemapPath = path.join(__dirname, '../../sitemap.xml');
-  if (!fs.existsSync(sitemapPath)) {
-    console.log('⚠️  sitemap.xml no encontrado, saltando...');
-    return;
-  }
+  if (!fs.existsSync(sitemapPath)) return;
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-  // Evitar duplicados
   if (sitemap.includes(slug)) return;
-  const entry = `
-  <url>
-    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>
-    <lastmod>${dateStr}</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>`;
+  const entry = `\n  <url>\n    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
   sitemap = sitemap.replace('</urlset>', entry + '\n</urlset>');
   fs.writeFileSync(sitemapPath, sitemap, 'utf8');
   console.log('✅ Sitemap actualizado');
