@@ -96,7 +96,7 @@ IMPORTANTE: Respondé ÚNICAMENTE con un objeto JSON válido. Sin markdown, sin 
 // Llamada a Gemini 2.5 Flash
 // ============================================================
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = 'gemini-2.5-flash-preview-04-17';
+const MODEL = 'gemini-2.5-flash';
 
 const userPrompt = `Escribí un artículo completo y detallado sobre: "${chosen.topic}"
 
