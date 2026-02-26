@@ -79,43 +79,7 @@ cards.forEach((card, index) => {
 });
 
 // Contact form handling
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Get form values
-    const name = data.name;
-    const phone = data.phone;
-    const email = data.email;
-    const company = data.company || 'No especificó';
-    const message = data.message;
-    
-    // Create WhatsApp message
-    const whatsappMessage = `*Nuevo contacto desde web*
-    
-*Nombre:* ${name}
-*Teléfono:* ${phone}
-*Email:* ${email}
-*Empresa:* ${company}
-*Mensaje:* ${message}`;
-    
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappURL = `https://wa.me/541122656818?text=${encodedMessage}`;
-    
-    // Open WhatsApp in new tab
-    window.open(whatsappURL, '_blank');
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Show success message
-    showNotification('¡Mensaje enviado! Te contactaremos pronto.', 'success');
-});
+// Formulario manejado por EmailJS — ver index.html
 
 // Notification function
 function showNotification(message, type = 'success') {
