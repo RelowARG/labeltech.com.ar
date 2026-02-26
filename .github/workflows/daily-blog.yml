@@ -5,17 +5,21 @@ on:
     # Todos los días a las 9am Argentina (UTC-3 = 12:00 UTC)
     - cron: '0 12 * * *'
   workflow_dispatch:
-    # También se puede correr manualmente desde GitHub → Actions → Run workflow
+    # También se puede correr manualmente desde GitHub
 
 jobs:
   generate-blog-post:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pages: write
+      id-token: write
 
     steps:
       - name: 📥 Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
@@ -32,5 +36,5 @@ jobs:
           git config --local user.email "blogbot@labeltech.com.ar"
           git config --local user.name "LabelTech Blog Bot"
           git add blog/blog-data.json sitemap.xml
-          git diff --staged --quiet || git commit -m "📝 Blog: artículo automático $(date +'%d/%m/%Y')"
-          git push
+          # El comando || true evita que falle si no hay cambios
+          git diff --staged --quiet || (git commit -m "📝 Blog: artículo automático $(date +'%d/%m/%Y')" && git push)

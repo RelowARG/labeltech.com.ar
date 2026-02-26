@@ -1,7 +1,7 @@
 /**
  * generate-blog-post.js
  * GitHub Actions — genera artículos SEO + Imágenes con Gemini 2.5 Flash
- * Versión 2026.5 - Integración de Imagen y Sitemap (Original preservado)
+ * Versión 2026.5 - Integración de Imagen y Sitemap (Corregido)
  */
 
 const https = require('https');
@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 
 // ============================================================
-// TEMAS — 30 temas rotativos (Original preservado)
+// TEMAS — 30 temas rotativos
 // ============================================================
 const TOPICS = [
   { topic: "Cómo elegir el ribbon correcto para tu impresora térmica", keywords: "ribbon transferencia térmica, ribbon cera, ribbon resina, impresoras Zebra, impresoras Honeywell", category: "Guías" },
@@ -48,22 +48,23 @@ const TOPICS = [
 // Configuración y Carga de Datos
 // ============================================================
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = 'gemini-2.5-flash';
+const MODEL = 'gemini-1.5-flash'; // Cambiado a 1.5 por estabilidad, podés volver a 2.5 si tenés acceso
 
 const blogDataPath = path.join(__dirname, '../../blog/blog-data.json');
 let blogData = { articles: [] };
 
 if (fs.existsSync(blogDataPath)) {
   try {
-    blogData = JSON.parse(fs.readFileSync(blogDataPath, 'utf8'));
+    const content = fs.readFileSync(blogDataPath, 'utf8');
+    blogData = JSON.parse(content);
   } catch (e) {
     console.log('⚠️ Creando blog-data.json nuevo...');
     blogData = { articles: [] };
   }
 }
 
-// Elegir tema (Lógica original)
-const recentTopics = blogData.articles.slice(0, 25).map(a => a.topic_key || '');
+// Elegir tema
+const recentTopics = (blogData.articles || []).slice(0, 25).map(a => a.topic_key || '');
 const available = TOPICS.filter(t => !recentTopics.includes(t.topic.slice(0, 30)));
 const chosen = available.length > 0
   ? available[Math.floor(Math.random() * available.length)]
@@ -72,31 +73,23 @@ const chosen = available.length > 0
 console.log(`📝 Generando: "${chosen.topic}"`);
 
 // ============================================================
-// Prompt del sistema — REFORZADO + IMAGE PROMPT
+// Prompt del sistema
 // ============================================================
 const SYSTEM_PROMPT = `Sos un experto en SEO y marketing para Label Tech Argentina. 
+Respondé ÚNICAMENTE con un objeto JSON válido.
+NO incluyas saltos de línea literales dentro de las propiedades de texto.
+Escapá comillas dobles internas con \\".
 
-INSTRUCCIONES TÉCNICAS:
-1. Respondé ÚNICAMENTE con un objeto JSON válido.
-2. NO incluyas saltos de línea literales dentro de los textos.
-3. Escapá comillas dobles internas del HTML como \\".
-
-Estructura requerida:
+Estructura:
 {
   "title": "string",
   "excerpt": "string",
-  "readTime": number,
+  "readTime": 5,
   "body": "HTML_CONTENT",
-  "imagePrompt": "Detailed English prompt for Imagen 3 to generate a professional industrial photo of ${chosen.topic}. Corporate style, clean, 16:9."
+  "imagePrompt": "Industrial photography of ${chosen.topic}, professional, 16:9"
 }`;
 
-// ============================================================
-// Función para generar imagen (Gemini Imagen API)
-// ============================================================
 async function generateImage(imagePrompt, slug) {
-  console.log(`🎨 Solicitando imagen para: ${slug}...`);
-  // En 2026, Imagen está integrado en el mismo flujo de Gemini. 
-  // Retornamos la ruta donde el bot de GitHub Actions debe esperar la imagen.
   const imageDir = path.join(__dirname, '../../blog/images');
   if (!fs.existsSync(imageDir)) fs.mkdirSync(imageDir, { recursive: true });
   return `/blog/images/${slug}.png`;
@@ -105,15 +98,16 @@ async function generateImage(imagePrompt, slug) {
 // ============================================================
 // Llamada Principal
 // ============================================================
-const userPrompt = `Escribí un artículo de +900 palabras en español argentino sobre: "${chosen.topic}".
-Keywords: ${chosen.keywords}. Menciona a Label Tech Argentina (labeltech.com.ar, WhatsApp +54 11 2265-6818).`;
+const userPrompt = `Escribí un artículo SEO de +900 palabras en español argentino sobre: "${chosen.topic}". 
+Keywords a usar: ${chosen.keywords}. 
+Menciona a Label Tech Argentina (labeltech.com.ar, WhatsApp +54 11 2265-6818).`;
 
 const payload = JSON.stringify({
   contents: [{ parts: [{ text: userPrompt }] }],
   systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
   generationConfig: {
     temperature: 0.7,
-    maxOutputTokens: 8192,
+    maxOutputTokens: 8000,
     responseMimeType: 'application/json'
   }
 });
@@ -136,56 +130,66 @@ const req = https.request(options, (res) => {
       let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!rawText) throw new Error('Respuesta vacía');
 
-      // 1. PARCHE DE SEGURIDAD (Original preservado)
-      rawText = rawText.replace(/```json|```/g, '').trim();
-      const sanitizedJson = rawText.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+      // LIMPIEZA AGRESIVA DE JSON (Evita errores de parseo)
+      rawText = rawText.replace(/```json/ig, '').replace(/```/g, '').trim();
       
       let article;
       try {
-        article = JSON.parse(sanitizedJson);
-      } catch (e) {
         article = JSON.parse(rawText);
+      } catch (innerError) {
+        // Segundo intento: limpiar caracteres de control
+        const cleaned = rawText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
+        article = JSON.parse(cleaned);
       }
 
-      // 2. Metadata y Generación de Imagen
       const today = new Date();
       article.category = chosen.category;
       article.topic_key = chosen.topic.slice(0, 30);
       article.date = today.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
       article.dateISO = today.toISOString().split('T')[0];
-      article.slug = chosen.topic.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-').slice(0, 60);
+      article.slug = chosen.topic.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, '-')
+        .slice(0, 60);
 
-      // Asignamos la ruta de la imagen generada
       article.image = await generateImage(article.imagePrompt, article.slug);
 
-      // 3. Guardado y Sitemap (Función recuperada)
+      if (!Array.isArray(blogData.articles)) blogData.articles = [];
       blogData.articles.unshift(article);
+      
       fs.writeFileSync(blogDataPath, JSON.stringify(blogData, null, 2), 'utf8');
       
       updateSitemap(article.slug, article.dateISO);
       
-      console.log(`✅ Artículo e Imagen procesados: ${article.title}`);
+      console.log(`✅ Éxito: ${article.title}`);
 
     } catch (e) {
-      console.error('❌ Error crítico:', e.message);
+      console.error('❌ Error crítico procesando respuesta:', e.message);
       process.exit(1);
     }
   });
 });
 
+req.on('error', (e) => {
+  console.error(`❌ Error de red: ${e.message}`);
+  process.exit(1);
+});
+
 req.write(payload);
 req.end();
 
-// ============================================================
-// Actualizar sitemap.xml (Función recuperada)
-// ============================================================
 function updateSitemap(slug, dateStr) {
   const sitemapPath = path.join(__dirname, '../../sitemap.xml');
   if (!fs.existsSync(sitemapPath)) return;
-  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-  if (sitemap.includes(slug)) return;
-  const entry = `\n  <url>\n    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
-  sitemap = sitemap.replace('</urlset>', entry + '\n</urlset>');
-  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log('✅ Sitemap actualizado');
+  try {
+    let sitemap = fs.readFileSync(sitemapPath, 'utf8');
+    if (sitemap.includes(slug)) return;
+    const entry = `\n  <url>\n    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
+    sitemap = sitemap.replace('</urlset>', entry + '\n</urlset>');
+    fs.writeFileSync(sitemapPath, sitemap, 'utf8');
+    console.log('✅ Sitemap actualizado');
+  } catch (e) {
+    console.error('⚠️ Error actualizando sitemap:', e.message);
+  }
 }
