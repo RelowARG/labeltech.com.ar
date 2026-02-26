@@ -1,7 +1,7 @@
 /**
  * generate-blog-post.js
  * GitHub Actions — genera artículos SEO + Imágenes con Gemini 2.5 Flash
- * Versión 2026.5 - Integración de Imagen y Sitemap (Corregido)
+ * Versión 2026.5 - Corrección de Modelo API
  */
 
 const https = require('https');
@@ -48,7 +48,7 @@ const TOPICS = [
 // Configuración y Carga de Datos
 // ============================================================
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = 'gemini-1.5-flash'; // Cambiado a 1.5 por estabilidad, podés volver a 2.5 si tenés acceso
+const MODEL = 'gemini-2.0-flash'; // ID actualizado para compatibilidad total con v1beta
 
 const blogDataPath = path.join(__dirname, '../../blog/blog-data.json');
 let blogData = { articles: [] };
@@ -124,20 +124,25 @@ const req = https.request(options, (res) => {
   res.on('data', chunk => data += chunk);
   res.on('end', async () => {
     try {
+      // Manejo de errores de HTTP
+      if (res.statusCode !== 200) {
+        throw new Error(`Error de API (Status ${res.statusCode}): ${data}`);
+      }
+
       const response = JSON.parse(data);
       if (response.error) throw new Error(response.error.message);
 
       let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (!rawText) throw new Error('Respuesta vacía');
+      if (!rawText) throw new Error('Respuesta vacía de Gemini');
 
-      // LIMPIEZA AGRESIVA DE JSON (Evita errores de parseo)
+      // Limpieza de bloques de código markdown si la IA los incluye por error
       rawText = rawText.replace(/```json/ig, '').replace(/```/g, '').trim();
       
       let article;
       try {
         article = JSON.parse(rawText);
       } catch (innerError) {
-        // Segundo intento: limpiar caracteres de control
+        // Intento de limpieza de caracteres invisibles
         const cleaned = rawText.replace(/[\u0000-\u001F\u007F-\u009F]/g, "");
         article = JSON.parse(cleaned);
       }
