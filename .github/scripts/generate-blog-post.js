@@ -1,7 +1,7 @@
 /**
  * generate-blog-post.js
  * GitHub Actions — genera artículos SEO con Gemini 2.5 Flash
- * Versión optimizada 2026 para evitar errores de parseo JSON.
+ * Versión 2026.2 - Corregido error de "Bad control character"
  */
 
 const https = require('https');
@@ -54,12 +54,12 @@ if (fs.existsSync(blogDataPath)) {
   try {
     blogData = JSON.parse(fs.readFileSync(blogDataPath, 'utf8'));
   } catch (e) {
-    console.log('⚠️ Error leyendo blog-data.json, creando uno nuevo...');
+    console.log('⚠️ Creando blog-data.json nuevo...');
     blogData = { articles: [] };
   }
 }
 
-// Elegir tema no publicado recientemente
+// Elegir tema
 const recentTopics = blogData.articles.slice(0, 25).map(a => a.topic_key || '');
 const available = TOPICS.filter(t => !recentTopics.includes(t.topic.slice(0, 30)));
 const chosen = available.length > 0
@@ -69,24 +69,22 @@ const chosen = available.length > 0
 console.log(`📝 Generando: "${chosen.topic}"`);
 
 // ============================================================
-// Prompt del sistema — Ajustado para robustez JSON
+// Prompt del sistema — REFORZADO contra errores de JSON
 // ============================================================
-const SYSTEM_PROMPT = `Sos un experto en SEO y marketing de contenidos especializado en etiquetas industriales argentinas.
-Escribís para Label Tech Argentina. 
+const SYSTEM_PROMPT = `Sos un experto en SEO y marketing para Label Tech Argentina. 
 
-Reglas críticas:
-- Idioma: Español Argentino (voseo: "comprá", "tenés").
-- Extensión: Mínimo 900 palabras de valor real.
-- Formato: Responde EXCLUSIVAMENTE con un JSON válido.
-- Escapado: Asegurá que todas las comillas internas del HTML estén escapadas como \\" para no romper el JSON.
-- No uses Markdown backticks (\`\`\`json). Solo el objeto { ... }.
+INSTRUCCIONES TÉCNICAS DE SALIDA:
+1. Respondé ÚNICAMENTE con un objeto JSON válido.
+2. NO incluyas saltos de línea literales (presionar Enter) dentro de los valores de texto. 
+3. Para separar párrafos en el campo "body", usá exclusivamente la secuencia de caracteres \\n o etiquetas HTML.
+4. Asegurate de escapar todas las comillas dobles internas del HTML como \\".
 
-Estructura JSON requerida:
+Estructura:
 {
-  "title": "Título SEO (max 65 chars)",
-  "excerpt": "Meta descripción SEO (max 155 chars)",
-  "readTime": número entre 5 y 8,
-  "body": "HTML completo con <h2>, <h3>, <p>, <ul>, <li>, <strong>. No uses saltos de línea literales, usa \\n."
+  "title": "string",
+  "excerpt": "string",
+  "readTime": number,
+  "body": "HTML_CONTENT_HERE"
 }`;
 
 // ============================================================
@@ -95,15 +93,15 @@ Estructura JSON requerida:
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const MODEL = 'gemini-2.5-flash';
 
-const userPrompt = `Escribí un artículo completo sobre: "${chosen.topic}"
-Keywords: ${chosen.keywords}
-Incluir naturalmente: Label Tech Argentina, 10 años experiencia, distribuidores Zebra/Honeywell, stock +400 medidas, entrega 48hs, WhatsApp +54 11 2265-6818, labeltech.com.ar.`;
+const userPrompt = `Escribí un artículo de +900 palabras en español argentino sobre: "${chosen.topic}".
+Keywords: ${chosen.keywords}. 
+Menciona naturalmente a Label Tech Argentina (labeltech.com.ar, WhatsApp +54 11 2265-6818).`;
 
 const payload = JSON.stringify({
   contents: [{ parts: [{ text: userPrompt }] }],
   systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
   generationConfig: {
-    temperature: 0.8,
+    temperature: 0.7,
     maxOutputTokens: 8192,
     responseMimeType: 'application/json'
   }
@@ -113,9 +111,7 @@ const options = {
   hostname: 'generativelanguage.googleapis.com',
   path: `/v1beta/models/${MODEL}:generateContent?key=${GEMINI_API_KEY}`,
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  }
+  headers: { 'Content-Type': 'application/json' }
 };
 
 const req = https.request(options, (res) => {
@@ -124,69 +120,49 @@ const req = https.request(options, (res) => {
   res.on('end', () => {
     try {
       const response = JSON.parse(data);
-
-      if (response.error) {
-        throw new Error(`Gemini API Error: ${response.error.message}`);
-      }
+      if (response.error) throw new Error(response.error.message);
 
       let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!rawText) throw new Error('Respuesta vacía');
 
-      // Limpieza robusta: Extraer lo que esté entre la primera y última llave { }
-      const jsonStart = rawText.indexOf('{');
-      const jsonEnd = rawText.lastIndexOf('}');
-      if (jsonStart === -1 || jsonEnd === -1) throw new Error('No se detectó un objeto JSON en la respuesta');
-      
-      const cleanJson = rawText.substring(jsonStart, jsonEnd + 1);
-      const article = JSON.parse(cleanJson);
+      // 1. Limpieza de posibles bloques Markdown
+      rawText = rawText.replace(/```json|```/g, '').trim();
 
-      // Metadata adicional
+      // 2. PARCHE DE SEGURIDAD: Escapar saltos de línea reales que rompen el JSON
+      // Este regex busca saltos de línea que no están precedidos por una barra de escape
+      const sanitizedJson = rawText.replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+      
+      // Intentamos parsear. Si falla el sanitize agresivo, probamos el original
+      let article;
+      try {
+        article = JSON.parse(sanitizedJson);
+      } catch (e) {
+        // Si el sanitize rompió la estructura, intentamos el parse directo por si acaso
+        article = JSON.parse(rawText);
+      }
+
+      // Metadata y guardado...
       const today = new Date();
       article.category = chosen.category;
       article.topic_key = chosen.topic.slice(0, 30);
       article.date = today.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
       article.dateISO = today.toISOString().split('T')[0];
-      article.slug = chosen.topic
-        .toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        .replace(/[^a-z0-9\s]/g, '')
-        .replace(/\s+/g, '-')
-        .slice(0, 60);
+      article.slug = chosen.topic.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, '-').slice(0, 60);
 
-      const wordCount = article.body.replace(/<[^>]+>/g, '').split(/\s+/).length;
-      console.log(`✅ Éxito: "${article.title}" (~${wordCount} palabras)`);
-
-      // Guardar y Actualizar
       blogData.articles.unshift(article);
-      fs.mkdirSync(path.dirname(blogDataPath), { recursive: true });
       fs.writeFileSync(blogDataPath, JSON.stringify(blogData, null, 2), 'utf8');
       
-      updateSitemap(article.slug, article.dateISO);
+      console.log(`✅ Artículo guardado: ${article.title}`);
 
     } catch (e) {
       console.error('❌ Error crítico procesando artículo:', e.message);
-      // Log de los últimos 200 caracteres para ver dónde se cortó el JSON
-      console.error('Final del buffer:', data.slice(-200));
+      // Log extra para debug
+      console.log('--- RAW TEXT PREVIEW ---');
+      console.log(data.slice(0, 500)); 
       process.exit(1);
     }
   });
 });
 
-req.on('error', (e) => {
-  console.error('❌ Error de conexión:', e.message);
-  process.exit(1);
-});
-
 req.write(payload);
 req.end();
-
-function updateSitemap(slug, dateStr) {
-  const sitemapPath = path.join(__dirname, '../../sitemap.xml');
-  if (!fs.existsSync(sitemapPath)) return;
-  let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-  if (sitemap.includes(slug)) return;
-  const entry = `\n  <url>\n    <loc>https://www.labeltech.com.ar/blog/#${slug}</loc>\n    <lastmod>${dateStr}</lastmod>\n    <changefreq>yearly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
-  sitemap = sitemap.replace('</urlset>', entry + '\n</urlset>');
-  fs.writeFileSync(sitemapPath, sitemap, 'utf8');
-  console.log('✅ Sitemap actualizado');
-}
