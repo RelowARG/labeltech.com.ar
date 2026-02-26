@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
+    <!-- Google Analytics GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVV0X54KK9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YVV0X54KK9');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -203,7 +211,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <a href="#" class="logo">
-                    <img src="public/images/logolabel_transparent.png" alt="Label Tech - Etiquetas Adhesivas e Insumos Argentina" class="logo-img">
+                    <img src="public/images/logolabel.png" alt="Label Tech - Etiquetas Adhesivas e Insumos Argentina" class="logo-img">
                 </a>
                 
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
@@ -1076,21 +1084,21 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" novalidate>
                     <div class="form-group">
-                        <label for="name">Nombre completo</label>
-                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                        <label for="name">Nombre completo *</label>
+                        <input type="text" id="name" name="from_name" required placeholder="Tu nombre">
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="phone">Teléfono</label>
+                            <label for="phone">Teléfono *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="+54 11 1234-5678">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="reply_to" required placeholder="tu@email.com">
                         </div>
                     </div>
 
@@ -1100,14 +1108,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Mensaje</label>
+                        <label for="message">Mensaje *</label>
                         <textarea id="message" name="message" rows="4" required placeholder="Contanos sobre tu proyecto o necesidad"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-full">
-                        Enviar mensaje
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Estado del envío -->
+                    <div id="formStatus" style="display:none; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1rem; font-weight: 500; font-size: 0.9375rem;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+                        <span id="btnText">Enviar mensaje</span>
+                        <svg id="btnIcon" width="20" height="20" viewBox="0 0 24 24" fill="none">
                             <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg id="btnSpinner" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display:none; animation: spin 0.8s linear infinite;">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="32" stroke-dashoffset="12"/>
                         </svg>
                     </button>
                 </form>
@@ -1121,7 +1135,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="public/images/logolabelvertical_white.png" alt="Label Tech - Etiquetas Adhesivas Argentina" class="footer-logo-img">
+                        <img src="public/images/logolabelvertical.png" alt="Label Tech - Etiquetas Adhesivas Argentina" class="footer-logo-img">
                     </div>
                     <p class="footer-description">
                         Más de 10 años brindando soluciones de etiquetado de calidad para todas las industrias.
@@ -1176,5 +1190,80 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init('gjEvA4TkvxfksysiE');
+
+        const spinStyle = document.createElement('style');
+        spinStyle.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+        document.head.appendChild(spinStyle);
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const btnSpinner = document.getElementById('btnSpinner');
+            const status = document.getElementById('formStatus');
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !phone || !message) {
+                status.style.display = 'block';
+                status.style.background = '#FEF2F2';
+                status.style.color = '#DC2626';
+                status.style.border = '1px solid #FECACA';
+                status.textContent = '⚠️ Por favor completá todos los campos obligatorios.';
+                return;
+            }
+
+            btn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            btnIcon.style.display = 'none';
+            btnSpinner.style.display = 'block';
+            status.style.display = 'none';
+
+            const templateParams = {
+                from_name: name,
+                reply_to: email,
+                phone: phone,
+                company: document.getElementById('company').value.trim() || 'No especificada',
+                message: message
+            };
+
+            emailjs.send('service_40kz8dt', 'template_0o49c6i', templateParams)
+                .then(function() {
+                    status.style.display = 'block';
+                    status.style.background = '#F0FDF4';
+                    status.style.color = '#16A34A';
+                    status.style.border = '1px solid #BBF7D0';
+                    status.textContent = '✅ ¡Mensaje enviado! Te contactamos en las próximas horas.';
+                    document.getElementById('contactForm').reset();
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'form_submit', { event_category: 'contacto', event_label: 'formulario_web' });
+                    }
+                })
+                .catch(function(error) {
+                    status.style.display = 'block';
+                    status.style.background = '#FEF2F2';
+                    status.style.color = '#DC2626';
+                    status.style.border = '1px solid #FECACA';
+                    status.textContent = '❌ Error al enviar. Escribinos a ventas@labeltech.com.ar';
+                    console.error('EmailJS error:', error);
+                })
+                .finally(function() {
+                    btn.disabled = false;
+                    btnText.textContent = 'Enviar mensaje';
+                    btnIcon.style.display = 'block';
+                    btnSpinner.style.display = 'none';
+                });
+        });
+    </script>
 </body>
 </html>
