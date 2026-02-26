@@ -1,112 +1,112 @@
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
-    <!-- Google Analytics GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVV0X54KK9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-YVV0X54KK9');
-    </script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YVV0X54KK9');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Label Tech Argentina — Etiquetas y Soluciones de Etiquetado</title>
-    <meta name="description" content="Blog de Label Tech Argentina. Guías, consejos y novedades sobre etiquetas adhesivas, impresoras térmicas, ribbons y soluciones de etiquetado industrial.">
-    <meta name="keywords" content="blog etiquetas Argentina, consejos etiquetado, guía impresoras térmicas, ribbons transferencia térmica, etiquetas adhesivas Argentina">
+    <title>Blog | Label Tech Argentina — Etiquetas, Impresoras y Ribbons</title>
+    <meta name="description" content="Guías, consejos y novedades sobre etiquetas adhesivas, impresoras Zebra y Honeywell, ribbons y soluciones de etiquetado industrial en Argentina.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.labeltech.com.ar/blog/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .breadcrumb { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0.75rem 0; margin-top: 72px; }
-        .breadcrumb nav { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
-        .breadcrumb a { color: var(--text-secondary); text-decoration: none; }
-        .breadcrumb a:hover { color: var(--accent); }
-        .breadcrumb span { color: var(--text-primary); font-weight: 500; }
+        .breadcrumb{background:var(--surface);border-bottom:1px solid var(--border);padding:.75rem 0;margin-top:72px}
+        .breadcrumb nav{display:flex;align-items:center;gap:.5rem;font-size:.875rem}
+        .breadcrumb a{color:var(--text-secondary);text-decoration:none;transition:color var(--transition-fast)}
+        .breadcrumb a:hover{color:var(--accent)}
+        .breadcrumb span{color:var(--text-primary);font-weight:500}
 
-        .blog-hero { padding: var(--spacing-2xl) 0 var(--spacing-xl); background: white; text-align: center; border-bottom: 1px solid var(--border); }
-        .blog-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 0.75rem; }
-        .blog-hero p { color: var(--text-secondary); font-size: 1.0625rem; max-width: 560px; margin: 0 auto; }
+        .blog-hero{padding:var(--spacing-3xl) 0 var(--spacing-2xl);background:white;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+        .blog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(59,130,246,.04),transparent 60%)}
+        .blog-hero .container{position:relative;z-index:1}
+        .blog-hero h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em}
+        .blog-hero p{color:var(--text-secondary);font-size:1.0625rem;max-width:560px;line-height:1.7}
+        .blog-stats{display:flex;gap:2.5rem;margin-top:var(--spacing-lg);flex-wrap:wrap}
+        .blog-stat{display:flex;flex-direction:column;gap:.125rem}
+        .blog-stat-n{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,var(--accent),#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .blog-stat-l{font-size:.8125rem;color:var(--text-secondary);font-weight:500}
 
-        .blog-main { padding: var(--spacing-3xl) 0; background: var(--surface); min-height: 60vh; }
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+        .blog-main{padding:var(--spacing-3xl) 0;background:var(--surface);min-height:60vh}
+        .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-lg)}
 
-        .blog-card { background: white; border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; transition: all var(--transition-base); cursor: pointer; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(59,130,246,0.2); }
-        .blog-card-img { height: 180px; background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(168,85,247,0.08)); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 3rem; }
-        .blog-card-body { padding: 1.25rem; }
-        .blog-card-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); margin-bottom: 0.5rem; }
-        .blog-card-title { font-size: 1.0625rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; color: var(--text-primary); }
-        .blog-card-excerpt { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
-        .blog-card-meta { font-size: 0.8125rem; color: var(--text-secondary); display: flex; gap: 1rem; }
-        .blog-card-read { font-size: 0.875rem; font-weight: 600; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.375rem; }
+        .blog-card{background:white;border:1px solid var(--border);border-radius:1.25rem;overflow:hidden;transition:all var(--transition-base);cursor:pointer;display:flex;flex-direction:column}
+        .blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.1);border-color:rgba(59,130,246,.25)}
 
-        /* Modal de artículo */
-        .article-modal { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); overflow-y: auto; padding: 2rem 1rem; }
-        .article-modal.open { display: flex; align-items: flex-start; justify-content: center; }
-        .article-container { background: white; border-radius: 1.5rem; max-width: 780px; width: 100%; padding: 2.5rem; position: relative; margin: auto; }
-        .article-close { position: absolute; top: 1.25rem; right: 1.25rem; width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: var(--text-secondary); transition: all var(--transition-fast); }
-        .article-close:hover { background: var(--border); color: var(--text-primary); }
-        .article-tag { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); margin-bottom: 0.75rem; }
-        .article-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
-        .article-meta { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-        .article-body { font-size: 1rem; color: var(--text-primary); line-height: 1.8; }
-        .article-body h2 { font-size: 1.375rem; font-weight: 700; margin: 1.75rem 0 0.75rem; color: var(--text-primary); }
-        .article-body h3 { font-size: 1.125rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
-        .article-body p { margin-bottom: 1rem; }
-        .article-body ul, .article-body ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-        .article-body li { margin-bottom: 0.375rem; }
-        .article-body strong { color: var(--text-primary); }
-        .article-cta-box { margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(168,85,247,0.06)); border: 1px solid rgba(59,130,246,0.15); border-radius: 1rem; text-align: center; }
-        .article-cta-box p { margin-bottom: 1rem; font-weight: 500; }
+        .blog-card-cover{height:200px;display:flex;align-items:flex-end;padding:1.25rem;position:relative;overflow:hidden}
+        .blog-card-cover::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.06),transparent 50%),radial-gradient(circle at 20% 80%,rgba(59,130,246,.15),transparent 40%)}
 
-        /* Admin panel (oculto en producción) */
-        .admin-panel { background: var(--primary); color: white; padding: var(--spacing-xl) 0; }
-        .admin-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-md); }
-        .admin-title { font-size: 1.125rem; font-weight: 700; }
-        .admin-badge { padding: 0.25rem 0.75rem; background: rgba(255,255,255,0.15); border-radius: 2rem; font-size: 0.75rem; font-weight: 600; }
-        .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); }
-        .admin-field { display: flex; flex-direction: column; gap: 0.375rem; }
-        .admin-field label { font-size: 0.8125rem; font-weight: 500; opacity: 0.8; }
-        .admin-field input, .admin-field select, .admin-field textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 0.625rem; padding: 0.75rem 1rem; color: white; font-family: var(--font-primary); font-size: 0.9375rem; width: 100%; }
-        .admin-field input::placeholder, .admin-field textarea::placeholder { color: rgba(255,255,255,0.5); }
-        .admin-field input:focus, .admin-field textarea:focus { outline: none; border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.15); }
-        .admin-field.full { grid-column: 1 / -1; }
-        .admin-actions { display: flex; gap: 1rem; margin-top: var(--spacing-md); }
-        .btn-generate { padding: 0.875rem 1.75rem; background: white; color: var(--primary); border: none; border-radius: 0.75rem; font-weight: 700; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: all var(--transition-fast); }
-        .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
-        .btn-generate:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .btn-add { padding: 0.875rem 1.75rem; background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all var(--transition-fast); }
-        .btn-add:hover { background: rgba(255,255,255,0.1); border-color: white; }
-        .generating-status { margin-top: 1rem; font-size: 0.9375rem; opacity: 0.8; display: none; align-items: center; gap: 0.5rem; }
-        .generating-status.visible { display: flex; }
-        .spinner { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
+        .cat-guias .blog-card-cover{background:linear-gradient(135deg,#0F172A,#1E3A5F)}
+        .cat-consejos .blog-card-cover{background:linear-gradient(135deg,#0F2A1A,#1A4A2E)}
+        .cat-industria .blog-card-cover{background:linear-gradient(135deg,#1A0F2A,#3A1A5F)}
+        .cat-productos .blog-card-cover{background:linear-gradient(135deg,#2A1A0F,#5F3A1A)}
+        .cat-novedades .blog-card-cover{background:linear-gradient(135deg,#0F1A2A,#1A3A5F)}
+        .cat-default .blog-card-cover{background:linear-gradient(135deg,#0F172A,#1E293B)}
 
-        /* Preview de artículo generado */
-        .preview-panel { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 1.5rem; margin-top: var(--spacing-md); display: none; }
-        .preview-panel.visible { display: block; }
-        .preview-title { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; opacity: 0.7; margin-bottom: 0.75rem; }
-        .preview-content { font-size: 0.9375rem; line-height: 1.6; max-height: 200px; overflow-y: auto; opacity: 0.9; }
-        .preview-content::-webkit-scrollbar { width: 4px; }
-        .preview-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
-        .preview-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+        .cover-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);font-size:3.5rem;opacity:.2;z-index:1}
+        .blog-card-tag{position:relative;z-index:2;display:inline-block;padding:.25rem .75rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:2rem;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:white}
 
-        /* Empty state */
-        .blog-empty { text-align: center; padding: var(--spacing-3xl) 0; color: var(--text-secondary); }
-        .blog-empty svg { opacity: 0.3; margin-bottom: 1rem; }
-        .blog-empty p { font-size: 1rem; }
+        .blog-card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column;gap:.625rem}
+        .blog-card-title{font-size:1.0625rem;font-weight:700;line-height:1.4;color:var(--text-primary);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+        .blog-card-excerpt{font-size:.875rem;color:var(--text-secondary);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+        .blog-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+        .blog-card-meta{font-size:.8125rem;color:var(--text-secondary)}
+        .blog-card-read{font-size:.875rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.375rem}
+        .blog-card-read svg{transition:transform var(--transition-fast)}
+        .blog-card:hover .blog-card-read svg{transform:translateX(3px)}
 
-        @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } .admin-grid { grid-template-columns: 1fr; } }
+        .blog-empty{text-align:center;padding:var(--spacing-3xl) 0;color:var(--text-secondary);grid-column:1/-1}
+        .blog-empty-icon{font-size:4rem;opacity:.3;margin-bottom:1rem}
+        .blog-empty h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem;color:var(--text-primary)}
+
+        .blog-loading{text-align:center;padding:var(--spacing-3xl) 0;grid-column:1/-1}
+        .loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* Artículo overlay */
+        .article-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem}
+        .article-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+        .article-modal{background:white;border-radius:1.5rem;max-width:820px;width:100%;margin:auto;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.25)}
+
+        .article-cover{height:240px;display:flex;align-items:flex-end;padding:2rem;position:relative}
+        .article-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 60%)}
+        .cat-guias .article-cover{background:linear-gradient(135deg,#0F172A,#1E3A5F)}
+        .cat-consejos .article-cover{background:linear-gradient(135deg,#0F2A1A,#1A4A2E)}
+        .cat-industria .article-cover{background:linear-gradient(135deg,#1A0F2A,#3A1A5F)}
+        .cat-productos .article-cover{background:linear-gradient(135deg,#2A1A0F,#5F3A1A)}
+        .cat-novedades .article-cover{background:linear-gradient(135deg,#0F1A2A,#1A3A5F)}
+        .cat-default .article-cover{background:linear-gradient(135deg,#0F172A,#1E293B)}
+
+        .article-close{position:absolute;top:1.25rem;right:1.25rem;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);cursor:pointer;display:flex;align-items:center;justify-content:center;color:white;font-size:1.25rem;transition:all var(--transition-fast);z-index:3}
+        .article-close:hover{background:rgba(255,255,255,.3)}
+        .article-cover-content{position:relative;z-index:2}
+        .article-cover-tag{display:inline-block;padding:.25rem .875rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:2rem;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:white;margin-bottom:.75rem}
+        .article-cover-title{font-size:clamp(1.375rem,3vw,1.875rem);font-weight:700;color:white;line-height:1.25;max-width:680px}
+
+        .article-body-wrap{padding:2.5rem}
+        .article-meta{font-size:.875rem;color:var(--text-secondary);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+        .article-content{font-size:1rem;color:var(--text-primary);line-height:1.85}
+        .article-content h2{font-size:1.375rem;font-weight:700;margin:2rem 0 .875rem;letter-spacing:-.01em}
+        .article-content h3{font-size:1.125rem;font-weight:600;margin:1.5rem 0 .625rem}
+        .article-content p{margin-bottom:1.125rem}
+        .article-content ul,.article-content ol{padding-left:1.5rem;margin-bottom:1.125rem}
+        .article-content li{margin-bottom:.5rem}
+        .article-content strong{font-weight:600}
+
+        .article-cta{margin-top:2.5rem;padding:1.75rem;background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(168,85,247,.06));border:1px solid rgba(59,130,246,.15);border-radius:1.25rem;text-align:center}
+        .article-cta p{font-size:1rem;font-weight:500;margin:0 0 1rem;max-width:480px;margin-left:auto;margin-right:auto}
+        .article-cta-btns{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+
+        @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:640px){.blog-grid{grid-template-columns:1fr}.article-body-wrap{padding:1.5rem}.article-cover{height:180px}}
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+
+    <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="../index.html" class="logo">
@@ -117,14 +117,27 @@
                 </button>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="../index.html#industrias" class="nav-link">Industrias</a></li>
+                    <li class="nav-dropdown">
+                        <a href="../index.html#industrias" class="nav-link">Industrias ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../industrias/transporte-logistica.html">Transporte y Logística</a></li>
+                            <li><a href="../industrias/industria-textil.html">Industria Textil</a></li>
+                            <li><a href="../industrias/cuidado-personal-higiene.html">Cuidado Personal</a></li>
+                            <li><a href="../industrias/industria-quimica.html">Industria Química</a></li>
+                            <li><a href="../industrias/industria-alimenticia.html">Industria Alimenticia</a></li>
+                            <li><a href="../industrias/industria-automotriz.html">Industria Automotriz</a></li>
+                            <li><a href="../industrias/industria-farmaceutica.html">Industria Farmacéutica</a></li>
+                            <li><a href="../industrias/industria-general.html">Industria General</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../index.html#productos" class="nav-link">Productos</a></li>
-                    <li><a href="../index.html#servicios" class="nav-link">Servicios</a></li>
                     <li><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
-                    <li><a href="index.html" class="nav-link active">Blog</a></li>
+                    <li><a href="index.html" class="nav-link" style="color:var(--accent);font-weight:600">Blog</a></li>
                 </ul>
                 <div class="nav-social">
-                    <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg></a>
+                    <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -144,266 +157,145 @@
         <div class="container">
             <span class="section-badge">Blog</span>
             <h1>Guías y consejos de etiquetado</h1>
-            <p>Todo lo que necesitás saber sobre etiquetas adhesivas, impresoras térmicas y soluciones de etiquetado industrial.</p>
-        </div>
-    </section>
-
-    <!-- Panel de administración (solo visible para admins) -->
-    <section class="admin-panel" id="adminPanel" style="display:none">
-        <div class="container">
-            <div class="admin-header">
-                <span class="admin-title">⚡ Generador de artículos con IA</span>
-                <span class="admin-badge">Solo administradores</span>
-            </div>
-            <div class="admin-grid">
-                <div class="admin-field">
-                    <label>Tema del artículo</label>
-                    <input type="text" id="articleTopic" placeholder="Ej: Cómo elegir el ribbon correcto para mi impresora">
+            <p>Todo lo que necesitás saber sobre etiquetas adhesivas, impresoras Zebra y Honeywell, ribbons y trazabilidad industrial en Argentina.</p>
+            <div class="blog-stats">
+                <div class="blog-stat">
+                    <span class="blog-stat-n" id="statArticles">—</span>
+                    <span class="blog-stat-l">Artículos publicados</span>
                 </div>
-                <div class="admin-field">
-                    <label>Categoría</label>
-                    <select id="articleCategory">
-                        <option value="Guías">Guías</option>
-                        <option value="Consejos">Consejos</option>
-                        <option value="Industria">Industria</option>
-                        <option value="Productos">Productos</option>
-                        <option value="Novedades">Novedades</option>
-                        <option value="SEO">SEO / Tips</option>
-                    </select>
+                <div class="blog-stat">
+                    <span class="blog-stat-n">Diario</span>
+                    <span class="blog-stat-l">Contenido nuevo</span>
                 </div>
-                <div class="admin-field full">
-                    <label>Palabras clave a incluir (separadas por coma)</label>
-                    <input type="text" id="articleKeywords" placeholder="Ej: ribbon transferencia térmica, impresoras Zebra, etiquetas código de barras">
+                <div class="blog-stat">
+                    <span class="blog-stat-n">100%</span>
+                    <span class="blog-stat-l">Contenido original</span>
                 </div>
-                <div class="admin-field full">
-                    <label>Contexto adicional o puntos a cubrir (opcional)</label>
-                    <textarea id="articleContext" rows="3" placeholder="Ej: Mencionar que Label Tech distribuye Zebra y Honeywell, hablar de ribbon cera, resina y mixto..."></textarea>
-                </div>
-            </div>
-            <div class="admin-actions">
-                <button class="btn-generate" id="btnGenerate" onclick="generateArticle()">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/></svg>
-                    Generar artículo con IA
-                </button>
-                <button class="btn-add" id="btnAdd" onclick="addArticleToGrid()" style="display:none">
-                    + Publicar en el blog
-                </button>
-            </div>
-            <div class="generating-status" id="generatingStatus">
-                <div class="spinner"></div>
-                <span>Generando artículo optimizado para SEO...</span>
-            </div>
-            <div class="preview-panel" id="previewPanel">
-                <div class="preview-title">Vista previa del artículo generado</div>
-                <div class="preview-content" id="previewContent"></div>
             </div>
         </div>
     </section>
 
-    <!-- Blog grid -->
     <section class="blog-main">
         <div class="container">
-            <div class="blog-grid" id="blogGrid"></div>
-            <div class="blog-empty" id="blogEmpty">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <p>Próximamente: artículos y guías sobre etiquetado industrial.</p>
+            <div class="blog-grid" id="blogGrid">
+                <div class="blog-loading">
+                    <div class="loading-spinner"></div>
+                    <p style="color:var(--text-secondary)">Cargando artículos...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Article modal -->
-    <div class="article-modal" id="articleModal">
-        <div class="article-container">
-            <button class="article-close" onclick="closeArticle()">✕</button>
-            <div class="article-tag" id="modalTag"></div>
-            <h1 class="article-title" id="modalTitle"></h1>
-            <div class="article-meta" id="modalMeta"></div>
-            <div class="article-body" id="modalBody"></div>
-            <div class="article-cta-box">
-                <p>¿Necesitás etiquetas o insumos para tu empresa?</p>
-                <a href="https://wa.me/541122656818?text=Hola!%20Vi%20el%20blog%20y%20quisiera%20consultar." class="btn btn-primary" target="_blank">Consultá con un experto →</a>
+    <!-- CTA -->
+    <section style="background:linear-gradient(135deg,var(--primary),var(--primary-light));padding:var(--spacing-3xl) 0;text-align:center;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 50%,rgba(59,130,246,.15),transparent 50%),radial-gradient(circle at 80% 50%,rgba(168,85,247,.15),transparent 50%)"></div>
+        <div class="container" style="position:relative;z-index:1">
+            <span class="section-badge" style="background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.2)">Contacto</span>
+            <h2 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:white;margin:1rem 0;letter-spacing:-.02em">¿Necesitás una cotización?</h2>
+            <p style="color:rgba(255,255,255,.75);font-size:1.0625rem;max-width:500px;margin:0 auto 1.75rem">Hablá con nuestros expertos y encontrá la solución de etiquetado ideal para tu empresa.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                <a href="https://wa.me/541122656818?text=Hola!%20Vi%20el%20blog%20y%20quisiera%20consultar." target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;background:white;color:var(--primary);border-radius:.75rem;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15)">Consultá por WhatsApp</a>
+                <a href="../index.html#contacto" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;background:transparent;color:white;border:2px solid rgba(255,255,255,.4);border-radius:.75rem;font-weight:600;text-decoration:none">Pedir cotización</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article overlay -->
+    <div class="article-overlay" id="articleOverlay">
+        <div class="article-modal" id="articleModal">
+            <div class="article-cover cat-default" id="modalCover">
+                <button class="article-close" onclick="closeArticle()">✕</button>
+                <div class="article-cover-content">
+                    <div class="article-cover-tag" id="modalTag"></div>
+                    <h1 class="article-cover-title" id="modalTitle"></h1>
+                </div>
+            </div>
+            <div class="article-body-wrap">
+                <div class="article-meta" id="modalMeta"></div>
+                <div class="article-content" id="modalBody"></div>
+                <div class="article-cta">
+                    <p>¿Necesitás etiquetas, ribbons o impresoras para tu empresa? Label Tech tiene stock permanente y entrega en 48hs a todo el país.</p>
+                    <div class="article-cta-btns">
+                        <a href="https://wa.me/541122656818?text=Hola!%20Vi%20el%20blog%20y%20quisiera%20consultar." target="_blank" class="btn btn-primary">Consultá por WhatsApp</a>
+                        <a href="../index.html#contacto" class="btn btn-secondary">Pedir cotización</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <a href="https://wa.me/541122656818" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="currentColor"/></svg>
+    <a href="https://wa.me/541122656818?text=Hola!%20Quisiera%20consultar%20sobre%20etiquetas." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span class="whatsapp-float-label">¿Necesitás ayuda?</span>
     </a>
 
     <script src="../script.js"></script>
     <script>
-    // ============================================
-    // BLOG DATA — artículos guardados en localStorage
-    // ============================================
-    const STORAGE_KEY = 'labeltech_blog_articles';
+    const CAT_ICONS = {'Guías':'📘','Consejos':'💡','Industria':'🏭','Productos':'🖨️','Novedades':'🆕','default':'📄'};
+    const CAT_CLASS = {'Guías':'cat-guias','Consejos':'cat-consejos','Industria':'cat-industria','Productos':'cat-productos','Novedades':'cat-novedades'};
+
     let articles = [];
-    let generatedArticle = null;
 
-    // Emojis por categoría
-    const categoryEmoji = {
-        'Guías': '📋', 'Consejos': '💡', 'Industria': '🏭',
-        'Productos': '🖨️', 'Novedades': '✨', 'SEO': '🔍'
-    };
-
-    // Cargar artículos guardados
-    function loadArticles() {
-        try {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) articles = JSON.parse(saved);
-        } catch(e) { articles = []; }
-        renderGrid();
-    }
-
-    function saveArticles() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
-    }
-
-    function renderGrid() {
+    async function loadArticles() {
         const grid = document.getElementById('blogGrid');
-        const empty = document.getElementById('blogEmpty');
-        if (articles.length === 0) {
-            grid.innerHTML = '';
-            empty.style.display = 'block';
-            return;
+        try {
+            const res = await fetch('./blog-data.json?t=' + Date.now());
+            if (!res.ok) throw new Error('404');
+            const data = await res.json();
+            articles = data.articles || [];
+            document.getElementById('statArticles').textContent = articles.length || '0';
+            if (articles.length === 0) { showEmpty(grid); return; }
+            grid.innerHTML = articles.map((a,i) => cardHTML(a,i)).join('');
+        } catch(e) {
+            showEmpty(grid);
         }
-        empty.style.display = 'none';
-        grid.innerHTML = articles.map((a, i) => `
-            <div class="blog-card" onclick="openArticle(${i})">
-                <div class="blog-card-img">${categoryEmoji[a.category] || '📝'}</div>
-                <div class="blog-card-body">
-                    <div class="blog-card-tag">${a.category}</div>
-                    <div class="blog-card-title">${a.title}</div>
-                    <div class="blog-card-excerpt">${a.excerpt}</div>
-                    <div class="blog-card-meta">
-                        <span>📅 ${a.date}</span>
-                        <span>⏱ ${a.readTime} min de lectura</span>
-                    </div>
+    }
+
+    function showEmpty(grid) {
+        grid.innerHTML = `<div class="blog-empty"><div class="blog-empty-icon">📝</div><h3>Próximamente</h3><p>Estamos preparando contenido sobre etiquetado industrial. ¡Volvé pronto!</p></div>`;
+    }
+
+    function catClass(cat) { return CAT_CLASS[cat] || 'cat-default'; }
+    function catIcon(cat) { return CAT_ICONS[cat] || CAT_ICONS.default; }
+
+    function cardHTML(a, i) {
+        return `<article class="blog-card ${catClass(a.category)}" onclick="openArticle(${i})">
+            <div class="blog-card-cover">
+                <div class="cover-icon">${catIcon(a.category)}</div>
+                <span class="blog-card-tag">${a.category||'Artículo'}</span>
+            </div>
+            <div class="blog-card-body">
+                <h2 class="blog-card-title">${a.title}</h2>
+                <p class="blog-card-excerpt">${a.excerpt}</p>
+                <div class="blog-card-footer">
+                    <span class="blog-card-meta">${a.date} · ${a.readTime} min</span>
+                    <span class="blog-card-read">Leer <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </div>
-        `).join('');
+        </article>`;
     }
 
-    function openArticle(index) {
-        const a = articles[index];
-        document.getElementById('modalTag').textContent = a.category;
+    function openArticle(i) {
+        const a = articles[i];
+        const cc = catClass(a.category);
+        document.getElementById('modalTag').textContent = a.category||'Artículo';
         document.getElementById('modalTitle').textContent = a.title;
-        document.getElementById('modalMeta').textContent = `${a.date} · ${a.readTime} min de lectura`;
+        document.getElementById('modalMeta').textContent = `${a.date} · ${a.readTime} minutos de lectura`;
         document.getElementById('modalBody').innerHTML = a.body;
-        document.getElementById('articleModal').classList.add('open');
+        document.getElementById('modalCover').className = 'article-cover ' + cc;
+        document.getElementById('articleOverlay').classList.add('open');
         document.body.style.overflow = 'hidden';
+        if(typeof gtag!=='undefined') gtag('event','article_open',{event_category:'blog',event_label:a.title});
     }
 
     function closeArticle() {
-        document.getElementById('articleModal').classList.remove('open');
+        document.getElementById('articleOverlay').classList.remove('open');
         document.body.style.overflow = '';
     }
 
-    document.getElementById('articleModal').addEventListener('click', function(e) {
-        if (e.target === this) closeArticle();
-    });
+    document.getElementById('articleOverlay').addEventListener('click', function(e){ if(e.target===this) closeArticle(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeArticle(); });
 
-    // ============================================
-    // GENERADOR DE ARTÍCULOS CON IA
-    // ============================================
-    async function generateArticle() {
-        const topic = document.getElementById('articleTopic').value.trim();
-        const category = document.getElementById('articleCategory').value;
-        const keywords = document.getElementById('articleKeywords').value.trim();
-        const context = document.getElementById('articleContext').value.trim();
-
-        if (!topic) { alert('Ingresá un tema para el artículo'); return; }
-
-        const btn = document.getElementById('btnGenerate');
-        const status = document.getElementById('generatingStatus');
-        const preview = document.getElementById('previewPanel');
-        const previewContent = document.getElementById('previewContent');
-        const btnAdd = document.getElementById('btnAdd');
-
-        btn.disabled = true;
-        status.classList.add('visible');
-        preview.classList.remove('visible');
-        btnAdd.style.display = 'none';
-
-        const systemPrompt = `Sos un experto en SEO y marketing de contenidos para Label Tech, empresa argentina líder en etiquetas adhesivas, impresoras Zebra y Honeywell, ribbons y lectores de códigos de barras.
-
-Escribís artículos de blog en español argentino (tuteo), optimizados para Google, que posicionan a Label Tech como expertos en etiquetado industrial.
-
-Reglas:
-- Longitud: 600-900 palabras
-- Usá headers H2 y H3 con etiquetas HTML
-- Incluí las keywords naturalmente en el texto
-- Mencioná que Label Tech es distribuidor oficial de Zebra y Honeywell en Argentina
-- Al final siempre incluí un párrafo de cierre que invite a contactar a Label Tech
-- Respondé SOLO con un JSON con esta estructura:
-{
-  "title": "Título SEO del artículo (máx 65 chars)",
-  "excerpt": "Resumen en 2 oraciones (máx 160 chars)",
-  "readTime": número entre 3 y 7,
-  "body": "HTML del artículo completo con <h2>, <h3>, <p>, <ul>, <li>, <strong>"
-}`;
-
-        const userPrompt = `Escribí un artículo de blog sobre: "${topic}"
-Categoría: ${category}
-${keywords ? `Palabras clave a incluir: ${keywords}` : ''}
-${context ? `Contexto adicional: ${context}` : ''}`;
-
-        try {
-            const response = await fetch('https://api.anthropic.com/v1/messages', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    model: 'claude-sonnet-4-20250514',
-                    max_tokens: 2000,
-                    system: systemPrompt,
-                    messages: [{ role: 'user', content: userPrompt }]
-                })
-            });
-
-            const data = await response.json();
-            const text = data.content.map(i => i.text || '').join('');
-            const clean = text.replace(/```json|```/g, '').trim();
-            generatedArticle = JSON.parse(clean);
-            generatedArticle.category = category;
-            generatedArticle.date = new Date().toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
-
-            previewContent.innerHTML = `<strong>${generatedArticle.title}</strong><br><br>${generatedArticle.excerpt}<br><br><em>Vista previa del cuerpo:</em><br>${generatedArticle.body.substring(0, 400)}...`;
-            preview.classList.add('visible');
-            btnAdd.style.display = 'inline-flex';
-
-        } catch(err) {
-            alert('Error al generar el artículo. Verificá tu conexión y volvé a intentarlo.\n\n' + err.message);
-        } finally {
-            btn.disabled = false;
-            status.classList.remove('visible');
-        }
-    }
-
-    function addArticleToGrid() {
-        if (!generatedArticle) return;
-        articles.unshift(generatedArticle);
-        saveArticles();
-        renderGrid();
-        document.getElementById('previewPanel').classList.remove('visible');
-        document.getElementById('btnAdd').style.display = 'none';
-        document.getElementById('articleTopic').value = '';
-        document.getElementById('articleKeywords').value = '';
-        document.getElementById('articleContext').value = '';
-        generatedArticle = null;
-        alert('¡Artículo publicado correctamente!');
-    }
-
-    // ============================================
-    // ACCESO ADMIN — URL param ?admin=labeltech2025
-    // ============================================
-    function checkAdmin() {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('admin') === 'labeltech2025') {
-            document.getElementById('adminPanel').style.display = 'block';
-        }
-    }
-
-    checkAdmin();
     loadArticles();
     </script>
 </body>
