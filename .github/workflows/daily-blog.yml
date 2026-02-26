@@ -1,0 +1,36 @@
+name: 🤖 Generar artículo de blog diario
+
+on:
+  schedule:
+    # Todos los días a las 9am Argentina (UTC-3 = 12:00 UTC)
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+    # También se puede correr manualmente desde GitHub → Actions → Run workflow
+
+jobs:
+  generate-blog-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: ✍️ Generar artículo con Gemini 2.5
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node .github/scripts/generate-blog-post.js
+
+      - name: 📤 Commit y push
+        run: |
+          git config --local user.email "blogbot@labeltech.com.ar"
+          git config --local user.name "LabelTech Blog Bot"
+          git add blog/blog-data.json sitemap.xml
+          git diff --staged --quiet || git commit -m "📝 Blog: artículo automático $(date +'%d/%m/%Y')"
+          git push
