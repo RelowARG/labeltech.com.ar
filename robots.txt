@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.labeltech.com.ar/sitemap.xml
+
+# Crawl-delay para ser amables con los bots
+Crawl-delay: 1
