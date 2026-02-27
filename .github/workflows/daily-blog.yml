@@ -2,10 +2,10 @@ name: 🤖 Generar artículo de blog diario
 
 on:
   schedule:
-    # Todos los días a las 9am Argentina (UTC-3 = 12:00 UTC)
-    - cron: '0 12 * * *'
+    # Corre a las 00:05 AM de Argentina (03:05 UTC) justo después del reset de cuota
+    - cron: '5 3 * * *'
   workflow_dispatch:
-    # También se puede correr manualmente desde GitHub
+    # Permite ejecución manual para probar
 
 jobs:
   generate-blog-post:
@@ -36,5 +36,4 @@ jobs:
           git config --local user.email "blogbot@labeltech.com.ar"
           git config --local user.name "LabelTech Blog Bot"
           git add blog/blog-data.json sitemap.xml
-          # El comando || true evita que falle si no hay cambios
           git diff --staged --quiet || (git commit -m "📝 Blog: artículo automático $(date +'%d/%m/%Y')" && git push)
