@@ -190,6 +190,18 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
+    /* Prevent lone last card from stretching */
+    align-items: start;
+}
+/* When 4 cards, use 2x2 layout */
+.product-cards-grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 900px) {
+    .product-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+    .product-cards-grid { grid-template-columns: 1fr; }
 }
 .product-card {
     background: white;
@@ -277,6 +289,7 @@
     padding: 1.25rem 1.5rem;
     border-top: 1px solid var(--border);
     display: flex;
+    align-items: center;
     gap: .625rem;
 }
 .btn-consultar {
@@ -284,6 +297,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    align-self: flex-start;
     gap: .375rem;
     padding: .75rem 1rem;
     background: var(--accent);
@@ -292,6 +306,7 @@
     font-weight: 700;
     text-decoration: none;
     font-size: .875rem;
+    height: auto;
     transition: all var(--transition-fast);
 }
 .btn-consultar:hover { background: #2563EB; transform: translateY(-2px); }
