@@ -68,10 +68,7 @@
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
-                <a href="#" class="logo">
-                    <span class="logo-text">LABEL</span>
-                    <span class="logo-accent">TECH</span>
-                </a>
+                <a href="#" class="logo"><img src="public/images/logolabel.png" alt="Label Tech" class="logo-img" style="height:40px;width:auto;"></a>
                 
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
                     <span></span>
@@ -84,14 +81,14 @@
                     <li class="nav-dropdown">
                         <a href="#industrias" class="nav-link">Industrias</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#industria-transporte">Transporte y Logística</a></li>
-                            <li><a href="#industria-textil">Textil</a></li>
-                            <li><a href="#industria-higiene">Cuidado Personal e Higiene</a></li>
-                            <li><a href="#industria-quimica">Química</a></li>
-                            <li><a href="#industria-alimenticia">Alimenticia</a></li>
-                            <li><a href="#industria-automotriz">Automotriz</a></li>
-                            <li><a href="#industria-farmaceutica">Farmacéutica</a></li>
-                            <li><a href="#industria-general">General</a></li>
+                            <li><a href="industrias/transporte-logistica.html">Transporte y Logística</a></li>
+                            <li><a href="industrias/industria-textil.html">Textil</a></li>
+                            <li><a href="industrias/cuidado-personal-higiene.html">Cuidado Personal e Higiene</a></li>
+                            <li><a href="industrias/industria-quimica.html">Química</a></li>
+                            <li><a href="industrias/industria-alimenticia.html">Alimenticia</a></li>
+                            <li><a href="industrias/industria-automotriz.html">Automotriz</a></li>
+                            <li><a href="industrias/industria-farmaceutica.html">Farmacéutica</a></li>
+                            <li><a href="industrias/industria-general.html">General</a></li>
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -118,8 +115,6 @@
                     <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
                     <li><a href="faq.html" class="nav-link">FAQ</a></li>
                     <li><a href="blog/index.html" class="nav-link">Blog</a></li>
-                    <li><a href="nosotros.html" class="nav-link">Nosotros</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
 
@@ -148,49 +143,112 @@
     <section class="hero" id="inicio">
         <div class="hero-background"></div>
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">+10 años de experiencia</div>
-                <h1 class="hero-title">
-                    <span class="title-line">UN SOLO PROVEEDOR,</span>
-                    <span class="title-line highlight">TODAS LAS SOLUCIONES</span>
-                </h1>
-                <p class="hero-description">
-                    Somos Label Tech, una empresa Argentina líder en etiquetas adhesivas personalizadas. 
-                    Tecnología de vanguardia y calidad inigualable para todas las industrias.
-                </p>
-                <div class="hero-features">
-                    <div class="feature-item">
-                        <div class="feature-icon">⚡</div>
-                        <div class="feature-text">
-                            <strong>Máquinas modernas</strong>
-                            <span>Prensas flexográficas hasta 8 tintas</span>
+            <div class="hero-wrapper">
+                <!-- Izquierda: texto -->
+                <div class="hero-content">
+                    <div class="hero-badge">+10 años de experiencia</div>
+                    <h1 class="hero-title">
+                        <span class="title-line">UN SOLO PROVEEDOR,</span>
+                        <span class="title-line highlight">TODAS LAS SOLUCIONES</span>
+                    </h1>
+                    <p class="hero-description">
+                        Somos Label Tech, una empresa Argentina líder en etiquetas adhesivas personalizadas. 
+                        Tecnología de vanguardia y calidad inigualable para todas las industrias.
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-text">
+                                <strong>Máquinas modernas</strong>
+                                <span>Impresoras Zebra y Honeywell de alto volumen</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-text">
+                                <strong>Soluciones completas</strong>
+                                <span>Equipos, insumos, software y servicio técnico</span>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⭐</div>
+                            <div class="feature-text">
+                                <strong>Stock local permanente</strong>
+                                <span>Entrega en 48hs a todo el país</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🎯</div>
-                        <div class="feature-text">
-                            <strong>Soluciones completas</strong>
-                            <span>Amplio catálogo para todas las industrias</span>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⭐</div>
-                        <div class="feature-text">
-                            <strong>Calidad inigualable</strong>
-                            <span>Mejores proveedores y marcas mundiales</span>
-                        </div>
+                    <div class="hero-cta">
+                        <a href="https://wa.me/541122656818" class="btn btn-primary" target="_blank">
+                            Contactá a un experto
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#productos" class="btn btn-secondary">
+                            Ver productos
+                        </a>
                     </div>
                 </div>
-                <div class="hero-cta">
-                    <a href="https://wa.me/541122656818" class="btn btn-primary" target="_blank">
-                        Contactá a un experto
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <a href="#productos" class="btn btn-secondary">
-                        Ver productos
-                    </a>
+
+                <!-- Derecha: panel visual -->
+                <div class="hero-visual">
+                    <!-- Stats card -->
+                    <div class="hero-stats-card">
+                        <div class="hero-card-label">Números que importan</div>
+                        <div class="hero-stat-row">
+                            <div class="hero-stat">
+                                <span class="hero-stat-number">+10</span>
+                                <span class="hero-stat-label">Años en el mercado</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number">+400</span>
+                                <span class="hero-stat-label">Medidas en stock</span>
+                            </div>
+                            <div class="hero-stat-divider"></div>
+                            <div class="hero-stat">
+                                <span class="hero-stat-number">48hs</span>
+                                <span class="hero-stat-label">Entrega express</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Industrias card -->
+                    <div class="hero-industries-card">
+                        <div class="hero-card-label">Industrias que atendemos</div>
+                        <div class="hero-tags">
+                            <a href="industrias/transporte-logistica.html" class="hero-tag">🚛 Logística</a>
+                            <a href="industrias/industria-textil.html" class="hero-tag">👕 Textil</a>
+                            <a href="industrias/industria-alimenticia.html" class="hero-tag">🥫 Alimenticia</a>
+                            <a href="industrias/industria-farmaceutica.html" class="hero-tag">💊 Farmacéutica</a>
+                            <a href="industrias/industria-quimica.html" class="hero-tag">⚗️ Química</a>
+                            <a href="industrias/industria-automotriz.html" class="hero-tag">🚗 Automotriz</a>
+                            <a href="industrias/cuidado-personal-higiene.html" class="hero-tag">🧴 Cuidado Personal</a>
+                            <a href="industrias/industria-general.html" class="hero-tag">🏭 General</a>
+                        </div>
+                    </div>
+
+                    <!-- Marcas card -->
+                    <div class="hero-brands-card">
+                        <div class="hero-card-label">Distribuidores oficiales</div>
+                        <div class="hero-brands">
+                            <div class="hero-brand-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Zebra Technologies
+                            </div>
+                            <div class="hero-brand-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Honeywell
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cobertura pill -->
+                    <div class="hero-coverage-card">
+                        <span>📍</span>
+                        <span>Cobertura en todo el territorio argentino</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -212,90 +270,57 @@
             </div>
 
             <div class="industries-grid">
-                <a href="#industria-quimica" class="industry-card" data-industry="quimica">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 3v6l-3 6h12l-3-6V3M6 21h12M8 21V15M16 21V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-quimica.html" class="industry-card" data-industry="quimica">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">⚗️</div>
                     <h3 class="industry-title">Industria Química</h3>
                     <p class="industry-description">Etiquetas resistentes a químicos y condiciones extremas</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-textil" class="industry-card" data-industry="textil">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7M3 7l3-4M3 7h18M21 7l-3-4M6 3l3 4M18 3l-3 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-textil.html" class="industry-card" data-industry="textil">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">👕</div>
                     <h3 class="industry-title">Industria Textil</h3>
                     <p class="industry-description">Etiquetas para prendas y productos textiles</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-transporte" class="industry-card" data-industry="transporte">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7 17l-2 2M17 17l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/transporte-logistica.html" class="industry-card" data-industry="transporte">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">🚛</div>
                     <h3 class="industry-title">Transporte y Logística</h3>
                     <p class="industry-description">Soluciones para tracking y trazabilidad</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-alimenticia" class="industry-card" data-industry="alimenticia">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-alimenticia.html" class="industry-card" data-industry="alimenticia">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">🥫</div>
                     <h3 class="industry-title">Industria Alimenticia</h3>
                     <p class="industry-description">Etiquetas aprobadas para contacto con alimentos</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-general" class="industry-card" data-industry="general">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-general.html" class="industry-card" data-industry="general">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">🏭</div>
                     <h3 class="industry-title">Industria General</h3>
                     <p class="industry-description">Soluciones versátiles para múltiples aplicaciones</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-higiene" class="industry-card" data-industry="higiene">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 3v1H4v2h1v13a2 2 0 002 2h10a2 2 0 002-2V6h1V4h-5V3H9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/cuidado-personal-higiene.html" class="industry-card" data-industry="higiene">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">🧴</div>
                     <h3 class="industry-title">Cuidado Personal</h3>
                     <p class="industry-description">Etiquetas para productos de higiene y cosmética</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-farmaceutica" class="industry-card" data-industry="farmaceutica">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09zM12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-farmaceutica.html" class="industry-card" data-industry="farmaceutica">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">💊</div>
                     <h3 class="industry-title">Industria Farmacéutica</h3>
                     <p class="industry-description">Etiquetas con normativas sanitarias</p>
                     <span class="industry-arrow">→</span>
                 </a>
 
-                <a href="#industria-automotriz" class="industry-card" data-industry="automotriz">
-                    <div class="industry-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 17h14v2H5v-2zM3 5h18v8H3V5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
+                <a href="industrias/industria-automotriz.html" class="industry-card" data-industry="automotriz">
+                    <div class="industry-icon" style="font-size:2.75rem;line-height:1;">🚗</div>
                     <h3 class="industry-title">Industria Automotriz</h3>
                     <p class="industry-description">Etiquetas de alta resistencia para autopartes</p>
                     <span class="industry-arrow">→</span>
@@ -611,10 +636,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="logo-text">LABEL</span>
-                        <span class="logo-accent">TECH</span>
-                    </div>
+                    <div class="footer-logo"><img src="public/images/logolabelvertical.png" alt="Label Tech" style="height:56px;width:auto;filter:brightness(0) invert(1);"></div>
                     <p class="footer-description">
                         Más de 10 años brindando soluciones de etiquetado de calidad para todas las industrias.
                     </p>
