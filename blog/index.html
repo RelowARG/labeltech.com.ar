@@ -9,6 +9,15 @@
     <meta name="description" content="Guías, consejos y novedades sobre etiquetas adhesivas, impresoras Zebra y Honeywell, ribbons y soluciones de etiquetado industrial en Argentina.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.labeltech.com.ar/blog/">
+    <meta property="og:title" content="Blog | Label Tech Argentina">
+    <meta property="og:description" content="Guías y consejos sobre etiquetas, impresoras y ribbons en Argentina.">
+    <meta property="og:url" content="https://www.labeltech.com.ar/blog/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -20,21 +29,62 @@
         .breadcrumb a:hover{color:var(--accent)}
         .breadcrumb span{color:var(--text-primary);font-weight:500}
 
-        .blog-hero{padding:var(--spacing-3xl) 0 var(--spacing-2xl);background:white;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-        .blog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(59,130,246,.04),transparent 60%)}
-        .blog-hero .container{position:relative;z-index:1}
-        .blog-hero h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin-bottom:.75rem;letter-spacing:-.02em}
-        .blog-hero p{color:var(--text-secondary);font-size:1.0625rem;max-width:560px;line-height:1.7}
-        .blog-stats{display:flex;gap:2.5rem;margin-top:var(--spacing-lg);flex-wrap:wrap}
-        .blog-stat{display:flex;flex-direction:column;gap:.125rem}
-        .blog-stat-n{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,var(--accent),#A855F7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .blog-stat-l{font-size:.8125rem;color:var(--text-secondary);font-weight:500}
+        /* ── Hero con imagen ── */
+        .blog-hero{
+            padding:var(--spacing-3xl) 0 var(--spacing-2xl);
+            position:relative;overflow:hidden;
+            min-height:340px;display:flex;align-items:center;
+        }
+        .blog-hero-bg{
+            position:absolute;inset:0;
+            background-image:url('https://images.unsplash.com/photo-1586880244386-8b3e34c8382c?w=1600&q=80&auto=format&fit=crop');
+            background-size:cover;background-position:center;
+            filter:blur(3px) brightness(.45);
+            transform:scale(1.04);
+        }
+        .blog-hero-overlay{
+            position:absolute;inset:0;
+            background:linear-gradient(135deg,rgba(10,20,50,.75) 0%,rgba(30,50,100,.55) 100%);
+        }
+        .blog-hero .container{position:relative;z-index:2;}
+        .blog-hero .section-badge{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.25);}
+        .blog-hero h1{font-size:clamp(2rem,4vw,2.75rem);font-weight:700;margin:.75rem 0;letter-spacing:-.02em;color:white;}
+        .blog-hero p{color:rgba(255,255,255,.8);font-size:1.0625rem;max-width:560px;line-height:1.7;}
+        .blog-stats{display:flex;gap:2.5rem;margin-top:var(--spacing-lg);flex-wrap:wrap;}
+        .blog-stat{display:flex;flex-direction:column;gap:.125rem;}
+        .blog-stat-n{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;color:white;}
+        .blog-stat-l{font-size:.8125rem;color:rgba(255,255,255,.65);font-weight:500;}
 
+        /* ── Filtros ── */
+        .blog-filters{
+            background:white;border-bottom:1px solid var(--border);
+            padding:.875rem 0;position:sticky;top:72px;z-index:100;
+            box-shadow:0 2px 8px rgba(0,0,0,.06);
+        }
+        .filter-pills{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
+        .filter-label{font-size:.8125rem;font-weight:600;color:var(--text-secondary);margin-right:.25rem;white-space:nowrap;}
+        .filter-pill{
+            padding:.375rem 1rem;border-radius:2rem;font-size:.8125rem;font-weight:600;
+            border:1.5px solid var(--border);background:white;color:var(--text-secondary);
+            cursor:pointer;transition:all .15s;white-space:nowrap;display:inline-flex;align-items:center;gap:.35rem;
+            user-select:none;
+        }
+        .filter-pill:hover{border-color:var(--accent);color:var(--accent);}
+        .filter-pill.active{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 2px 8px rgba(59,130,246,.3);}
+        .filter-count{
+            font-size:.7rem;font-weight:700;
+            background:rgba(0,0,0,.1);border-radius:999px;
+            padding:.05rem .4rem;line-height:1.4;
+        }
+        .filter-pill.active .filter-count{background:rgba(255,255,255,.25);}
+
+        /* ── Blog grid ── */
         .blog-main{padding:var(--spacing-3xl) 0;background:var(--surface);min-height:60vh}
         .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--spacing-lg)}
 
         .blog-card{background:white;border:1px solid var(--border);border-radius:1.25rem;overflow:hidden;transition:all var(--transition-base);cursor:pointer;display:flex;flex-direction:column}
         .blog-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,.1);border-color:rgba(59,130,246,.25)}
+        .blog-card.hidden{display:none;}
 
         .blog-card-cover{height:200px;display:flex;align-items:flex-end;padding:1.25rem;position:relative;overflow:hidden}
         .blog-card-cover::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.06),transparent 50%),radial-gradient(circle at 20% 80%,rgba(59,130,246,.15),transparent 40%)}
@@ -65,6 +115,10 @@
         .blog-loading{text-align:center;padding:var(--spacing-3xl) 0;grid-column:1/-1}
         .loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem}
         @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* No results message */
+        .blog-no-filter{display:none;grid-column:1/-1;text-align:center;padding:3rem 0;color:var(--text-secondary);}
+        .blog-no-filter.show{display:block;}
 
         /* Artículo overlay */
         .article-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);overflow-y:auto;padding:2rem 1rem}
@@ -101,52 +155,17 @@
         .article-cta-btns{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
 
         @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:640px){.blog-grid{grid-template-columns:1fr}.article-body-wrap{padding:1.5rem}.article-cover{height:180px}}
+        @media(max-width:640px){
+            .blog-grid{grid-template-columns:1fr}
+            .article-body-wrap{padding:1.5rem}
+            .article-cover{height:180px}
+            .filter-pills{gap:.35rem;}
+            .filter-pill{font-size:.75rem;padding:.3rem .75rem;}
+        }
     </style>
-    <meta property="og:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
 </head>
 <body>
-
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-wrapper">
-                <a href="../index.html" class="logo">
-                    <img src="../public/images/logolabel.png" alt="Label Tech" class="logo-img">
-                </a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
-                </button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
-                    <li class="nav-dropdown">
-                        <a href="../index.html#industrias" class="nav-link">Industrias ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="../industrias/transporte-logistica.html">Transporte y Logística</a></li>
-                            <li><a href="../industrias/industria-textil.html">Industria Textil</a></li>
-                            <li><a href="../industrias/cuidado-personal-higiene.html">Cuidado Personal</a></li>
-                            <li><a href="../industrias/industria-quimica.html">Industria Química</a></li>
-                            <li><a href="../industrias/industria-alimenticia.html">Industria Alimenticia</a></li>
-                            <li><a href="../industrias/industria-automotriz.html">Industria Automotriz</a></li>
-                            <li><a href="../industrias/industria-farmaceutica.html">Industria Farmacéutica</a></li>
-                            <li><a href="../industrias/industria-general.html">Industria General</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../index.html#productos" class="nav-link">Productos</a></li>
-                    <li><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
-                    <li><a href="index.html" class="nav-link" style="color:var(--accent);font-weight:600">Blog</a></li>
-                </ul>
-                <div class="nav-social">
-                    <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <site-navbar active="blog"></site-navbar>
 
     <div class="breadcrumb">
         <div class="container">
@@ -158,7 +177,10 @@
         </div>
     </div>
 
+    <!-- Hero con imagen de fondo -->
     <section class="blog-hero">
+        <div class="blog-hero-bg"></div>
+        <div class="blog-hero-overlay"></div>
         <div class="container">
             <span class="section-badge">Blog</span>
             <h1>Guías y consejos de etiquetado</h1>
@@ -180,6 +202,37 @@
         </div>
     </section>
 
+    <!-- Filtros sticky -->
+    <div class="blog-filters" id="blogFilters" style="display:none;">
+        <div class="container">
+            <div class="filter-pills" id="filterPills">
+                <span class="filter-label">Filtrar:</span>
+                <button class="filter-pill active" data-cat="todos" onclick="filterBy('todos')">
+                    Todos <span class="filter-count" id="count-todos">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Ribbons" onclick="filterBy('Ribbons')">
+                    🎞️ Ribbons <span class="filter-count" id="count-Ribbons">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Impresoras" onclick="filterBy('Impresoras')">
+                    🖨️ Impresoras <span class="filter-count" id="count-Impresoras">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Servicio Técnico" onclick="filterBy('Servicio Técnico')">
+                    🔧 Servicio Técnico <span class="filter-count" id="count-Servicio Técnico">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Etiquetas" onclick="filterBy('Etiquetas')">
+                    🏷️ Etiquetas <span class="filter-count" id="count-Etiquetas">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Software" onclick="filterBy('Software')">
+                    💻 Software <span class="filter-count" id="count-Software">0</span>
+                </button>
+                <button class="filter-pill" data-cat="Normativas" onclick="filterBy('Normativas')">
+                    📋 Normativas <span class="filter-count" id="count-Normativas">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid de artículos -->
     <section class="blog-main">
         <div class="container">
             <div class="blog-grid" id="blogGrid">
@@ -187,6 +240,12 @@
                     <div class="loading-spinner"></div>
                     <p style="color:var(--text-secondary)">Cargando artículos...</p>
                 </div>
+            </div>
+            <div class="blog-no-filter" id="noFilterResult">
+                <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+                <p style="font-weight:600;color:var(--text-primary);margin-bottom:.25rem;">No hay artículos en esta categoría todavía</p>
+                <p style="font-size:.9rem;">Próximamente publicamos más contenido.</p>
+                <button onclick="filterBy('todos')" style="margin-top:1rem;padding:.5rem 1.25rem;background:var(--accent);color:white;border:none;border-radius:.6rem;font-weight:600;cursor:pointer;font-size:.9rem;">Ver todos</button>
             </div>
         </div>
     </section>
@@ -234,10 +293,16 @@
         <span class="whatsapp-float-label">¿Necesitás ayuda?</span>
     </a>
 
+    <site-footer></site-footer>
     <script src="../script.js"></script>
+    <script src="../components.js"></script>
     <script>
-    const CAT_ICONS = {'Ribbons':'🎞️','Impresoras':'🖨️','Servicio Técnico':'🔧','Etiquetas':'🏷️','Software':'💻','Normativas':'📋','default':'📄'};
-    const CAT_CLASS = {'Ribbons':'cat-guias','Impresoras':'cat-productos','Servicio Técnico':'cat-consejos','Etiquetas':'cat-industria','Software':'cat-novedades','Normativas':'cat-industria'};
+    const CAT_ICONS  = {'Ribbons':'🎞️','Impresoras':'🖨️','Servicio Técnico':'🔧','Etiquetas':'🏷️','Software':'💻','Normativas':'📋','default':'📄'};
+    const CAT_CLASS  = {'Ribbons':'cat-guias','Impresoras':'cat-productos','Servicio Técnico':'cat-consejos','Etiquetas':'cat-industria','Software':'cat-novedades','Normativas':'cat-industria'};
+    const CATEGORIES = ['Ribbons','Impresoras','Servicio Técnico','Etiquetas','Software','Normativas'];
+
+    let allArticles = [];
+    let activeFilter = 'todos';
 
     async function loadArticles() {
         const grid = document.getElementById('blogGrid');
@@ -245,14 +310,63 @@
             const res = await fetch('./blog-data.json?t=' + Date.now());
             if (!res.ok) throw new Error('404');
             const posts = await res.json();
-            // Support both array format and {articles:[]} format
-            const articles = Array.isArray(posts) ? posts : (posts.articles || []);
-            document.getElementById('statArticles').textContent = articles.length || '0';
-            if (articles.length === 0) { showEmpty(grid); return; }
-            grid.innerHTML = articles.map(a => cardHTML(a)).join('');
+            allArticles = Array.isArray(posts) ? posts : (posts.articles || []);
+            document.getElementById('statArticles').textContent = allArticles.length || '0';
+            if (allArticles.length === 0) { showEmpty(grid); return; }
+
+            // Update filter counts
+            updateCounts();
+
+            // Show filters bar
+            document.getElementById('blogFilters').style.display = 'block';
+
+            // Render all
+            renderCards('todos');
+
         } catch(e) {
             showEmpty(grid);
         }
+    }
+
+    function updateCounts() {
+        const total = allArticles.length;
+        const el = document.getElementById('count-todos');
+        if (el) el.textContent = total;
+
+        CATEGORIES.forEach(cat => {
+            const count = allArticles.filter(a => a.category === cat).length;
+            const countEl = document.getElementById('count-' + cat);
+            if (countEl) countEl.textContent = count;
+            // Hide pill if 0 articles
+            const pill = document.querySelector(`.filter-pill[data-cat="${cat}"]`);
+            if (pill && count === 0) pill.style.display = 'none';
+        });
+    }
+
+    function filterBy(cat) {
+        activeFilter = cat;
+        // Update active pill
+        document.querySelectorAll('.filter-pill').forEach(p => {
+            p.classList.toggle('active', p.dataset.cat === cat);
+        });
+        renderCards(cat);
+
+        // Smooth scroll to grid
+        document.getElementById('blogGrid').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function renderCards(cat) {
+        const grid = document.getElementById('blogGrid');
+        const noResult = document.getElementById('noFilterResult');
+        const filtered = cat === 'todos' ? allArticles : allArticles.filter(a => a.category === cat);
+
+        if (filtered.length === 0) {
+            grid.innerHTML = '';
+            noResult.classList.add('show');
+            return;
+        }
+        noResult.classList.remove('show');
+        grid.innerHTML = filtered.map(a => cardHTML(a)).join('');
     }
 
     function showEmpty(grid) {
@@ -260,15 +374,15 @@
     }
 
     function catClass(cat) { return CAT_CLASS[cat] || 'cat-default'; }
-    function catIcon(cat) { return CAT_ICONS[cat] || CAT_ICONS.default; }
+    function catIcon(cat)  { return CAT_ICONS[cat]  || CAT_ICONS.default; }
 
     function cardHTML(a) {
         const slug = a.slug || a.id || '';
-        const url = slug ? slug + '.html' : '#';
+        const url  = slug ? slug + '.html' : '#';
         return `<a href="${url}" class="blog-card ${catClass(a.category)}" style="text-decoration:none;">
             <div class="blog-card-cover">
                 <div class="cover-icon">${catIcon(a.category)}</div>
-                <span class="blog-card-tag">${a.category||'Artículo'}</span>
+                <span class="blog-card-tag">${a.category || 'Artículo'}</span>
             </div>
             <div class="blog-card-body">
                 <h2 class="blog-card-title">${a.title}</h2>
@@ -279,6 +393,17 @@
                 </div>
             </div>
         </a>`;
+    }
+
+    // Close article overlay on backdrop click
+    document.getElementById('articleOverlay')?.addEventListener('click', function(e) {
+        if (e.target === this) closeArticle();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+
+    function closeArticle() {
+        const overlay = document.getElementById('articleOverlay');
+        if (overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
     }
 
     loadArticles();
