@@ -40,7 +40,6 @@ class SiteNavbar extends HTMLElement {
     const productos = [
       ['impresoras-zebra.html',        'Impresoras Zebra'],
       ['impresoras-honeywell.html',    'Impresoras Honeywell'],
-      ['impresoras-tsc.html', 'Impresoras TSC'],
       ['ribbons.html',                 'Ribbons'],
       ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
@@ -201,6 +200,10 @@ class SiteFooter extends HTMLElement {
             <div class="footer-badges">
               <span class="footer-badge">🇦🇷 Hecho en Argentina</span>
               <span class="footer-badge">+10 años de experiencia</span>
+              <a href="${p}productos/impresoras-zebra.html" class="footer-badge" style="text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);padding:.35rem .85rem;border-radius:2rem;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.12)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#60A5FA" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#60A5FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="color:rgba(255,255,255,.85);font-size:.8rem;font-weight:600;letter-spacing:.02em;">Zebra Registered Reseller</span>
+              </a>
             </div>
           </div>
         </div>
