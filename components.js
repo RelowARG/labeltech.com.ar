@@ -206,7 +206,7 @@ class SiteFooter extends HTMLElement {
                 <span class="footer-badge">🇦🇷 Hecho en Argentina</span>
                 <span class="footer-badge">+10 años de experiencia</span>
                 <a href="${p}productos/impresoras-zebra.html" style="text-decoration:none;display:inline-flex;align-items:center;transition:opacity .2s;margin-left:.25rem;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-                  <img src="${p}public/images/black_and_white_reverse.png" alt="Zebra Registered Reseller" style="height:28px;width:auto;display:block;">
+                  <img src="${p}public/images/black_and_white_reverse.png" alt="Zebra Registered Reseller" style="height:48px;width:auto;display:block;">
                 </a>
               </div>
             </div>
