@@ -40,6 +40,7 @@ class SiteNavbar extends HTMLElement {
     const productos = [
       ['impresoras-zebra.html',        'Impresoras Zebra'],
       ['impresoras-honeywell.html',    'Impresoras Honeywell'],
+      ['impresoras-tsc.html', 'Impresoras TSC'],
       ['ribbons.html',                 'Ribbons'],
       ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
