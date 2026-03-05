@@ -103,6 +103,11 @@
         @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:640px){.blog-grid{grid-template-columns:1fr}.article-body-wrap{padding:1.5rem}.article-cover{height:180px}}
     </style>
+    <meta property="og:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.labeltech.com.ar/public/images/og-image.png">
 </head>
 <body>
 
@@ -231,21 +236,20 @@
 
     <script src="../script.js"></script>
     <script>
-    const CAT_ICONS = {'Guías':'📘','Consejos':'💡','Industria':'🏭','Productos':'🖨️','Novedades':'🆕','default':'📄'};
-    const CAT_CLASS = {'Guías':'cat-guias','Consejos':'cat-consejos','Industria':'cat-industria','Productos':'cat-productos','Novedades':'cat-novedades'};
-
-    let articles = [];
+    const CAT_ICONS = {'Ribbons':'🎞️','Impresoras':'🖨️','Servicio Técnico':'🔧','Etiquetas':'🏷️','Software':'💻','Normativas':'📋','default':'📄'};
+    const CAT_CLASS = {'Ribbons':'cat-guias','Impresoras':'cat-productos','Servicio Técnico':'cat-consejos','Etiquetas':'cat-industria','Software':'cat-novedades','Normativas':'cat-industria'};
 
     async function loadArticles() {
         const grid = document.getElementById('blogGrid');
         try {
             const res = await fetch('./blog-data.json?t=' + Date.now());
             if (!res.ok) throw new Error('404');
-            const data = await res.json();
-            articles = data.articles || [];
+            const posts = await res.json();
+            // Support both array format and {articles:[]} format
+            const articles = Array.isArray(posts) ? posts : (posts.articles || []);
             document.getElementById('statArticles').textContent = articles.length || '0';
             if (articles.length === 0) { showEmpty(grid); return; }
-            grid.innerHTML = articles.map((a,i) => cardHTML(a,i)).join('');
+            grid.innerHTML = articles.map(a => cardHTML(a)).join('');
         } catch(e) {
             showEmpty(grid);
         }
@@ -258,8 +262,10 @@
     function catClass(cat) { return CAT_CLASS[cat] || 'cat-default'; }
     function catIcon(cat) { return CAT_ICONS[cat] || CAT_ICONS.default; }
 
-    function cardHTML(a, i) {
-        return `<article class="blog-card ${catClass(a.category)}" onclick="openArticle(${i})">
+    function cardHTML(a) {
+        const slug = a.slug || a.id || '';
+        const url = slug ? slug + '.html' : '#';
+        return `<a href="${url}" class="blog-card ${catClass(a.category)}" style="text-decoration:none;">
             <div class="blog-card-cover">
                 <div class="cover-icon">${catIcon(a.category)}</div>
                 <span class="blog-card-tag">${a.category||'Artículo'}</span>
@@ -268,33 +274,12 @@
                 <h2 class="blog-card-title">${a.title}</h2>
                 <p class="blog-card-excerpt">${a.excerpt}</p>
                 <div class="blog-card-footer">
-                    <span class="blog-card-meta">${a.date} · ${a.readTime} min</span>
+                    <span class="blog-card-meta">${a.date} · ${a.readTime}</span>
                     <span class="blog-card-read">Leer <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 </div>
             </div>
-        </article>`;
+        </a>`;
     }
-
-    function openArticle(i) {
-        const a = articles[i];
-        const cc = catClass(a.category);
-        document.getElementById('modalTag').textContent = a.category||'Artículo';
-        document.getElementById('modalTitle').textContent = a.title;
-        document.getElementById('modalMeta').textContent = `${a.date} · ${a.readTime} minutos de lectura`;
-        document.getElementById('modalBody').innerHTML = a.body;
-        document.getElementById('modalCover').className = 'article-cover ' + cc;
-        document.getElementById('articleOverlay').classList.add('open');
-        document.body.style.overflow = 'hidden';
-        if(typeof gtag!=='undefined') gtag('event','article_open',{event_category:'blog',event_label:a.title});
-    }
-
-    function closeArticle() {
-        document.getElementById('articleOverlay').classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    document.getElementById('articleOverlay').addEventListener('click', function(e){ if(e.target===this) closeArticle(); });
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeArticle(); });
 
     loadArticles();
     </script>
