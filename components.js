@@ -200,18 +200,15 @@ class SiteFooter extends HTMLElement {
             </div>
           </div>
           <div class="footer-bottom">
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
               <p class="footer-copyright" style="margin:0;">© 2025 Label Tech. Todos los derechos reservados.</p>
-              <div class="footer-badges">
+              <div class="footer-badges" style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
                 <span class="footer-badge">🇦🇷 Hecho en Argentina</span>
                 <span class="footer-badge">+10 años de experiencia</span>
+                <a href="${p}productos/impresoras-zebra.html" style="text-decoration:none;display:inline-flex;align-items:center;transition:opacity .2s;margin-left:.25rem;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+                  <img src="${p}public/images/black_and_white_reverse.png" alt="Zebra Registered Reseller" style="height:28px;width:auto;display:block;">
+                </a>
               </div>
-            </div>
-            <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem;display:flex;justify-content:center;">
-              <a href="${p}productos/impresoras-zebra.html" style="text-decoration:none;display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-                <img src="${p}public/images/black_and_white_reverse.png" alt="Zebra Registered Reseller" style="height:40px;width:auto;display:block;">
-                <span style="font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.06em;text-transform:uppercase;">Distribuidor oficial</span>
-              </a>
             </div>
           </div>
         </div>
