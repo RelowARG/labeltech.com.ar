@@ -42,13 +42,27 @@
             gap: .5rem;
         }
         .medida-pill {
-            background: #f1f5f9; border: 1px solid #e2e8f0;
-            border-radius: .5rem; padding: .45rem .6rem;
-            font-family: 'Space Mono', monospace; font-size: .8rem;
-            color: #334155; text-align: center; cursor: default;
+            /* Mantenemos tus estilos originales */
+            background: #f1f5f9; 
+            border: 1px solid #e2e8f0;
+            border-radius: .5rem; 
+            padding: .45rem .6rem;
+            font-family: 'Space Mono', monospace; 
+            font-size: .8rem;
+            color: #334155; 
+            cursor: default;
             transition: background .15s, border-color .15s;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            
+            /* Ajustes necesarios para Iconos y Tooltips */
+            display: flex;              /* Activa el layout flexible */
+            align-items: center;        /* Centra verticalmente el texto y el icono */
+            justify-content: center;    /* Centra horizontalmente el contenido */
+            gap: 0.4rem;                /* Espacio entre el texto y el icono */
+            white-space: nowrap;        /* Evita que el texto se rompa en dos líneas */
+            overflow: visible;          /* ESTO ES CLAVE: permite que el tooltip se vea */
         }
+        
+        /* Ajustes de estado */
         .medida-pill:hover { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
         .medida-pill.highlight { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
         .medida-pill.hidden { display: none; }
