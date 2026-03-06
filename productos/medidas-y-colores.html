@@ -54,7 +54,10 @@
         .medida-pill.hidden { display: none; }
 
         /* ── Tooltip personalizado ── */
-        .medida-pill[data-tooltip] { position: relative; }
+        .medida-pill[data-tooltip] { 
+            position: relative; 
+            overflow: visible; /* <-- Esto permite que el cartelito salga del botón */
+        }
         .medida-pill[data-tooltip]::after {
             content: attr(data-tooltip);
             position: absolute;
@@ -74,7 +77,7 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity .15s, transform .15s;
-            z-index: 10;
+            z-index: 100;
         }
         .medida-pill[data-tooltip]::before {
             content: '';
@@ -108,7 +111,7 @@
             margin-top: 2rem;
         }
         .color-card {
-            border-radius: 1rem; overflow: hidden;
+            border-radius: 1rem; overflow: visible;
             border: 1px solid #e2e8f0;
             box-shadow: 0 2px 8px rgba(0,0,0,.06);
             transition: transform .2s, box-shadow .2s;
