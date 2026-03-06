@@ -64,13 +64,13 @@
         .nos-visual-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 1.5rem; }
         .nos-feature-row { display: flex; align-items: center; gap: 1rem; padding: .875rem 0; border-bottom: 1px solid var(--border); }
         .nos-feature-row:last-child { border-bottom: none; }
-        .nos-feature-icon { font-size: 1.5rem; }
+        .nos-feature-icon { width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.08);border-radius:.75rem;flex-shrink:0;color:var(--accent); }
         .nos-feature-text { font-size: .9375rem; font-weight: 600; }
         .nos-feature-sub { font-size: .8125rem; color: var(--text-secondary); }
         .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
         @media(max-width:700px){ .values-grid { grid-template-columns: 1fr; } }
         .value-card { background: white; border: 1px solid var(--border); border-radius: 1.25rem; padding: 2rem; text-align: center; }
-        .value-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .value-icon { width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.08);border-radius:.875rem;margin-bottom:1rem;color:var(--accent); }
         .value-title { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
         .value-desc { font-size: .875rem; color: var(--text-secondary); line-height: 1.6; }
         .team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
@@ -122,11 +122,11 @@
                 </div>
                 <div class="nos-visual">
                     <div class="nos-visual-title">Lo que nos diferencia</div>
-                    <div class="nos-feature-row"><span class="nos-feature-icon">🏪</span><div><div class="nos-feature-text">Stock local permanente</div><div class="nos-feature-sub">Sin importar, sin esperar</div></div></div>
-                    <div class="nos-feature-row"><span class="nos-feature-icon">🔧</span><div><div class="nos-feature-text">Servicio técnico certificado</div><div class="nos-feature-sub">Técnicos Zebra y Honeywell en Argentina</div></div></div>
-                    <div class="nos-feature-row"><span class="nos-feature-icon">🗣️</span><div><div class="nos-feature-text">Soporte en español</div><div class="nos-feature-sub">Sin depender del soporte del fabricante</div></div></div>
-                    <div class="nos-feature-row"><span class="nos-feature-icon">💡</span><div><div class="nos-feature-text">Asesoramiento sin cargo</div><div class="nos-feature-sub">Te decimos qué conviene, no qué cuesta más</div></div></div>
-                    <div class="nos-feature-row"><span class="nos-feature-icon">🚚</span><div><div class="nos-feature-text">Entrega 48hs</div><div class="nos-feature-sub">CABA, GBA y todo el interior del país</div></div></div>
+                    <div class="nos-feature-row"><span class="nos-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><div><div class="nos-feature-text">Stock local permanente</div><div class="nos-feature-sub">Sin importar, sin esperar</div></div></div>
+                    <div class="nos-feature-row"><span class="nos-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span><div><div class="nos-feature-text">Servicio técnico certificado</div><div class="nos-feature-sub">Técnicos Zebra y Honeywell en Argentina</div></div></div>
+                    <div class="nos-feature-row"><span class="nos-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span><div><div class="nos-feature-text">Soporte en español</div><div class="nos-feature-sub">Sin depender del soporte del fabricante</div></div></div>
+                    <div class="nos-feature-row"><span class="nos-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg></span><div><div class="nos-feature-text">Asesoramiento sin cargo</div><div class="nos-feature-sub">Te decimos qué conviene, no qué cuesta más</div></div></div>
+                    <div class="nos-feature-row"><span class="nos-feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span><div><div class="nos-feature-text">Entrega 48hs</div><div class="nos-feature-sub">CABA, GBA y todo el interior del país</div></div></div>
                 </div>
             </div>
         </div>
@@ -142,32 +142,32 @@
             </div>
             <div class="values-grid">
                 <div class="value-card">
-                    <div class="value-icon">🎯</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                     <div class="value-title">Asesoramiento honesto</div>
                     <div class="value-desc">Te recomendamos el equipo que realmente necesitás, no el más caro. Si un modelo más económico resuelve tu problema, eso te decimos.</div>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">⚡</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                     <div class="value-title">Respuesta rápida</div>
                     <div class="value-desc">Sabemos que cuando una impresora se rompe, para tu operación. Por eso respondemos urgencias en menos de 24 horas hábiles.</div>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🔒</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
                     <div class="value-title">Calidad garantizada</div>
                     <div class="value-desc">Solo vendemos productos originales de fabricantes certificados. Garantía oficial en equipos y 6 meses en toda reparación realizada.</div>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🤝</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
                     <div class="value-title">Relación a largo plazo</div>
                     <div class="value-desc">No buscamos la venta puntual. Buscamos ser el proveedor de etiquetado de tu empresa por años, con insumos, repuestos y soporte continuo.</div>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">🇦🇷</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
                     <div class="value-title">100% local</div>
                     <div class="value-desc">Stock, soporte y facturación en Argentina. Sin demoras de importación ni soporte en idioma extranjero. Todo se resuelve localmente.</div>
                 </div>
                 <div class="value-card">
-                    <div class="value-icon">📚</div>
+                    <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
                     <div class="value-title">Conocimiento técnico</div>
                     <div class="value-desc">Nuestro equipo se capacita constantemente con los fabricantes. Sabemos de ribbons, cabezales, lenguajes ZPL y software tanto como los propios fabricantes.</div>
                 </div>
@@ -192,19 +192,23 @@
                     </ul>
                 </div>
                 <div class="nos-visual" style="text-align:center;">
-                    <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:2rem;">Distribuidores autorizados</div>
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
-                        <div style="background:white;border:1px solid var(--border);border-radius:1rem;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;">
-                            <div style="font-size:2.5rem;font-weight:900;color:#0052cc;letter-spacing:-.02em;">ZEBRA</div>
-                            <div style="font-size:.8125rem;color:var(--text-secondary);text-align:center;">Distribuidor Autorizado Argentina</div>
-                        </div>
-                        <div style="background:white;border:1px solid var(--border);border-radius:1rem;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;">
-                            <div style="font-size:2rem;font-weight:900;color:#e2231a;letter-spacing:-.02em;">HON<span style="color:#0033a0;">EYWELL</span></div>
-                            <div style="font-size:.8125rem;color:var(--text-secondary);text-align:center;">Distribuidor Autorizado Argentina</div>
-                        </div>
+                    <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:1.5rem;">Distribuidores autorizados</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+                        <a href="productos/impresoras-zebra.html" style="background:white;border:1px solid var(--border);border-radius:1rem;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-decoration:none;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+                            <img src="public/images/black_and_white_reverse.png" alt="Zebra Technologies" style="height:48px;width:auto;object-fit:contain;">
+                            <div style="font-size:.75rem;color:var(--text-secondary);text-align:center;line-height:1.4;">Distribuidor Autorizado Argentina</div>
+                        </a>
+                        <a href="productos/impresoras-honeywell.html" style="background:white;border:1px solid var(--border);border-radius:1rem;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-decoration:none;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+                            <img src="public/images/Honeywell-Auth-Distributor.png" alt="Honeywell" style="height:48px;width:auto;object-fit:contain;">
+                            <div style="font-size:.75rem;color:var(--text-secondary);text-align:center;line-height:1.4;">Distribuidor Autorizado Argentina</div>
+                        </a>
+                        <a href="productos/impresoras-zebra.html" style="background:white;border:1px solid var(--border);border-radius:1rem;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-decoration:none;transition:box-shadow .2s,transform .2s;" onmouseover="this.style.boxShadow='0 8px 24px rgba(0,0,0,.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+                            <img src="public/images/tsc.png" alt="TSC" style="height:48px;width:auto;object-fit:contain;">
+                            <div style="font-size:.75rem;color:var(--text-secondary);text-align:center;line-height:1.4;">Distribuidor Autorizado Argentina</div>
+                        </a>
                     </div>
                     <div style="margin-top:1.5rem;padding:1.25rem;background:rgba(59,130,246,.06);border-radius:.75rem;border:1px solid rgba(59,130,246,.12);">
-                        <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.6;">También distribuimos software <strong>NiceLabel</strong> y <strong>BarTender</strong> con licencias oficiales e implementación local.</div>
+                        <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.6;">También distribuimos software <strong>Zebra Designer</strong> y <strong>BarTender</strong> con licencias oficiales e implementación local.</div>
                     </div>
                 </div>
             </div>
