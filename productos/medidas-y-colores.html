@@ -47,7 +47,7 @@
             font-family: 'Space Mono', monospace; font-size: .8rem;
             color: #334155; text-align: center; cursor: default;
             transition: background .15s, border-color .15s;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .medida-pill:hover { background: #dbeafe; border-color: #93c5fd; color: #1e40af; }
         .medida-pill.highlight { background: #dbeafe; border-color: #3b82f6; color: #1d4ed8; }
@@ -74,7 +74,7 @@
             pointer-events: none;
             opacity: 0;
             transition: opacity .15s, transform .15s;
-            z-index: 10;
+            z-index: 100;
         }
         .medida-pill[data-tooltip]::before {
             content: '';
@@ -108,7 +108,7 @@
             margin-top: 2rem;
         }
         .color-card {
-            border-radius: 1rem; overflow: hidden;
+            border-radius: 1rem; overflow: visible;
             border: 1px solid #e2e8f0;
             box-shadow: 0 2px 8px rgba(0,0,0,.06);
             transition: transform .2s, box-shadow .2s;
@@ -155,10 +155,10 @@
                     <h1>Medidas y <span>Colores</span> Disponibles</h1>
                     <p class="product-hero-desc">Más de 150 medidas estándar de etiquetas en bobina, listas para stock. Etiquetas fondeadas en 7 colores Pantone. Para cada medida podés elegir el material que necesitás: térmico, OPP, VOID, poliéster, ilustración y más.</p>
                     <div class="product-hero-tags">
-                        <span class="product-hero-tag">📐 +150 medidas estándar</span>
-                        <span class="product-hero-tag">🎨 7 colores fondeados</span>
-                        <span class="product-hero-tag">🧾 Térmico · OPP · VOID · Poliéster</span>
-                        <span class="product-hero-tag">🚚 Stock · Entrega 48hs</span>
+                        <span class="product-hero-tag"><span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7L8.7 21.3c-.4.4-.8.6-1.3.6s-1-.2-1.4-.6L2.7 18c-.8-.8-.8-2 0-2.8L15.3 2.7c.8-.8 2-.8 2.8 0l3.2 3.2c.8.7.8 2 0 2.8z"/></svg></span> +150 medidas estándar</span>
+                        <span class="product-hero-tag"><span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 011.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span> 7 colores fondeados</span>
+                        <span class="product-hero-tag"><span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></span> Térmico · OPP · VOID · Poliéster</span>
+                        <span class="product-hero-tag"><span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Stock · Entrega 48hs</span>
                     </div>
                     <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap;">
                         <a href="https://wa.me/541122656818?text=Hola!%20Quiero%20cotizar%20etiquetas.%20Medida:____%20Material:____%20Cantidad:____" target="_blank" class="btn-hero-primary">
@@ -194,7 +194,7 @@
             </div>
 
             <div class="medidas-search-bar">
-                <input type="text" class="medidas-search-input" id="medidaSearch" placeholder="🔍  Buscá una medida... ej: 100x150 o solo 100" oninput="filterMedidas(this.value)">
+                <input type="text" class="medidas-search-input" id="medidaSearch" placeholder="<span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>  Buscá una medida... ej: 100x150 o solo 100" oninput="filterMedidas(this.value)">
                 <a href="https://wa.me/541122656818?text=Hola!%20Busco%20una%20medida%20que%20no%20está%20en%20el%20catálogo." target="_blank" class="btn-hero-primary" style="white-space:nowrap;font-size:.875rem;padding:.6rem 1.2rem;">
                     Medida especial
                 </a>
@@ -378,17 +378,17 @@
                 <div class="medida-pill">200×090</div>
                 <div class="medida-pill">250×250</div>
                 <!-- Especiales -->
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 20 mm)">020×015 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 30 mm)">030×030 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 40 mm)">040×040 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 49 mm)">049×049 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 50 mm)">050×050 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 60 mm)">060×060 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 100 mm)">100×100 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 250 mm)">250×250 ⭕</div>
-                <div class="medida-pill" data-tooltip="Etiqueta ovalada (20×15 mm)">020×015 🥚</div>
-                <div class="medida-pill" data-tooltip="Con muesca de corte (49×110 mm)">049×110 ✂</div>
-                <div class="medida-pill" data-tooltip="Collarín circular (diámetro 38 mm)">038 🔘</div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 20 mm)">020×015 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 30 mm)">030×030 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 40 mm)">040×040 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 49 mm)">049×049 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 50 mm)">050×050 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 60 mm)">060×060 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 100 mm)">100×100 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta circular (diámetro 250 mm)">250×250 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Etiqueta ovalada (20×15 mm)">020×015 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.03 10-9S17.523 2 12 2 2 7.03 2 13s4.477 9 10 9z"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Con muesca de corte (49×110 mm)">049×110 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></span></div>
+                <div class="medida-pill" data-tooltip="Collarín circular (diámetro 38 mm)">038 <span style="display:inline-flex;align-items:center;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span></div>
             </div>
 
             <div id="noResults" style="display:none;text-align:center;padding:2rem;color:#64748b;">
