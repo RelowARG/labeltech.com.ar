@@ -48,6 +48,8 @@ class SiteNavbar extends HTMLElement {
       ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
       ['hilos-plasticos.html',         'Hilos Plásticos'],
       ['rollos-entintadores.html',     'Rollos y Entintadores'],
+      ['etiquetas-void.html',          'Etiquetas VOID'],
+      ['ribbon-por-modelo.html',       'Ribbon por Modelo'],
       ['medidas-y-colores.html',       'Medidas y Colores'],
     ];
 
@@ -189,6 +191,8 @@ class SiteFooter extends HTMLElement {
                 <li><a href="${pp}rebobinadores.html">Rebobinadores</a></li>
                 <li><a href="${pp}etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
                 <li><a href="${pp}hilos-plasticos.html">Hilos Plásticos</a></li>
+                <li><a href="${pp}etiquetas-void.html">Etiquetas VOID</a></li>
+                <li><a href="${pp}ribbon-por-modelo.html">Ribbon por Modelo</a></li>
                 <li><a href="${pp}servicio-tecnico.html">Servicio Técnico</a></li>
                 <li><a href="${pp}calculadora-etiquetas.html">Calculadora de Etiquetas</a></li>
               </ul>
