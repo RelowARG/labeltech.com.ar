@@ -23,6 +23,15 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Product","name":"Lectores de Código de Barras Argentina","description":"Lectores de código de barras 1D y 2D para uso comercial e industrial. Stock permanente en Argentina.","offers":{"@type":"AggregateOffer","priceCurrency":"ARS","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}}
     </script>
+    <style>
+    /* Product image gallery */
+    .pcard-gallery{margin:-1.25rem -1.25rem 1.25rem;border-radius:.75rem .75rem 0 0;overflow:hidden;background:#f8fafc;}
+    .pcard-main-img{width:100%;height:220px;object-fit:contain;object-position:center;background:#f8fafc;display:block;transition:opacity .25s;}
+    .pcard-thumbs{display:flex;gap:.375rem;padding:.5rem .75rem;background:#f1f5f9;flex-wrap:wrap;}
+    .pcard-thumb{width:52px;height:40px;border-radius:.375rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s;}
+    .pcard-thumb.active{border-color:var(--primary,#2563eb);}
+    .pcard-thumb img{width:100%;height:100%;object-fit:cover;}
+    </style>
 </head>
 <body>
     <site-navbar active="productos"></site-navbar>
@@ -93,6 +102,10 @@
                         <span class="product-card-badge badge-escritorio">Inalámbrico 1D</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/lector-codigo-de-barras/lector1.png" alt="Lector Honeywell Voyager 1202g" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/lector-codigo-de-barras/lector1.png')"><img src="../public/images/lector-codigo-de-barras/lector1.png" alt="Lector Honeywell Voyager 1202g" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">El lector inalámbrico 1D más popular del mercado. Bluetooth con alcance de 10 metros desde la base. Lee códigos dañados o mal impresos con facilidad. Batería de 12hs continuas. Diseño ergonómico para uso intensivo todo el día.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Tecnología</span><span class="spec-value">Láser 1D · Bluetooth v2.1</span></div>
@@ -124,6 +137,10 @@
                         <span class="product-card-badge badge-premium">2D / QR</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/lector-codigo-de-barras/lector1.png" alt="Lector Honeywell Xenon 1900" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/lector-codigo-de-barras/lector1.png')"><img src="../public/images/lector-codigo-de-barras/lector1.png" alt="Lector Honeywell Xenon 1900" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">Lector de imagen 2D de alta performance. Lee códigos de barras, QR y DataMatrix desde pantallas de celular, tickets digitales y códigos en cualquier estado. Profundidad de campo extendida y velocidad de decodificación superior.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Tecnología</span><span class="spec-value">Imager 2D · Adaptus 5.5</span></div>
@@ -155,6 +172,10 @@
                         <span class="product-card-badge badge-eco">Económico</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/lector-codigo-de-barras/lector2.png" alt="Lector USB 1D HPRT" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/lector-codigo-de-barras/lector2.png')"><img src="../public/images/lector-codigo-de-barras/lector2.png" alt="Lector USB 1D HPRT" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">Lector láser 1D cableado USB de entrada. Sin configuración, plug-and-play en cualquier PC o sistema. La opción más económica para cajas, recepción de mercadería y control de inventario básico. Listo en segundos.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Tecnología</span><span class="spec-value">Láser 1D cableado</span></div>
@@ -186,6 +207,10 @@
                         <span class="product-card-badge badge-industrial">Industrial</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/lector-codigo-de-barras/lector2.png" alt="Lector industrial 2D HPRT" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/lector-codigo-de-barras/lector2.png')"><img src="../public/images/lector-codigo-de-barras/lector2.png" alt="Lector industrial 2D HPRT" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">Lector para entornos industriales exigentes. IP54 resistente a polvo y humedad. Lee 1D, 2D, QR y DataMatrix en superficies metálicas o plásticas. Ideal para líneas de producción, depósitos y trazabilidad de alto volumen.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Tecnología</span><span class="spec-value">Imager 2D industrial</span></div>
@@ -278,5 +303,15 @@
     <script src="../script.js"></script>
     <site-footer></site-footer>
     <script src="../components.js"></script>
+    <script>
+    function pgSwap(el,src){
+      var g=el.closest('.pcard-gallery');
+      var mi=g.querySelector('.pcard-main-img');
+      mi.style.opacity='0';
+      setTimeout(function(){mi.src=src;mi.style.opacity='1';},200);
+      g.querySelectorAll('.pcard-thumb').forEach(function(t){t.classList.remove('active');});
+      el.classList.add('active');
+    }
+    </script>
 </body>
 </html>

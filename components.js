@@ -210,7 +210,7 @@ class SiteFooter extends HTMLElement {
               <h4 class="footer-title" style="margin-top:1.5rem">Contacto</h4>
               <ul class="footer-list">
                 <li><a href="https://wa.me/541122656818">+54 11 2265-6818</a></li>
-                <li><a href="mailto:info@labeltech.com.ar">info@labeltech.com.ar</a></li>
+                <li><a href="mailto:ventas@labeltech.com.ar">ventas@labeltech.com.ar</a></li>
               </ul>
             </div>
           </div>

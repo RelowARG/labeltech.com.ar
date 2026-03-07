@@ -23,6 +23,15 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Product","name":"Etiquetadoras Manuales Argentina","description":"Etiquetadoras manuales para precios, fechas y códigos en Argentina. Insumos disponibles.","offers":{"@type":"AggregateOffer","priceCurrency":"ARS","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}}
     </script>
+    <style>
+    /* Product image gallery */
+    .pcard-gallery{margin:-1.25rem -1.25rem 1.25rem;border-radius:.75rem .75rem 0 0;overflow:hidden;background:#f8fafc;}
+    .pcard-main-img{width:100%;height:220px;object-fit:contain;object-position:center;background:#f8fafc;display:block;transition:opacity .25s;}
+    .pcard-thumbs{display:flex;gap:.375rem;padding:.5rem .75rem;background:#f1f5f9;flex-wrap:wrap;}
+    .pcard-thumb{width:52px;height:40px;border-radius:.375rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s;}
+    .pcard-thumb.active{border-color:var(--primary,#2563eb);}
+    .pcard-thumb img{width:100%;height:100%;object-fit:cover;}
+    </style>
 </head>
 <body>
     <site-navbar active="productos"></site-navbar>
@@ -93,6 +102,10 @@
                         <span class="product-card-badge badge-eco">Económica</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/Etiquetadoras-Manuales/Jolly1l.png" alt="Etiquetadora manual 1 línea Jolly" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/Etiquetadoras-Manuales/Jolly1l.png')"><img src="../public/images/Etiquetadoras-Manuales/Jolly1l.png" alt="Etiquetadora manual 1 línea Jolly" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">La etiquetadora manual más usada en comercios y depósitos argentinos. Imprime precios, fechas o códigos en una línea de texto. Sin energía eléctrica. Incluye rollo entintador. Lista para usar en minutos.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Líneas</span><span class="spec-value">1 línea de texto</span></div>
@@ -124,6 +137,10 @@
                         <span class="product-card-badge badge-escritorio">Más vendida</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/Etiquetadoras-Manuales/OpenC20.png" alt="Etiquetadora manual 2 líneas Open C20" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/Etiquetadoras-Manuales/OpenC20.png')"><img src="../public/images/Etiquetadoras-Manuales/OpenC20.png" alt="Etiquetadora manual 2 líneas Open C20" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">La etiquetadora más vendida en supermercados y distribuidoras argentinas. Imprime precio en la primera línea y fecha de vencimiento o número de lote en la segunda. Mayor información en cada etiqueta con un solo golpe.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Líneas</span><span class="spec-value">2 líneas independientes</span></div>
@@ -155,6 +172,10 @@
                         <span class="product-card-badge badge-industrial">Industrial</span>
                     </div>
                     <div class="product-card-body">
+    <div class="pcard-gallery">
+      <img class="pcard-main-img" src="../public/images/Etiquetadoras-Manuales/opentex.png" alt="Open Tex barril" loading="lazy">
+      <div class="pcard-thumbs"><div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/Etiquetadoras-Manuales/opentex.png')"><img src="../public/images/Etiquetadoras-Manuales/opentex.png" alt="Open Tex barril" loading="lazy"></div><div class="pcard-thumb" onclick="pgSwap(this,'../public/images/Etiquetadoras-Manuales/2%20(1)_edited_edited.png')"><img src="../public/images/Etiquetadoras-Manuales/2%20(1)_edited_edited.png" alt="Vista lateral" loading="lazy"></div><div class="pcard-thumb" onclick="pgSwap(this,'../public/images/Etiquetadoras-Manuales/3_d0b0f04d-36fe-4fc5-a562-30fd5121a5a3.webp')"><img src="../public/images/Etiquetadoras-Manuales/3_d0b0f04d-36fe-4fc5-a562-30fd5121a5a3.webp" alt="Vista detalle" loading="lazy"></div></div>
+    </div>
                         <p class="product-card-desc">Dispensador manual de etiquetas tipo barril open para rollos de mayor tamaño. Compatible con etiquetas pre-impresas de códigos de barras y etiquetas térmicas. Aplica etiquetas con una sola mano a alta velocidad.</p>
                         <div class="product-specs">
                             <div class="product-spec-row"><span class="spec-label">Sistema</span><span class="spec-value">Dispensador manual tipo barril</span></div>
@@ -257,5 +278,15 @@
     <script src="../script.js"></script>
     <site-footer></site-footer>
     <script src="../components.js"></script>
+    <script>
+    function pgSwap(el,src){
+      var g=el.closest('.pcard-gallery');
+      var mi=g.querySelector('.pcard-main-img');
+      mi.style.opacity='0';
+      setTimeout(function(){mi.src=src;mi.style.opacity='1';},200);
+      g.querySelectorAll('.pcard-thumb').forEach(function(t){t.classList.remove('active');});
+      el.classList.add('active');
+    }
+    </script>
 </body>
 </html>
