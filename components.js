@@ -106,6 +106,10 @@ class SiteNavbar extends HTMLElement {
               <li><a href="${p}index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <div class="nav-social">
+              <a href="tel:+541122656818" class="social-link" aria-label="Teléfono" style="display:flex;align-items:center;gap:.35rem;font-size:.8rem;font-weight:600;letter-spacing:.01em;white-space:nowrap;padding:.25rem .5rem;border-radius:.5rem;transition:background .2s;" onmouseover="this.style.background='rgba(59,130,246,.08)'" onmouseout="this.style.background='transparent'">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.19 2 2 0 012 .01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+                <span class="nav-phone-text">11 2265-6818</span>
+              </a>
               <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">${WA_SVG}</a>
               <a href="https://www.instagram.com/labeltech.ar/" target="_blank" class="social-link" aria-label="Instagram">${IG_SVG}</a>
               <a href="https://www.linkedin.com/company/labeltech-ar/" target="_blank" class="social-link" aria-label="LinkedIn">${LI_SVG}</a>
@@ -191,6 +195,10 @@ class SiteFooter extends HTMLElement {
                 <li><a href="${pp}rebobinadores.html">Rebobinadores</a></li>
                 <li><a href="${pp}etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
                 <li><a href="${pp}hilos-plasticos.html">Hilos Plásticos</a></li>
+                <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
+                <li><a href="${pp}etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
+                <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
+                <li><a href="${pp}poliamida-textil.html">Poliamida Textil</a></li>
                 <li><a href="${pp}etiquetas-void.html">Etiquetas VOID</a></li>
                 <li><a href="${pp}ribbon-por-modelo.html">Ribbon por Modelo</a></li>
                 <li><a href="${pp}servicio-tecnico.html">Servicio Técnico</a></li>
@@ -209,8 +217,14 @@ class SiteFooter extends HTMLElement {
               </ul>
               <h4 class="footer-title" style="margin-top:1.5rem">Contacto</h4>
               <ul class="footer-list">
-                <li><a href="https://wa.me/541122656818">+54 11 2265-6818</a></li>
+                <li><a href="tel:+541122656818">+54 11 2265-6818</a></li>
                 <li><a href="mailto:ventas@labeltech.com.ar">ventas@labeltech.com.ar</a></li>
+                <li>
+                  <a href="https://maps.google.com/?q=Perdriel+1485,+Barracas,+Buenos+Aires" target="_blank" rel="noopener" style="display:flex;align-items:flex-start;gap:.4rem;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Perdriel 1485 3°C<br>Barracas · CABA · Argentina</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
