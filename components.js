@@ -52,9 +52,10 @@ class SiteNavbar extends HTMLElement {
     ];
 
     const servicios = [
-      ['servicio-impresion.html', 'Servicio de Impresión'],
-      ['servicio-tecnico.html',   'Servicio Técnico'],
-      ['software.html',           'Software'],
+      ['servicio-impresion.html',      'Servicio de Impresión'],
+      ['servicio-tecnico.html',        'Servicio Técnico'],
+      ['software.html',                'Software'],
+      ['calculadora-etiquetas.html',   'Calculadora de Etiquetas'],
     ];
 
     const dropdown = (items, prefix) =>
@@ -93,7 +94,13 @@ class SiteNavbar extends HTMLElement {
                 </ul>
               </li>
               <li><a href="${p}blog/index.html" class="nav-link${ac('blog')}">Blog</a></li>
-              <li><a href="${p}nosotros.html" class="nav-link${ac('nosotros')}">Nosotros</a></li>
+              <li class="nav-dropdown">
+                <a href="${p}nosotros.html" class="nav-link${ac('nosotros')}">Nosotros ▾</a>
+                <ul class="dropdown-menu">
+                  <li><a href="${p}nosotros.html">Nosotros</a></li>
+                  <li><a href="${p}sustentabilidad.html">Sustentabilidad</a></li>
+                </ul>
+              </li>
               <li><a href="${p}index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <div class="nav-social">
@@ -172,7 +179,7 @@ class SiteFooter extends HTMLElement {
               </ul>
             </div>
             <div class="footer-column">
-              <h4 class="footer-title">Equipos e Insumos</h4>
+              <h4 class="footer-title">Productos y Servicios</h4>
               <ul class="footer-list">
                 <li><a href="${pp}impresoras-zebra.html">Impresoras Zebra</a></li>
                 <li><a href="${pp}impresoras-honeywell.html">Impresoras Honeywell</a></li>
@@ -180,19 +187,10 @@ class SiteFooter extends HTMLElement {
                 <li><a href="${pp}ribbons.html">Ribbons</a></li>
                 <li><a href="${pp}lectores-codigo-barras.html">Lectores de Código</a></li>
                 <li><a href="${pp}rebobinadores.html">Rebobinadores</a></li>
-              </ul>
-            </div>
-            <div class="footer-column">
-              <h4 class="footer-title">Etiquetas y Textil</h4>
-              <ul class="footer-list">
-                <li><a href="${pp}etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
-                <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
-                <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
-                <li><a href="${pp}poliamida-textil.html">Poliamida Textil</a></li>
                 <li><a href="${pp}etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
-                <li><a href="${pp}pistolas-aplicadoras.html">Pistolas Aplicadoras</a></li>
                 <li><a href="${pp}hilos-plasticos.html">Hilos Plásticos</a></li>
-                <li><a href="${pp}medidas-y-colores.html">Medidas y Colores</a></li>
+                <li><a href="${pp}servicio-tecnico.html">Servicio Técnico</a></li>
+                <li><a href="${pp}calculadora-etiquetas.html">Calculadora de Etiquetas</a></li>
               </ul>
             </div>
             <div class="footer-column">
@@ -200,9 +198,9 @@ class SiteFooter extends HTMLElement {
               <ul class="footer-list">
                 <li><a href="${p}index.html">Inicio</a></li>
                 <li><a href="${p}nosotros.html">Nosotros</a></li>
+                <li><a href="${p}sustentabilidad.html">Sustentabilidad</a></li>
                 <li><a href="${p}faq.html">FAQ</a></li>
                 <li><a href="${p}blog/index.html">Blog</a></li>
-                <li><a href="${p}index.html#servicios">Servicios</a></li>
                 <li><a href="${p}privacidad.html">Privacidad</a></li>
               </ul>
               <h4 class="footer-title" style="margin-top:1.5rem">Contacto</h4>
