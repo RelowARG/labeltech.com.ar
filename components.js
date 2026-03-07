@@ -214,7 +214,7 @@ class SiteFooter extends HTMLElement {
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
               <p class="footer-copyright" style="margin:0;">© 2025 Label Tech. Todos los derechos reservados.</p>
               <div class="footer-badges" style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;">
-                <span class="footer-badge">🇦🇷 Hecho en Argentina</span>
+                <span class="footer-badge"><svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:4px;border-radius:2px"><rect width="16" height="4" fill="#74ACDF"/><rect y="4" width="16" height="4" fill="#FFFFFF"/><rect y="8" width="16" height="4" fill="#74ACDF"/></svg>Hecho en Argentina</span>
                 <span class="footer-badge">+10 años de experiencia</span>
                 <a href="${p}productos/impresoras-zebra.html" style="text-decoration:none;display:inline-flex;align-items:center;transition:opacity .2s;margin-left:.25rem;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
                   <img src="${p}public/images/black_and_white_reverse.png" alt="Zebra Registered Reseller" style="height:48px;width:auto;display:block;">
