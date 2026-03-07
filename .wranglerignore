@@ -1,0 +1,5 @@
+rm /mnt/e/labeltech.com.ar/wrangler.toml
+echo ".git/" > /mnt/e/labeltech.com.ar/.wranglerignore
+git add -A
+git commit -m "fix: ignorar .git en deploy de Cloudflare"
+git push
