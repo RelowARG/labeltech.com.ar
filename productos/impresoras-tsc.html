@@ -20,6 +20,16 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../productos.css">
+    <style>
+    /* ── Product image gallery ── */
+    .pcard-gallery { background:#f8fafc; border-bottom:1px solid var(--border-light); padding:.875rem .875rem .625rem; }
+    .pcard-main-img { width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; margin-bottom:.625rem; overflow:hidden; }
+    .pcard-main-img img { max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; transition:opacity .2s ease; cursor:zoom-in; }
+    .pcard-thumbs { display:flex; gap:.4rem; flex-wrap:wrap; }
+    .pcard-thumb { width:52px; height:52px; border:2px solid transparent; border-radius:.375rem; overflow:hidden; cursor:pointer; background:#fff; flex-shrink:0; transition:border-color .15s; }
+    .pcard-thumb:hover, .pcard-thumb.active { border-color:var(--primary); }
+    .pcard-thumb img { width:100%; height:100%; object-fit:contain; padding:2px; }
+    </style>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Product","name":"Impresoras TSC Argentina","description":"Impresoras térmicas TSC para etiquetas industriales. Serie TE y TTP disponibles en Argentina.","brand":{"@type":"Brand","name":"TSC Auto ID"},"offers":{"@type":"AggregateOffer","priceCurrency":"ARS","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}}</script>
 </head>
@@ -100,6 +110,14 @@
                         </div>
                         <span class="product-card-badge badge-eco">Entrada</span>
                     </div>
+                    <div class="pcard-gallery">
+                        <div class="pcard-main-img"><img id="pmain-TE200" src="../public/images/impresoras/te-200-01.png" alt="Impresora TSC TE200" loading="lazy"></div>
+                        <div class="pcard-thumbs">
+                            <div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/impresoras/te-200-01.png')"><img src="../public/images/impresoras/te-200-01.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-02.png')"><img src="../public/images/impresoras/te-200-02.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-03.png')"><img src="../public/images/impresoras/te-200-03.png" alt="" loading="lazy"></div>
+                        </div>
+                    </div>
                     <div class="product-card-body">
                         <p class="product-card-desc">La opción más accesible de la serie TE. Impresión térmica directa y por transferencia, perfecta para empresas que dan sus primeros pasos en el etiquetado o necesitan un punto de impresión adicional de bajo costo.</p>
                         <div class="product-specs">
@@ -138,6 +156,14 @@
                         </div>
                         <span class="product-card-badge badge-escritorio">Escritorio</span>
                     </div>
+                    <div class="pcard-gallery">
+                        <div class="pcard-main-img"><img id="pmain-TE300" src="../public/images/impresoras/te-200-02.png" alt="Impresora TSC TE300" loading="lazy"></div>
+                        <div class="pcard-thumbs">
+                            <div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/impresoras/te-200-02.png')"><img src="../public/images/impresoras/te-200-02.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-01.png')"><img src="../public/images/impresoras/te-200-01.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-03.png')"><img src="../public/images/impresoras/te-200-03.png" alt="" loading="lazy"></div>
+                        </div>
+                    </div>
                     <div class="product-card-body">
                         <p class="product-card-desc">Misma base que la TE200 con el doble de resolución. La elección ideal cuando se necesitan imprimir textos pequeños, códigos de barras 2D densos o gráficos detallados con precisión milimétrica.</p>
                         <div class="product-specs">
@@ -175,6 +201,14 @@
                             <div class="product-card-model">99-065A901-00LF00</div>
                         </div>
                         <span class="product-card-badge badge-premium">Premium</span>
+                    </div>
+                    <div class="pcard-gallery">
+                        <div class="pcard-main-img"><img id="pmain-TE310" src="../public/images/impresoras/tsc-auto-id-asset-tracking-tags-desktop-printer-tx310-open.png" alt="Impresora TSC TE310" loading="lazy"></div>
+                        <div class="pcard-thumbs">
+                            <div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/impresoras/tsc-auto-id-asset-tracking-tags-desktop-printer-tx310-open.png')"><img src="../public/images/impresoras/tsc-auto-id-asset-tracking-tags-desktop-printer-tx310-open.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-01.png')"><img src="../public/images/impresoras/te-200-01.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/te-200-03.png')"><img src="../public/images/impresoras/te-200-03.png" alt="" loading="lazy"></div>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <p class="product-card-desc">La versión más completa de la serie TE. Combina la alta resolución de 300 dpi con conectividad ampliada: USB, Ethernet, RS-232 y USB Host para teclado o escáner. Más memoria para trabajos complejos.</p>
@@ -228,6 +262,13 @@
                         </div>
                         <span class="product-card-badge badge-escritorio">Escritorio</span>
                     </div>
+                    <div class="pcard-gallery">
+                        <div class="pcard-main-img"><img id="pmain-TTP244" src="../public/images/impresoras/ttp-244ce_1.png" alt="Impresora TSC TTP-244 Pro" loading="lazy"></div>
+                        <div class="pcard-thumbs">
+                            <div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/impresoras/ttp-244ce_1.png')"><img src="../public/images/impresoras/ttp-244ce_1.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/ttp-4-inch-series_1.png')"><img src="../public/images/impresoras/ttp-4-inch-series_1.png" alt="" loading="lazy"></div>
+                        </div>
+                    </div>
                     <div class="product-card-body">
                         <p class="product-card-desc">La clásica de TSC, rediseñada. Redefine la categoría de escritorio de bajo volumen con características propias de impresoras de mayor porte: cinta de 300 m, etiquetas de hasta 8" de diámetro y velocidad de 5 ips. Carcasa ABS de doble pared, libre de mantenimiento.</p>
                         <div class="product-specs">
@@ -268,6 +309,13 @@
                             <div class="product-card-model">99-125A013-00LF</div>
                         </div>
                         <span class="product-card-badge badge-industrial">Alto Volumen</span>
+                    </div>
+                    <div class="pcard-gallery">
+                        <div class="pcard-main-img"><img id="pmain-TTP247" src="../public/images/impresoras/ttp-245_500x500.png" alt="Impresora TSC TTP-247" loading="lazy"></div>
+                        <div class="pcard-thumbs">
+                            <div class="pcard-thumb active" onclick="pgSwap(this,'../public/images/impresoras/ttp-245_500x500.png')"><img src="../public/images/impresoras/ttp-245_500x500.png" alt="" loading="lazy"></div>
+                            <div class="pcard-thumb" onclick="pgSwap(this,'../public/images/impresoras/ttp-4-inch-series_1.png')"><img src="../public/images/impresoras/ttp-4-inch-series_1.png" alt="" loading="lazy"></div>
+                        </div>
                     </div>
                     <div class="product-card-body">
                         <p class="product-card-desc">La evolución del best-seller TTP-245 Plus. Velocidad de 7 ips — la más rápida de su categoría — con lector de tarjetas SDHC integrado para gigabytes de almacenamiento extra. Soporte para rollo de etiquetas de hasta 8,4" de diámetro y módulos opcionales de despegado y corte.</p>
@@ -429,5 +477,14 @@
     <site-footer></site-footer>
     <script src="../script.js"></script>
     <script src="../components.js"></script>
+    <script>
+    function pgSwap(thumb, src) {
+        const gallery = thumb.closest('.pcard-gallery');
+        const main = gallery.querySelector('.pcard-main-img img');
+        main.src = src;
+        gallery.querySelectorAll('.pcard-thumb').forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+    }
+    </script>
 </body>
 </html>
