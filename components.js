@@ -47,7 +47,7 @@ class SiteNavbar extends HTMLElement {
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
       ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
       ['hilos-plasticos.html',         'Hilos Plásticos'],
-      ['rollos-entintadores.html',     'Rollos y Entintadores'],
+      ['rollos-entintadores.html',     'Rollo Entintadores'],
       ['etiquetas-void.html',          'Etiquetas VOID'],
       ['ribbon-por-modelo.html',       'Ribbon por Modelo'],
       ['medidas-y-colores.html',       'Medidas y Colores'],
