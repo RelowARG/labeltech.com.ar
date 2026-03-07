@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YVV0X54KK9"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YVV0X54KK9');</script>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Etiquetas — ¿Cuántas necesito? | Label Tech Argentina</title>
+    <meta name="description" content="Calculadora gratuita: sabé cuántas etiquetas y ribbons necesitás por mes según tu producción. Estimá tu consumo en segundos y pedí cotización.">
+    <meta name="keywords" content="cuántas etiquetas necesito, calculadora etiquetas Argentina, consumo ribbons por mes, estimador etiquetas impresora térmica, cuántos ribbons uso por mes">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.labeltech.com.ar/productos/calculadora-etiquetas.html">
+    <meta property="og:title" content="Calculadora de Etiquetas | Label Tech Argentina">
+    <meta property="og:description" content="Calculá cuántas etiquetas y ribbons necesitás por mes. Gratis y sin registro.">
+    <meta property="og:url" content="https://www.labeltech.com.ar/productos/calculadora-etiquetas.html">
+    <meta property="og:type" content="website"><meta property="og:locale" content="es_AR">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../productos.css">
+    <style>
+        .calc-wrap{max-width:820px;margin:0 auto}
+        .calc-card{background:white;border-radius:1.25rem;box-shadow:0 4px 24px rgba(0,0,0,.09);border:1px solid #e2e8f0;overflow:hidden}
+        .calc-head{background:linear-gradient(135deg,#1e3a5f,#2563eb);padding:1.75rem 2.25rem;color:white}
+        .calc-head h2{font-size:1.35rem;margin:0 0 .35rem;font-weight:800}
+        .calc-head p{opacity:.85;margin:0;font-size:.9rem}
+        .calc-body{padding:2.25rem}
+        .calc-group{margin-bottom:1.625rem}
+        .calc-lbl{font-weight:600;font-size:.92rem;color:#1e293b;margin-bottom:.35rem;display:block}
+        .calc-sub{font-size:.8rem;color:#64748b;margin-bottom:.45rem;display:block}
+        .calc-input{width:100%;padding:.7rem .95rem;border:2px solid #e2e8f0;border-radius:.7rem;font-size:.97rem;font-family:inherit;transition:border-color .2s;box-sizing:border-box}
+        .calc-input:focus{outline:none;border-color:#3b82f6}
+        .calc-select{width:100%;padding:.7rem .95rem;border:2px solid #e2e8f0;border-radius:.7rem;font-size:.97rem;font-family:inherit;background:white;cursor:pointer;box-sizing:border-box}
+        .calc-grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+        @media(max-width:560px){.calc-grid2{grid-template-columns:1fr}}
+        .calc-btn{width:100%;padding:.95rem 2rem;background:linear-gradient(135deg,#2563eb,#3b82f6);color:white;border:none;border-radius:.8rem;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;margin-top:.25rem}
+        .calc-btn:hover{opacity:.88}
+        .range-row{display:flex;align-items:center;gap:.875rem}
+        .range-row input[type=range]{flex:1;accent-color:#3b82f6}
+        .range-val{font-weight:700;color:#2563eb;min-width:64px;text-align:right;font-size:1rem}
+        .result-box{display:none;background:#eff6ff;border:2px solid #bfdbfe;border-radius:1rem;padding:1.75rem;margin-top:1.75rem}
+        .result-box.show{display:block}
+        .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.875rem;margin-bottom:1.5rem}
+        .result-stat{background:white;border-radius:.75rem;padding:1.1rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+        .result-n{font-size:1.6rem;font-weight:800;color:#2563eb;display:block}
+        .result-l{font-size:.77rem;color:#64748b;line-height:1.4;margin-top:.2rem;display:block}
+        .result-detail{background:white;border-radius:.75rem;padding:1.1rem;font-size:.875rem;line-height:1.8;color:#475569}
+        .tip{background:#fef9c3;border:1px solid #fde047;border-radius:.75rem;padding:.875rem 1.1rem;font-size:.845rem;color:#713f12;margin-top:.875rem}
+        .wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:#25d366;color:white;padding:.8rem 1.6rem;border-radius:.75rem;font-weight:700;text-decoration:none;margin-top:1.1rem;font-size:.9rem}
+        .howto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:.855rem;color:#475569;line-height:1.65}
+        @media(max-width:560px){.howto-grid{grid-template-columns:1fr}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Etiquetas Label Tech","description":"Calculá cuántas etiquetas y ribbons necesitás por mes según tu producción.","url":"https://www.labeltech.com.ar/productos/calculadora-etiquetas.html","applicationCategory":"BusinessApplication","provider":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}</script>
+</head>
+<body>
+    <site-navbar active="productos"></site-navbar>
+
+    <div class="breadcrumb"><div class="container"><nav aria-label="breadcrumb">
+        <a href="../index.html">Inicio</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <a href="../index.html#productos">Productos</a>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Calculadora de Etiquetas</span>
+    </nav></div></div>
+
+    <section class="product-hero"><div class="container"><div class="product-hero-grid">
+        <div>
+            <span class="product-hero-badge">Gratis · Sin registro</span>
+            <h1>Calculadora de <span>Etiquetas y Ribbons</span></h1>
+            <p class="product-hero-desc">¿Cuántas etiquetas necesitás por mes? ¿Cuántos ribbons consume tu impresora? Completá los datos de tu operación y te damos la estimación en segundos — con un mensaje listo para pedir cotización.</p>
+            <div class="product-hero-tags">
+                <span class="product-hero-tag"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Resultado inmediato</span>
+                <span class="product-hero-tag"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Etiquetas y ribbons</span>
+                <span class="product-hero-tag"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Cotización incluida</span>
+            </div>
+        </div>
+        <div class="product-hero-panel">
+            <h3>¿Para qué te sirve?</h3>
+            <ul class="product-feature-list">
+                <li><strong>Planificar compras</strong> — sabé cuánto stock necesitás por mes y evitá quiebres</li>
+                <li><strong>Calcular ribbons</strong> — cuántos rollos consume tu impresora según tu producción</li>
+                <li><strong>Negociar precios</strong> — con cantidades reales podés pedir descuento por volumen</li>
+                <li><strong>Evitar sobrestock</strong> — comprá lo justo sin inmovilizar capital innecesario</li>
+                <li>El resultado incluye un texto listo para enviar por WhatsApp</li>
+            </ul>
+        </div>
+    </div></div></section>
+
+    <section style="padding:4rem 0;background:#f8fafc;">
+        <div class="container">
+            <div class="calc-wrap">
+                <div class="calc-card">
+                    <div class="calc-head">
+                        <h2>Calculá tu consumo mensual</h2>
+                        <p>Completá los campos con tu operación real — podés usar estimaciones.</p>
+                    </div>
+                    <div class="calc-body">
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="prodDia">¿Cuántos productos etiquetás por día?</label>
+                            <span class="calc-sub">Promedio en un día hábil normal, no el pico máximo</span>
+                            <div class="range-row">
+                                <input type="range" id="prodDia" min="50" max="10000" value="500" step="50"
+                                    oninput="document.getElementById('prodDiaV').textContent=Number(this.value).toLocaleString('es-AR');calc()">
+                                <span class="range-val" id="prodDiaV">500</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="etqProd">¿Cuántas etiquetas lleva cada producto?</label>
+                            <span class="calc-sub">Por ejemplo: 1 código de barras + 1 precio = 2</span>
+                            <div class="range-row">
+                                <input type="range" id="etqProd" min="1" max="8" value="1" step="1"
+                                    oninput="document.getElementById('etqProdV').textContent=this.value;calc()">
+                                <span class="range-val" id="etqProdV">1</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-grid2">
+                            <div class="calc-group" style="margin-bottom:0">
+                                <label class="calc-lbl" for="diasMes">Días trabajados por mes</label>
+                                <input type="number" class="calc-input" id="diasMes" value="22" min="1" max="31" oninput="calc()">
+                            </div>
+                            <div class="calc-group" style="margin-bottom:0">
+                                <label class="calc-lbl" for="medida">Tamaño de etiqueta</label>
+                                <select class="calc-select" id="medida" onchange="calc()">
+                                    <option value="0.003">Pequeña — hasta 4×5 cm</option>
+                                    <option value="0.006" selected>Mediana — 5×10 cm (la más común)</option>
+                                    <option value="0.010">Grande — 10×15 cm</option>
+                                    <option value="0.015">Muy grande — 10×20 cm o mayor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calc-group" style="margin-top:1.625rem">
+                            <label class="calc-lbl" for="tipoImp">Tipo de impresión</label>
+                            <select class="calc-select" id="tipoImp" onchange="toggleRibbon();calc()">
+                                <option value="ribbon">Transferencia térmica (con ribbon)</option>
+                                <option value="directa">Térmica directa (sin ribbon)</option>
+                            </select>
+                        </div>
+
+                        <div id="ribbonGrp" class="calc-group">
+                            <label class="calc-lbl" for="largoRibbon">Largo del ribbon</label>
+                            <select class="calc-select" id="largoRibbon" onchange="calc()">
+                                <option value="74">74 metros — escritorio estándar</option>
+                                <option value="110">110 metros</option>
+                                <option value="300" selected>300 metros — industrial</option>
+                                <option value="450">450 metros — industrial largo</option>
+                                <option value="600">600 metros</option>
+                            </select>
+                        </div>
+
+                        <button class="calc-btn" onclick="calc()">Calcular consumo mensual →</button>
+
+                        <div class="result-box" id="resultado">
+                            <h3 style="margin:0 0 1.1rem;color:#1e3a5f;font-size:1.05rem;font-weight:700;">Estimación para tu operación</h3>
+                            <div class="result-grid">
+                                <div class="result-stat"><span class="result-n" id="rEtqMes">—</span><span class="result-l">Etiquetas / mes</span></div>
+                                <div class="result-stat"><span class="result-n" id="rRollos">—</span><span class="result-l">Rollos de etiquetas / mes<br><small style="font-size:.72rem;color:#94a3b8">(rollos de 1.000 u)</small></span></div>
+                                <div class="result-stat" id="statRibbon"><span class="result-n" id="rRibbon">—</span><span class="result-l">Ribbons / mes</span></div>
+                                <div class="result-stat"><span class="result-n" id="rAnual">—</span><span class="result-l">Etiquetas / año</span></div>
+                            </div>
+                            <div class="result-detail" id="rDetalle"></div>
+                            <div class="tip" id="rTip"></div>
+                            <a class="wa-btn" id="rWA" href="#" target="_blank">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Pedir cotización por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:1.75rem;background:white;border-radius:1rem;padding:1.625rem;border:1px solid #e2e8f0;">
+                    <h3 style="font-size:.97rem;font-weight:700;color:#1e293b;margin:0 0 .875rem;">¿Cómo leer los resultados?</h3>
+                    <div class="howto-grid">
+                        <div><strong style="color:#1e293b;">Rollos de etiquetas:</strong> estimado en rollos de 1.000 u. El conteo exacto depende de tu medida — consultanos para afinar.</div>
+                        <div><strong style="color:#1e293b;">Ribbons:</strong> calculado según el largo del ribbon y el tamaño de etiqueta. Un ribbon rinde más con etiquetas pequeñas.</div>
+                        <div><strong style="color:#1e293b;">Stock de seguridad:</strong> recomendamos tener siempre un mes extra para no parar producción por falta de insumos.</div>
+                        <div><strong style="color:#1e293b;">Variación:</strong> la estimación puede variar ±15% según tipo de ribbon, material y ajustes de impresora.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-cta"><div class="container">
+        <span class="section-badge" style="background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.2)">Sin compromiso</span>
+        <h2>¿Necesitás una cotización exacta?</h2>
+        <p>Con los números de la calculadora podemos darte precio para tu volumen real. Contactanos por WhatsApp y te respondemos en minutos.</p>
+        <div class="product-cta-btns">
+            <a href="https://wa.me/541122656818?text=Hola!%20Quiero%20cotizar%20etiquetas%20y%20ribbons%20para%20mi%20operaci%C3%B3n." target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;background:white;color:var(--primary);border-radius:.75rem;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15)">Consultar por WhatsApp</a>
+            <a href="../index.html#contacto" style="display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;background:transparent;color:white;border:2px solid rgba(255,255,255,.4);border-radius:.75rem;font-weight:600;text-decoration:none">Formulario de contacto</a>
+        </div>
+    </div></section>
+
+    <a href="https://wa.me/541122656818" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+    <script>
+    function fmt(n){return Math.round(n).toLocaleString('es-AR')}
+    function toggleRibbon(){
+        document.getElementById('ribbonGrp').style.display=
+            document.getElementById('tipoImp').value==='ribbon'?'block':'none';
+    }
+    function calc(){
+        const prodDia=parseInt(document.getElementById('prodDia').value)||500;
+        const etqProd=parseInt(document.getElementById('etqProd').value)||1;
+        const diasMes=parseInt(document.getElementById('diasMes').value)||22;
+        const medida=parseFloat(document.getElementById('medida').value)||0.006;
+        const tipo=document.getElementById('tipoImp').value;
+        const largoR=parseInt(document.getElementById('largoRibbon').value)||300;
+
+        const etqMes=prodDia*etqProd*diasMes;
+        const etqAnual=etqMes*12;
+        const rollos=Math.ceil(etqMes/1000);
+        const ribbons=tipo==='ribbon'?Math.ceil((etqMes*medida)/largoR):0;
+
+        document.getElementById('rEtqMes').textContent=fmt(etqMes);
+        document.getElementById('rRollos').textContent=fmt(rollos);
+        document.getElementById('rAnual').textContent=fmt(etqAnual);
+        const sr=document.getElementById('statRibbon');
+        if(tipo==='ribbon'){sr.style.display='block';document.getElementById('rRibbon').textContent=fmt(ribbons);}
+        else{sr.style.display='none';}
+
+        let det=`<strong>Tu operación:</strong><br>
+${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${diasMes} días = <strong>${fmt(etqMes)} etiquetas/mes</strong><br>`;
+        if(tipo==='ribbon') det+=`Consumo estimado de ribbon: <strong>${fmt(ribbons)} rollos/mes</strong> (ribbon ${largoR}m)<br>`;
+        else det+=`Usás térmica directa — no necesitás ribbon.<br>`;
+        det+=`Stock de seguridad recomendado (1 mes extra): <strong>${fmt(etqMes)} etiquetas</strong>`;
+        document.getElementById('rDetalle').innerHTML=det;
+
+        let tip='';
+        if(etqMes>50000) tip='💡 Con tu volumen accedés a precios mayoristas y descuentos importantes por cantidad. Consultanos para una cotización a medida.';
+        else if(etqMes>10000) tip='💡 Con más de 10.000 etiquetas/mes conviene pedir por cajas completas — sale más económico y evitás quiebres de stock.';
+        else tip='💡 Para tu volumen tenemos rollos de 1.000 u sin mínimo de compra. Ideal para demanda variable o para arrancar.';
+        document.getElementById('rTip').textContent=tip;
+
+        let msg=`Hola! Usé la calculadora de Label Tech y quiero cotizar:\n- ${fmt(etqMes)} etiquetas/mes\n- ${fmt(rollos)} rollos/mes (rollo 1.000u)`;
+        if(tipo==='ribbon') msg+=`\n- ${fmt(ribbons)} ribbons/mes`;
+        msg+='\n¿Me podés dar precio?';
+        document.getElementById('rWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
+
+        document.getElementById('resultado').classList.add('show');
+    }
+    calc();
+    </script>
+    <script src="../script.js"></script>
+    <site-footer></site-footer>
+    <script src="../components.js"></script>
+</body>
+</html>

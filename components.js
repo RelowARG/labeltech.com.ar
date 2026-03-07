@@ -40,18 +40,14 @@ class SiteNavbar extends HTMLElement {
     const productos = [
       ['impresoras-zebra.html',        'Impresoras Zebra'],
       ['impresoras-honeywell.html',    'Impresoras Honeywell'],
-      ['impresoras-tsc.html',          'Impresoras TSC'],
-      ['rebobinadores.html',           'Rebobinadores'],
+      ['impresoras-tsc.html', 'Impresoras TSC'],
+      ['rebobinadores.html',         'Rebobinadores'],
       ['ribbons.html',                 'Ribbons'],
       ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
       ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
       ['hilos-plasticos.html',         'Hilos Plásticos'],
       ['rollos-entintadores.html',     'Rollos y Entintadores'],
-      ['etiquetas-ilustracion.html',   'Etiquetas Adhesivas Ilustración'],
-      ['etiquetas-termicas.html',      'Etiquetas Adhesivas Térmicas'],
-      ['etiquetas-opp.html',           'Etiquetas Adhesivas OPP'],
-      ['poliamida-textil.html',        'Poliamida Textil'],
       ['medidas-y-colores.html',       'Medidas y Colores'],
     ];
 
@@ -176,13 +172,26 @@ class SiteFooter extends HTMLElement {
               </ul>
             </div>
             <div class="footer-column">
-              <h4 class="footer-title">Productos</h4>
+              <h4 class="footer-title">Equipos e Insumos</h4>
               <ul class="footer-list">
                 <li><a href="${pp}impresoras-zebra.html">Impresoras Zebra</a></li>
                 <li><a href="${pp}impresoras-honeywell.html">Impresoras Honeywell</a></li>
+                <li><a href="${pp}impresoras-tsc.html">Impresoras TSC</a></li>
                 <li><a href="${pp}ribbons.html">Ribbons</a></li>
                 <li><a href="${pp}lectores-codigo-barras.html">Lectores de Código</a></li>
+                <li><a href="${pp}rebobinadores.html">Rebobinadores</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h4 class="footer-title">Etiquetas y Textil</h4>
+              <ul class="footer-list">
+                <li><a href="${pp}etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
+                <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
+                <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
+                <li><a href="${pp}poliamida-textil.html">Poliamida Textil</a></li>
                 <li><a href="${pp}etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
+                <li><a href="${pp}pistolas-aplicadoras.html">Pistolas Aplicadoras</a></li>
+                <li><a href="${pp}hilos-plasticos.html">Hilos Plásticos</a></li>
                 <li><a href="${pp}medidas-y-colores.html">Medidas y Colores</a></li>
               </ul>
             </div>
