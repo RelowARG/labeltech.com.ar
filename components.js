@@ -40,14 +40,18 @@ class SiteNavbar extends HTMLElement {
     const productos = [
       ['impresoras-zebra.html',        'Impresoras Zebra'],
       ['impresoras-honeywell.html',    'Impresoras Honeywell'],
-      ['impresoras-tsc.html', 'Impresoras TSC'],
-      ['rebobinadores.html',         'Rebobinadores'],
+      ['impresoras-tsc.html',          'Impresoras TSC'],
+      ['rebobinadores.html',           'Rebobinadores'],
       ['ribbons.html',                 'Ribbons'],
       ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
       ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
       ['hilos-plasticos.html',         'Hilos Plásticos'],
       ['rollos-entintadores.html',     'Rollos y Entintadores'],
+      ['etiquetas-ilustracion.html',   'Etiquetas Adhesivas Ilustración'],
+      ['etiquetas-termicas.html',      'Etiquetas Adhesivas Térmicas'],
+      ['etiquetas-opp.html',           'Etiquetas Adhesivas OPP'],
+      ['poliamida-textil.html',        'Poliamida Textil'],
       ['medidas-y-colores.html',       'Medidas y Colores'],
     ];
 
