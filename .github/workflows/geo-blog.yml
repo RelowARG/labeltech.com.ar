@@ -1,0 +1,65 @@
+name: 📍 Generar artículos blog geo-localizados
+
+on:
+  schedule:
+    # Lunes, miércoles y viernes a las 04:10 UTC (01:10 AM Argentina)
+    # — diferente hora que daily-blog.yml para no solapar cuota de Gemini
+    - cron: '10 4 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: 'Cantidad de posts a generar (1-8)'
+        required: false
+        default: '1'
+      localidad:
+        description: 'Forzar una localidad específica (opcional, ej: Caballito)'
+        required: false
+        default: ''
+
+jobs:
+  generate-geo-posts:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🔄 Pull últimos cambios (evitar conflictos)
+        run: |
+          git config --local user.email "blogbot@labeltech.com.ar"
+          git config --local user.name "LabelTech Blog Bot"
+          git pull --rebase origin main
+
+      - name: 📍 Generar post geo-localizado (schedule automático)
+        if: github.event_name == 'schedule'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node .github/scripts/generate-geo-post.js --batch 1
+
+      - name: 📍 Generar posts geo-localizados (ejecución manual)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS="--batch ${{ github.event.inputs.batch }}"
+          if [ -n "${{ github.event.inputs.localidad }}" ]; then
+            ARGS="$ARGS --loc \"${{ github.event.inputs.localidad }}\""
+          fi
+          node .github/scripts/generate-geo-post.js $ARGS
+
+      - name: 📤 Commit y push
+        run: |
+          git add blog/blog-data.json blog/*.html sitemap.xml
+          git diff --staged --quiet || (
+            git commit -m "📍 Blog geo: $(date +'%d/%m/%Y')" &&
+            git push
+          )
