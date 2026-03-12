@@ -37,19 +37,31 @@ class SiteNavbar extends HTMLElement {
       ['industria-general.html',      'Industria General'],
     ];
 
+    // Pillar pages live at root (use p, not pp)
+    const pillarProductos = [
+      ['impresoras-de-etiquetas.html', 'Impresoras de Etiquetas'],
+      ['etiquetas-adhesivas.html',     'Etiquetas Adhesivas'],
+      ['ribbon-transferencia-termica.html', 'Ribbon Transferencia Térmica'],
+    ];
+
+    // Sub-pages live under /productos/ (use pp)
     const productos = [
       ['impresoras-zebra.html',        'Impresoras Zebra'],
       ['impresoras-honeywell.html',    'Impresoras Honeywell'],
-      ['impresoras-tsc.html', 'Impresoras TSC'],
-      ['rebobinadores.html',         'Rebobinadores'],
+      ['impresoras-tsc.html',          'Impresoras TSC'],
+      ['etiquetas-termicas.html',      'Etiquetas Térmicas'],
+      ['etiquetas-opp.html',           'Etiquetas OPP'],
+      ['etiquetas-ilustracion.html',   'Etiquetas Ilustración'],
+      ['etiquetas-void.html',          'Etiquetas VOID'],
+      ['poliamida-textil.html',        'Poliamida Textil'],
       ['ribbons.html',                 'Ribbons'],
+      ['ribbon-por-modelo.html',       'Ribbon por Modelo'],
       ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
       ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
       ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
       ['hilos-plasticos.html',         'Hilos Plásticos'],
-      ['rollos-entintadores.html',     'Rollo Entintadores'],
-      ['etiquetas-void.html',          'Etiquetas VOID'],
-      ['ribbon-por-modelo.html',       'Ribbon por Modelo'],
+      ['rollos-entintadores.html',     'Rollos y Entintadores'],
+      ['rebobinadores.html',           'Rebobinadores'],
       ['medidas-y-colores.html',       'Medidas y Colores'],
     ];
 
@@ -86,6 +98,7 @@ class SiteNavbar extends HTMLElement {
               <li class="nav-dropdown">
                 <a href="${p}index.html#productos" class="nav-link${ac('productos')}">Productos ▾</a>
                 <ul class="dropdown-menu">
+                  ${pillarProductos.map(([f, l]) => `<li><a href="${p}${f}">${l}</a></li>`).join('\n')}
                   ${dropdown(productos, 'productos/')}
                 </ul>
               </li>
@@ -106,10 +119,6 @@ class SiteNavbar extends HTMLElement {
               <li><a href="${p}index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <div class="nav-social">
-              <a href="tel:+541122656818" class="social-link" aria-label="Teléfono" style="display:flex;align-items:center;gap:.35rem;font-size:.8rem;font-weight:600;letter-spacing:.01em;white-space:nowrap;padding:.25rem .5rem;border-radius:.5rem;transition:background .2s;" onmouseover="this.style.background='rgba(59,130,246,.08)'" onmouseout="this.style.background='transparent'">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.19 2 2 0 012 .01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-                <span class="nav-phone-text">11 2265-6818</span>
-              </a>
               <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">${WA_SVG}</a>
               <a href="https://www.instagram.com/labeltech.ar/" target="_blank" class="social-link" aria-label="Instagram">${IG_SVG}</a>
               <a href="https://www.linkedin.com/company/labeltech-ar/" target="_blank" class="social-link" aria-label="LinkedIn">${LI_SVG}</a>
@@ -187,20 +196,23 @@ class SiteFooter extends HTMLElement {
             <div class="footer-column">
               <h4 class="footer-title">Productos y Servicios</h4>
               <ul class="footer-list">
+                <li><a href="${p}impresoras-de-etiquetas.html">Impresoras de Etiquetas</a></li>
                 <li><a href="${pp}impresoras-zebra.html">Impresoras Zebra</a></li>
                 <li><a href="${pp}impresoras-honeywell.html">Impresoras Honeywell</a></li>
                 <li><a href="${pp}impresoras-tsc.html">Impresoras TSC</a></li>
+                <li><a href="${p}etiquetas-adhesivas.html">Etiquetas Adhesivas</a></li>
+                <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
+                <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
+                <li><a href="${pp}etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
+                <li><a href="${pp}etiquetas-void.html">Etiquetas VOID</a></li>
+                <li><a href="${pp}poliamida-textil.html">Poliamida Textil</a></li>
+                <li><a href="${p}ribbon-transferencia-termica.html">Ribbon Transferencia Térmica</a></li>
                 <li><a href="${pp}ribbons.html">Ribbons</a></li>
+                <li><a href="${pp}ribbon-por-modelo.html">Ribbon por Modelo</a></li>
                 <li><a href="${pp}lectores-codigo-barras.html">Lectores de Código</a></li>
                 <li><a href="${pp}rebobinadores.html">Rebobinadores</a></li>
                 <li><a href="${pp}etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
                 <li><a href="${pp}hilos-plasticos.html">Hilos Plásticos</a></li>
-                <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
-                <li><a href="${pp}etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
-                <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
-                <li><a href="${pp}poliamida-textil.html">Poliamida Textil</a></li>
-                <li><a href="${pp}etiquetas-void.html">Etiquetas VOID</a></li>
-                <li><a href="${pp}ribbon-por-modelo.html">Ribbon por Modelo</a></li>
                 <li><a href="${pp}servicio-tecnico.html">Servicio Técnico</a></li>
                 <li><a href="${pp}calculadora-etiquetas.html">Calculadora de Etiquetas</a></li>
               </ul>
@@ -217,14 +229,8 @@ class SiteFooter extends HTMLElement {
               </ul>
               <h4 class="footer-title" style="margin-top:1.5rem">Contacto</h4>
               <ul class="footer-list">
-                <li><a href="tel:+541122656818">+54 11 2265-6818</a></li>
+                <li><a href="https://wa.me/541122656818">+54 11 2265-6818</a></li>
                 <li><a href="mailto:ventas@labeltech.com.ar">ventas@labeltech.com.ar</a></li>
-                <li>
-                  <a href="https://maps.google.com/?q=Perdriel+1485,+Barracas,+Buenos+Aires" target="_blank" rel="noopener" style="display:flex;align-items:flex-start;gap:.4rem;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:3px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    <span>Perdriel 1485 3°C<br>Barracas · CABA · Argentina</span>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

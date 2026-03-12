@@ -21,14 +21,12 @@ const batchArg   = args.indexOf('--batch');
 const BATCH      = batchArg !== -1 ? parseInt(args[batchArg + 1]) || 1 : 1;
 const locArg     = args.indexOf('--loc');
 const FORCE_LOC  = locArg !== -1 ? args[locArg + 1] : null;
-const DELAY_MS   = 12000; // 12 segundos entre llamadas → sin problemas de rate limit
+const DELAY_MS   = 12000;
 
 // ============================================================
 // GEO — todas las localidades de Argentina
-// CABA barrios, GBA partidos, capitales provinciales + provincias
 // ============================================================
 const GEO_LOCATIONS = [
-  // ── CABA — barrios ─────────────────────────────────────────
   { name: 'Barracas',          region: 'CABA',           type: 'barrio'    },
   { name: 'Caballito',         region: 'CABA',           type: 'barrio'    },
   { name: 'Flores',            region: 'CABA',           type: 'barrio'    },
@@ -74,8 +72,6 @@ const GEO_LOCATIONS = [
   { name: 'Monserrat',         region: 'CABA',           type: 'barrio'    },
   { name: 'Recoleta',          region: 'CABA',           type: 'barrio'    },
   { name: 'Barrio Norte',      region: 'CABA',           type: 'barrio'    },
-
-  // ── GBA ZONA NORTE ─────────────────────────────────────────
   { name: 'San Martín',        region: 'GBA Norte',      type: 'partido'   },
   { name: 'Tres de Febrero',   region: 'GBA Norte',      type: 'partido'   },
   { name: 'General San Martín',region: 'GBA Norte',      type: 'partido'   },
@@ -91,20 +87,15 @@ const GEO_LOCATIONS = [
   { name: 'Hurlingham',        region: 'GBA Oeste',      type: 'partido'   },
   { name: 'Ituzaingó',         region: 'GBA Oeste',      type: 'partido'   },
   { name: 'Merlo',             region: 'GBA Oeste',      type: 'partido'   },
-
-  // ── GBA ZONA OESTE ─────────────────────────────────────────
   { name: 'Morón',             region: 'GBA Oeste',      type: 'partido'   },
   { name: 'Haedo',             region: 'GBA Oeste',      type: 'localidad' },
   { name: 'El Palomar',        region: 'GBA Oeste',      type: 'localidad' },
   { name: 'Ramos Mejía',       region: 'GBA Oeste',      type: 'localidad' },
   { name: 'La Matanza',        region: 'GBA Oeste',      type: 'partido'   },
-  { name: 'Ramos Mejía',       region: 'GBA Oeste',      type: 'localidad' },
   { name: 'San Justo',         region: 'GBA Oeste',      type: 'localidad' },
   { name: 'Tapiales',          region: 'GBA Oeste',      type: 'localidad' },
   { name: 'Laferrere',         region: 'GBA Oeste',      type: 'localidad' },
   { name: 'Gonzalez Catán',    region: 'GBA Oeste',      type: 'localidad' },
-
-  // ── GBA ZONA SUR ───────────────────────────────────────────
   { name: 'Lanús',             region: 'GBA Sur',        type: 'partido'   },
   { name: 'Avellaneda',        region: 'GBA Sur',        type: 'partido'   },
   { name: 'Quilmes',           region: 'GBA Sur',        type: 'partido'   },
@@ -121,8 +112,6 @@ const GEO_LOCATIONS = [
   { name: 'Monte Grande',      region: 'GBA Sur',        type: 'localidad' },
   { name: 'Don Bosco',         region: 'GBA Sur',        type: 'localidad' },
   { name: 'Wilde',             region: 'GBA Sur',        type: 'localidad' },
-
-  // ── PROVINCIA DE BUENOS AIRES (interior) ───────────────────
   { name: 'La Plata',          region: 'Buenos Aires',   type: 'ciudad'    },
   { name: 'Mar del Plata',     region: 'Buenos Aires',   type: 'ciudad'    },
   { name: 'Bahía Blanca',      region: 'Buenos Aires',   type: 'ciudad'    },
@@ -138,8 +127,6 @@ const GEO_LOCATIONS = [
   { name: 'Azul',              region: 'Buenos Aires',   type: 'ciudad'    },
   { name: 'Necochea',          region: 'Buenos Aires',   type: 'ciudad'    },
   { name: 'Tres Arroyos',      region: 'Buenos Aires',   type: 'ciudad'    },
-
-  // ── CÓRDOBA ────────────────────────────────────────────────
   { name: 'Córdoba',           region: 'Córdoba',        type: 'ciudad'    },
   { name: 'Río Cuarto',        region: 'Córdoba',        type: 'ciudad'    },
   { name: 'Villa María',       region: 'Córdoba',        type: 'ciudad'    },
@@ -148,111 +135,68 @@ const GEO_LOCATIONS = [
   { name: 'Villa Carlos Paz',  region: 'Córdoba',        type: 'ciudad'    },
   { name: 'Cosquín',           region: 'Córdoba',        type: 'ciudad'    },
   { name: 'Bell Ville',        region: 'Córdoba',        type: 'ciudad'    },
-
-  // ── SANTA FE ───────────────────────────────────────────────
   { name: 'Rosario',           region: 'Santa Fe',       type: 'ciudad'    },
   { name: 'Santa Fe',          region: 'Santa Fe',       type: 'ciudad'    },
   { name: 'Rafaela',           region: 'Santa Fe',       type: 'ciudad'    },
   { name: 'Venado Tuerto',     region: 'Santa Fe',       type: 'ciudad'    },
   { name: 'Reconquista',       region: 'Santa Fe',       type: 'ciudad'    },
-  { name: 'Villa Gobernador Gálvez', region: 'Santa Fe', type: 'ciudad'   },
-
-  // ── MENDOZA ────────────────────────────────────────────────
+  { name: 'Villa Gobernador Gálvez', region: 'Santa Fe', type: 'ciudad'    },
   { name: 'Mendoza',           region: 'Mendoza',        type: 'ciudad'    },
   { name: 'San Rafael',        region: 'Mendoza',        type: 'ciudad'    },
   { name: 'Godoy Cruz',        region: 'Mendoza',        type: 'ciudad'    },
   { name: 'Luján de Cuyo',     region: 'Mendoza',        type: 'ciudad'    },
   { name: 'Maipú',             region: 'Mendoza',        type: 'ciudad'    },
-
-  // ── TUCUMÁN ────────────────────────────────────────────────
   { name: 'San Miguel de Tucumán', region: 'Tucumán',    type: 'ciudad'    },
   { name: 'Tafí Viejo',        region: 'Tucumán',        type: 'ciudad'    },
   { name: 'Concepción',        region: 'Tucumán',        type: 'ciudad'    },
-
-  // ── ENTRE RÍOS ─────────────────────────────────────────────
   { name: 'Paraná',            region: 'Entre Ríos',     type: 'ciudad'    },
   { name: 'Concordia',         region: 'Entre Ríos',     type: 'ciudad'    },
   { name: 'Gualeguaychú',      region: 'Entre Ríos',     type: 'ciudad'    },
   { name: 'Colón',             region: 'Entre Ríos',     type: 'ciudad'    },
-
-  // ── SALTA ──────────────────────────────────────────────────
   { name: 'Salta',             region: 'Salta',          type: 'ciudad'    },
   { name: 'Tartagal',          region: 'Salta',          type: 'ciudad'    },
   { name: 'Orán',              region: 'Salta',          type: 'ciudad'    },
-
-  // ── MISIONES ───────────────────────────────────────────────
   { name: 'Posadas',           region: 'Misiones',       type: 'ciudad'    },
   { name: 'Oberá',             region: 'Misiones',       type: 'ciudad'    },
   { name: 'Eldorado',          region: 'Misiones',       type: 'ciudad'    },
-
-  // ── CORRIENTES ─────────────────────────────────────────────
   { name: 'Corrientes',        region: 'Corrientes',     type: 'ciudad'    },
   { name: 'Goya',              region: 'Corrientes',     type: 'ciudad'    },
   { name: 'Paso de los Libres',region: 'Corrientes',     type: 'ciudad'    },
-
-  // ── CHACO ──────────────────────────────────────────────────
   { name: 'Resistencia',       region: 'Chaco',          type: 'ciudad'    },
   { name: 'Presidencia Roque Sáenz Peña', region: 'Chaco', type: 'ciudad' },
-
-  // ── FORMOSA ────────────────────────────────────────────────
   { name: 'Formosa',           region: 'Formosa',        type: 'ciudad'    },
-
-  // ── JUJUY ──────────────────────────────────────────────────
-  { name: 'San Salvador de Jujuy', region: 'Jujuy',      type: 'ciudad'   },
+  { name: 'San Salvador de Jujuy', region: 'Jujuy',      type: 'ciudad'    },
   { name: 'Palpalá',           region: 'Jujuy',          type: 'ciudad'    },
-
-  // ── SANTIAGO DEL ESTERO ────────────────────────────────────
   { name: 'Santiago del Estero', region: 'Santiago del Estero', type: 'ciudad' },
   { name: 'La Banda',          region: 'Santiago del Estero', type: 'ciudad'   },
-
-  // ── CATAMARCA ──────────────────────────────────────────────
   { name: 'San Fernando del Valle de Catamarca', region: 'Catamarca', type: 'ciudad' },
-
-  // ── LA RIOJA ───────────────────────────────────────────────
   { name: 'La Rioja',          region: 'La Rioja',       type: 'ciudad'    },
-
-  // ── SAN JUAN ───────────────────────────────────────────────
   { name: 'San Juan',          region: 'San Juan',       type: 'ciudad'    },
   { name: 'Rivadavia',         region: 'San Juan',       type: 'ciudad'    },
-
-  // ── SAN LUIS ───────────────────────────────────────────────
   { name: 'San Luis',          region: 'San Luis',       type: 'ciudad'    },
   { name: 'Villa Mercedes',    region: 'San Luis',       type: 'ciudad'    },
-
-  // ── LA PAMPA ───────────────────────────────────────────────
   { name: 'Santa Rosa',        region: 'La Pampa',       type: 'ciudad'    },
   { name: 'General Pico',      region: 'La Pampa',       type: 'ciudad'    },
-
-  // ── NEUQUÉN ────────────────────────────────────────────────
   { name: 'Neuquén',           region: 'Neuquén',        type: 'ciudad'    },
   { name: 'Zapala',            region: 'Neuquén',        type: 'ciudad'    },
   { name: 'Cutral-Có',         region: 'Neuquén',        type: 'ciudad'    },
-
-  // ── RÍO NEGRO ──────────────────────────────────────────────
   { name: 'Viedma',            region: 'Río Negro',      type: 'ciudad'    },
   { name: 'Bariloche',         region: 'Río Negro',      type: 'ciudad'    },
   { name: 'General Roca',      region: 'Río Negro',      type: 'ciudad'    },
   { name: 'Cipolletti',        region: 'Río Negro',      type: 'ciudad'    },
-
-  // ── CHUBUT ─────────────────────────────────────────────────
   { name: 'Rawson',            region: 'Chubut',         type: 'ciudad'    },
   { name: 'Comodoro Rivadavia',region: 'Chubut',         type: 'ciudad'    },
   { name: 'Trelew',            region: 'Chubut',         type: 'ciudad'    },
   { name: 'Puerto Madryn',     region: 'Chubut',         type: 'ciudad'    },
-
-  // ── SANTA CRUZ ─────────────────────────────────────────────
   { name: 'Río Gallegos',      region: 'Santa Cruz',     type: 'ciudad'    },
   { name: 'El Calafate',       region: 'Santa Cruz',     type: 'ciudad'    },
   { name: 'Caleta Olivia',     region: 'Santa Cruz',     type: 'ciudad'    },
-
-  // ── TIERRA DEL FUEGO ───────────────────────────────────────
   { name: 'Ushuaia',           region: 'Tierra del Fuego', type: 'ciudad'  },
   { name: 'Río Grande',        region: 'Tierra del Fuego', type: 'ciudad'  },
 ];
 
 // ============================================================
 // PLANTILLAS DE TEMAS GEO — 12 variantes por localidad
-// El script elige la menos usada para esa zona
 // ============================================================
 const GEO_TEMPLATES = [
   {
@@ -318,15 +262,12 @@ const GEO_TEMPLATES = [
 ];
 
 // ============================================================
-// Rutas (idénticas al script original)
+// Rutas
 // ============================================================
 const blogDataPath = path.join(__dirname, '../../blog/blog-data.json');
 const blogDir      = path.join(__dirname, '../../blog');
 const sitemapPath  = path.join(__dirname, '../../sitemap.xml');
 
-// ============================================================
-// Leer blog-data.json
-// ============================================================
 function loadArticles() {
   if (!fs.existsSync(blogDataPath)) return [];
   try {
@@ -338,46 +279,30 @@ function loadArticles() {
   }
 }
 
-// ============================================================
-// Elegir localidad — evitar repetir las recientes
-// ============================================================
 function chooseLoc(articles) {
   if (FORCE_LOC) {
     const found = GEO_LOCATIONS.find(l => l.name.toLowerCase() === FORCE_LOC.toLowerCase());
     if (found) return found;
     console.log(`⚠️  Localidad "${FORCE_LOC}" no encontrada, eligiendo aleatoriamente`);
   }
-  // Localidades ya usadas en los últimos 200 posts
   const usedLocs = new Set(
-    articles.slice(0, 200)
-      .filter(a => a.geo_loc)
-      .map(a => a.geo_loc)
+    articles.slice(0, 200).filter(a => a.geo_loc).map(a => a.geo_loc)
   );
   const available = GEO_LOCATIONS.filter(l => !usedLocs.has(l.name));
   const pool = available.length > 0 ? available : GEO_LOCATIONS;
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
-// ============================================================
-// Elegir template — evitar repetir para la misma región reciente
-// ============================================================
 function chooseTemplate(loc, articles) {
   const usedTemplates = new Set(
-    articles.slice(0, 50)
-      .filter(a => a.geo_region === loc.region)
-      .map(a => a.geo_template_idx)
+    articles.slice(0, 50).filter(a => a.geo_region === loc.region).map(a => a.geo_template_idx)
   );
-  const available = GEO_TEMPLATES
-    .map((t, i) => ({ t, i }))
-    .filter(({ i }) => !usedTemplates.has(i));
+  const available = GEO_TEMPLATES.map((t, i) => ({ t, i })).filter(({ i }) => !usedTemplates.has(i));
   const pool = available.length > 0 ? available : GEO_TEMPLATES.map((t, i) => ({ t, i }));
   const picked = pool[Math.floor(Math.random() * pool.length)];
   return { template: picked.t, idx: picked.i };
 }
 
-// ============================================================
-// Slug limpio
-// ============================================================
 function makeSlug(str) {
   return str.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -387,9 +312,6 @@ function makeSlug(str) {
     .replace(/-+$/, '');
 }
 
-// ============================================================
-// Generar HTML del post individual (mismo estilo que el original)
-// ============================================================
 function generatePostHTML(article) {
   const catColors = {
     'Ribbons': '#3b82f6', 'Impresoras': '#7c3aed', 'Servicio Técnico': '#059669',
@@ -419,14 +341,26 @@ function generatePostHTML(article) {
                 </li>
                 <li class="nav-dropdown"><a href="../index.html#productos" class="nav-link">Productos ▾</a>
                     <ul class="dropdown-menu">
+                        <li><a href="../impresoras-de-etiquetas.html">Impresoras de Etiquetas</a></li>
                         <li><a href="../productos/impresoras-zebra.html">Impresoras Zebra</a></li>
                         <li><a href="../productos/impresoras-honeywell.html">Impresoras Honeywell</a></li>
+                        <li><a href="../productos/impresoras-tsc.html">Impresoras TSC</a></li>
+                        <li><a href="../etiquetas-adhesivas.html">Etiquetas Adhesivas</a></li>
+                        <li><a href="../productos/etiquetas-termicas.html">Etiquetas Térmicas</a></li>
+                        <li><a href="../productos/etiquetas-opp.html">Etiquetas OPP</a></li>
+                        <li><a href="../productos/etiquetas-ilustracion.html">Etiquetas Ilustración</a></li>
+                        <li><a href="../productos/etiquetas-void.html">Etiquetas VOID</a></li>
+                        <li><a href="../productos/poliamida-textil.html">Poliamida Textil</a></li>
+                        <li><a href="../ribbon-transferencia-termica.html">Ribbon Transferencia Térmica</a></li>
                         <li><a href="../productos/ribbons.html">Ribbons</a></li>
+                        <li><a href="../productos/ribbon-por-modelo.html">Ribbon por Modelo</a></li>
                         <li><a href="../productos/lectores-codigo-barras.html">Lectores de Código de Barras</a></li>
                         <li><a href="../productos/etiquetadoras-manuales.html">Etiquetadoras Manuales</a></li>
                         <li><a href="../productos/pistolas-aplicadoras.html">Pistolas Aplicadoras</a></li>
                         <li><a href="../productos/hilos-plasticos.html">Hilos Plásticos</a></li>
                         <li><a href="../productos/rollos-entintadores.html">Rollos y Entintadores</a></li>
+                        <li><a href="../productos/rebobinadores.html">Rebobinadores</a></li>
+                        <li><a href="../productos/medidas-y-colores.html">Medidas y Colores</a></li>
                     </ul>
                 </li>
                 <li class="nav-dropdown"><a href="../index.html#servicios" class="nav-link">Servicios ▾</a>
@@ -434,10 +368,12 @@ function generatePostHTML(article) {
                         <li><a href="../productos/servicio-impresion.html">Servicio de Impresión</a></li>
                         <li><a href="../productos/servicio-tecnico.html">Servicio Técnico</a></li>
                         <li><a href="../productos/software.html">Software</a></li>
+                        <li><a href="../productos/calculadora-etiquetas.html">Calculadora de Etiquetas</a></li>
                     </ul>
                 </li>
                 <li><a href="index.html" class="nav-link active">Blog</a></li>
                 <li><a href="../nosotros.html" class="nav-link">Nosotros</a></li>
+                <li><a href="../sustentabilidad.html" class="nav-link">Sustentabilidad</a></li>
                 <li><a href="../faq.html" class="nav-link">FAQ</a></li>
                 <li><a href="../index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
@@ -457,10 +393,10 @@ function generatePostHTML(article) {
     <title>${article.title} | Blog Label Tech Argentina</title>
     <meta name="description" content="${article.excerpt}">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.labeltech.com.ar/blog/${article.slug}.html">
+    <link rel="canonical" href="https://labeltech.com.ar/blog/${article.slug}.html">
     <meta property="og:title" content="${article.title}">
     <meta property="og:description" content="${article.excerpt}">
-    <meta property="og:url" content="https://www.labeltech.com.ar/blog/${article.slug}.html">
+    <meta property="og:url" content="https://labeltech.com.ar/blog/${article.slug}.html">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="es_AR">
     <meta property="article:published_time" content="${article.dateISO}">
@@ -468,7 +404,7 @@ function generatePostHTML(article) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${article.title.replace(/"/g, '\\"')}","description":"${article.excerpt.replace(/"/g, '\\"')}","datePublished":"${article.dateISO}","author":{"@type":"Organization","name":"Label Tech Argentina"},"publisher":{"@type":"Organization","name":"Label Tech Argentina","logo":{"@type":"ImageObject","url":"https://www.labeltech.com.ar/public/images/logolabel.png"}},"url":"https://www.labeltech.com.ar/blog/${article.slug}.html"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"${article.title.replace(/"/g, '\\"')}","description":"${article.excerpt.replace(/"/g, '\\"')}","datePublished":"${article.dateISO}","author":{"@type":"Organization","name":"Label Tech Argentina"},"publisher":{"@type":"Organization","name":"Label Tech Argentina","logo":{"@type":"ImageObject","url":"https://labeltech.com.ar/public/images/logolabel.png"}},"url":"https://labeltech.com.ar/blog/${article.slug}.html"}</script>
     <style>
         .post-hero{padding:6rem 0 3rem;background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:white}
         .post-cat{padding:.25rem .875rem;background:${catColor}22;border:1px solid ${catColor}44;border-radius:2rem;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:${catColor}}
@@ -553,13 +489,10 @@ function generatePostHTML(article) {
 </html>`;
 }
 
-// ============================================================
-// Actualizar sitemap
-// ============================================================
 function updateSitemap(slug, dateISO) {
   if (!fs.existsSync(sitemapPath)) return;
   let sitemap = fs.readFileSync(sitemapPath, 'utf8');
-  const url = `https://www.labeltech.com.ar/blog/${slug}.html`;
+  const url = `https://labeltech.com.ar/blog/${slug}.html`;
   if (sitemap.includes(url)) return;
   const newUrl = `  <url><loc>${url}</loc><lastmod>${dateISO}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>\n`;
   sitemap = sitemap.replace('</urlset>', newUrl + '</urlset>');
@@ -567,20 +500,16 @@ function updateSitemap(slug, dateISO) {
   console.log(`   🗺️  Sitemap actualizado: ${slug}.html`);
 }
 
-// ============================================================
-// Llamada a Gemini y guardado — devuelve Promise
-// ============================================================
 function generateOne(postNum, totalPosts) {
   return new Promise((resolve, reject) => {
     const articles = loadArticles();
     const loc      = chooseLoc(articles);
     const { template, idx } = chooseTemplate(loc, articles);
-
     const topic    = template.template(loc);
     const keywords = template.keywords(loc);
     const category = template.category;
 
-    console.log(`\n[${ postNum}/${totalPosts}] 📍 ${loc.name} (${loc.region}) — ${category}`);
+    console.log(`\n[${postNum}/${totalPosts}] 📍 ${loc.name} (${loc.region}) — ${category}`);
     console.log(`   📝 "${topic}"`);
 
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
@@ -638,20 +567,15 @@ Estructura exacta:
         try {
           const response = JSON.parse(data);
           if (response.error) throw new Error(response.error.message);
-
           let rawText = response.candidates?.[0]?.content?.parts?.[0]?.text;
           if (!rawText) throw new Error('Respuesta vacía de Gemini');
-
           rawText = rawText.replace(/```json|```/g, '').trim();
-
           let article;
           try {
             article = JSON.parse(rawText.replace(/\n/g, '\\n').replace(/\r/g, '\\r'));
           } catch (e) {
             article = JSON.parse(rawText);
           }
-
-          // Metadata
           const today = new Date();
           article.category         = category;
           article.topic_key        = topic.slice(0, 30);
@@ -666,24 +590,19 @@ Estructura exacta:
           article.geo_type         = loc.type;
           article.geo_template_idx = idx;
 
-          // Guardar en blog-data.json
           const freshArticles = loadArticles();
           freshArticles.unshift(article);
           fs.writeFileSync(blogDataPath, JSON.stringify(freshArticles, null, 2), 'utf8');
           console.log(`   ✅ blog-data.json → ${freshArticles.length} posts`);
 
-          // Generar HTML individual
           const htmlContent = generatePostHTML(article);
           const htmlPath    = path.join(blogDir, `${article.slug}.html`);
           fs.writeFileSync(htmlPath, htmlContent, 'utf8');
           console.log(`   ✅ HTML → blog/${article.slug}.html`);
 
-          // Sitemap
           updateSitemap(article.slug, article.dateISO);
-
           console.log(`   🎉 "${article.title}"`);
           resolve(article.slug);
-
         } catch (e) {
           console.error(`   ❌ Error procesando respuesta: ${e.message}`);
           console.log('   --- RAW PREVIEW ---');
@@ -699,14 +618,8 @@ Estructura exacta:
   });
 }
 
-// ============================================================
-// Sleep helper
-// ============================================================
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-// ============================================================
-// MAIN — corre batch secuencial
-// ============================================================
 async function main() {
   console.log(`\n🚀 generate-geo-post.js — LabelTech Argentina`);
   console.log(`   Posts a generar: ${BATCH}`);
@@ -714,7 +627,6 @@ async function main() {
   console.log(`   Delay entre posts: ${DELAY_MS / 1000}s\n`);
 
   const results = { ok: [], fail: [] };
-
   for (let i = 1; i <= BATCH; i++) {
     try {
       const slug = await generateOne(i, BATCH);
@@ -723,19 +635,14 @@ async function main() {
       console.error(`   ❌ Post ${i} falló: ${e.message}`);
       results.fail.push(i);
     }
-
-    // Delay entre posts (excepto el último)
     if (i < BATCH) {
       console.log(`   ⏳ Esperando ${DELAY_MS / 1000}s antes del próximo...`);
       await sleep(DELAY_MS);
     }
   }
-
   console.log(`\n─────────────────────────────────────────`);
   console.log(`✅ Posts generados: ${results.ok.length}/${BATCH}`);
-  if (results.fail.length > 0) {
-    console.log(`❌ Fallidos: posts #${results.fail.join(', #')}`);
-  }
+  if (results.fail.length > 0) console.log(`❌ Fallidos: posts #${results.fail.join(', #')}`);
   console.log(`─────────────────────────────────────────\n`);
 }
 
