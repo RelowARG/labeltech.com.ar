@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../productos.css">
     <style>
         .calc-wrap{max-width:820px;margin:0 auto}
+
+        /* Tabs */
+        .calc-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;background:#f1f5f9;border-radius:1rem;padding:.375rem}
+        .calc-tab{flex:1;padding:.65rem 1rem;border:none;background:transparent;border-radius:.7rem;font-size:.875rem;font-weight:600;color:#64748b;cursor:pointer;font-family:inherit;transition:all .2s;text-align:center;line-height:1.3}
+        .calc-tab.active{background:white;color:#1e3a5f;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        .calc-tab:hover:not(.active){color:#1e3a5f}
+        .calc-panel{display:none}
+        .calc-panel.active{display:block}
+
         .calc-card{background:white;border-radius:1.25rem;box-shadow:0 4px 24px rgba(0,0,0,.09);border:1px solid #e2e8f0;overflow:hidden}
         .calc-head{background:linear-gradient(135deg,#1e3a5f,#2563eb);padding:1.75rem 2.25rem;color:white}
         .calc-head h2{font-size:1.35rem;margin:0 0 .35rem;font-weight:800}
@@ -47,6 +56,16 @@
         .wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:#25d366;color:white;padding:.8rem 1.6rem;border-radius:.75rem;font-weight:700;text-decoration:none;margin-top:1.1rem;font-size:.9rem}
         .howto-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:.855rem;color:#475569;line-height:1.65}
         @media(max-width:560px){.howto-grid{grid-template-columns:1fr}}
+
+        .result-box-inv{display:none;background:#f0fdf4;border:2px solid #bbf7d0;border-radius:1rem;padding:1.75rem;margin-top:1.75rem}
+        .result-box-inv.show{display:block}
+        .result-box-inv .result-n{color:#16a34a}
+
+        .result-box-poli{display:none;background:#faf5ff;border:2px solid #e9d5ff;border-radius:1rem;padding:1.75rem;margin-top:1.75rem}
+        .result-box-poli.show{display:block}
+        .result-box-poli .result-n{color:#7c3aed}
+
+        @media(max-width:600px){.calc-tab{font-size:.78rem;padding:.6rem .5rem}}
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Etiquetas Label Tech","description":"Calculá cuántas etiquetas y ribbons necesitás por mes según tu producción.","url":"https://www.labeltech.com.ar/productos/calculadora-etiquetas.html","applicationCategory":"BusinessApplication","provider":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}</script>
 <script type="application/ld+json">
@@ -113,13 +132,22 @@
     <section style="padding:4rem 0;background:#f8fafc;">
         <div class="container">
             <div class="calc-wrap">
+
+                <!-- Tabs de navegación -->
+                <div class="calc-tabs" role="tablist">
+                    <button class="calc-tab active" role="tab" onclick="switchTab('consumo',this)">Consumo mensual</button>
+                    <button class="calc-tab" role="tab" onclick="switchTab('inversa',this)">Rendimiento de ribbon</button>
+                    <button class="calc-tab" role="tab" onclick="switchTab('poliamida',this)">Poliamida textil</button>
+                </div>
+
+                <!-- ══ TAB 1: Consumo mensual (calculadora original) ══ -->
+                <div class="calc-panel active" id="panel-consumo">
                 <div class="calc-card">
                     <div class="calc-head">
                         <h2>Calculá tu consumo mensual</h2>
                         <p>Completá los campos con tu operación real — podés usar estimaciones.</p>
                     </div>
                     <div class="calc-body">
-
                         <div class="calc-group">
                             <label class="calc-lbl" for="prodDia">¿Cuántos productos etiquetás por día?</label>
                             <span class="calc-sub">Promedio en un día hábil normal, no el pico máximo</span>
@@ -129,7 +157,6 @@
                                 <span class="range-val" id="prodDiaV">500</span>
                             </div>
                         </div>
-
                         <div class="calc-group">
                             <label class="calc-lbl" for="etqProd">¿Cuántas etiquetas lleva cada producto?</label>
                             <span class="calc-sub">Por ejemplo: 1 código de barras + 1 precio = 2</span>
@@ -139,7 +166,6 @@
                                 <span class="range-val" id="etqProdV">1</span>
                             </div>
                         </div>
-
                         <div class="calc-grid2">
                             <div class="calc-group" style="margin-bottom:0">
                                 <label class="calc-lbl" for="diasMes">Días trabajados por mes</label>
@@ -155,7 +181,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="calc-group" style="margin-top:1.625rem">
                             <label class="calc-lbl" for="tipoImp">Tipo de impresión</label>
                             <select class="calc-select" id="tipoImp" onchange="toggleRibbon();calc()">
@@ -163,7 +188,6 @@
                                 <option value="directa">Térmica directa (sin ribbon)</option>
                             </select>
                         </div>
-
                         <div id="ribbonGrp" class="calc-group">
                             <label class="calc-lbl" for="largoRibbon">Largo del ribbon</label>
                             <select class="calc-select" id="largoRibbon" onchange="calc()">
@@ -174,9 +198,7 @@
                                 <option value="600">600 metros</option>
                             </select>
                         </div>
-
                         <button class="calc-btn" onclick="calc()">Calcular consumo mensual →</button>
-
                         <div class="result-box" id="resultado">
                             <h3 style="margin:0 0 1.1rem;color:#1e3a5f;font-size:1.05rem;font-weight:700;">Estimación para tu operación</h3>
                             <div class="result-grid">
@@ -194,7 +216,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div style="margin-top:1.75rem;background:white;border-radius:1rem;padding:1.625rem;border:1px solid #e2e8f0;">
                     <h3 style="font-size:.97rem;font-weight:700;color:#1e293b;margin:0 0 .875rem;">¿Cómo leer los resultados?</h3>
                     <div class="howto-grid">
@@ -204,6 +225,182 @@
                         <div><strong style="color:#1e293b;">Variación:</strong> la estimación puede variar ±15% según tipo de ribbon, material y ajustes de impresora.</div>
                     </div>
                 </div>
+                </div><!-- /panel-consumo -->
+
+                <!-- ══ TAB 2: Rendimiento de ribbon (calculadora inversa) ══ -->
+                <div class="calc-panel" id="panel-inversa">
+                <div class="calc-card">
+                    <div class="calc-head" style="background:linear-gradient(135deg,#065f46,#059669)">
+                        <h2>¿Cuánto rinde tu ribbon o poliamida?</h2>
+                        <p>Ingresá las características del ribbon y la etiqueta — te decimos cuántas impresiones salen de cada rollo.</p>
+                    </div>
+                    <div class="calc-body">
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="invTipo">Tipo de insumo</label>
+                            <select class="calc-select" id="invTipo" onchange="toggleInvTipo();calcInversa()">
+                                <option value="ribbon">Ribbon para etiquetas adhesivas</option>
+                                <option value="poliamida">Poliamida textil</option>
+                            </select>
+                        </div>
+
+                        <!-- Campos ribbon -->
+                        <div id="invRibbonCampos">
+                            <div class="calc-grid2">
+                                <div class="calc-group" style="margin-bottom:0">
+                                    <label class="calc-lbl" for="invLargoRibbon">Largo del ribbon</label>
+                                    <select class="calc-select" id="invLargoRibbon" onchange="calcInversa()">
+                                        <option value="74">74 metros</option>
+                                        <option value="110">110 metros</option>
+                                        <option value="300" selected>300 metros</option>
+                                        <option value="450">450 metros</option>
+                                        <option value="600">600 metros</option>
+                                    </select>
+                                </div>
+                                <div class="calc-group" style="margin-bottom:0">
+                                    <label class="calc-lbl" for="invMedidaEtq">Tamaño de etiqueta</label>
+                                    <select class="calc-select" id="invMedidaEtq" onchange="calcInversa()">
+                                        <option value="0.05">Pequeña — hasta 4×5 cm</option>
+                                        <option value="0.10" selected>Mediana — 5×10 cm</option>
+                                        <option value="0.15">Grande — 10×15 cm</option>
+                                        <option value="0.20">Muy grande — 10×20 cm+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos poliamida -->
+                        <div id="invPoliCampos" style="display:none">
+                            <div class="calc-grid2">
+                                <div class="calc-group" style="margin-bottom:0">
+                                    <label class="calc-lbl" for="invLargoPoli">Largo del rollo de poliamida</label>
+                                    <select class="calc-select" id="invLargoPoli" onchange="calcInversa()">
+                                        <option value="100" selected>100 metros — escritorio</option>
+                                        <option value="200">200 metros — industrial</option>
+                                    </select>
+                                </div>
+                                <div class="calc-group" style="margin-bottom:0">
+                                    <label class="calc-lbl" for="invLargoEtqPoli">Largo de la etiqueta (cm)</label>
+                                    <input type="number" class="calc-input" id="invLargoEtqPoli" value="4" min="1" max="50" step="0.5" oninput="calcInversa()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calc-group" style="margin-top:1.625rem">
+                            <label class="calc-lbl" for="invCantRollos">¿Cuántos rollos tenés / querés comprar?</label>
+                            <span class="calc-sub">Para saber cuántas impresiones totales y cuántos días te duran</span>
+                            <div class="range-row">
+                                <input type="range" id="invCantRollos" min="1" max="50" value="5" step="1"
+                                    oninput="document.getElementById('invCantRollosV').textContent=this.value;calcInversa()">
+                                <span class="range-val" id="invCantRollosV">5</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="invProdDia">Producción diaria (etiquetas/día)</label>
+                            <span class="calc-sub">Para estimar cuántos días te dura el stock</span>
+                            <div class="range-row">
+                                <input type="range" id="invProdDia" min="50" max="10000" value="500" step="50"
+                                    oninput="document.getElementById('invProdDiaV').textContent=Number(this.value).toLocaleString('es-AR');calcInversa()">
+                                <span class="range-val" id="invProdDiaV">500</span>
+                            </div>
+                        </div>
+
+                        <button class="calc-btn" style="background:linear-gradient(135deg,#065f46,#059669)" onclick="calcInversa()">Calcular rendimiento →</button>
+
+                        <div class="result-box-inv" id="resultadoInv">
+                            <h3 style="margin:0 0 1.1rem;color:#065f46;font-size:1.05rem;font-weight:700;">Rendimiento estimado</h3>
+                            <div class="result-grid">
+                                <div class="result-stat"><span class="result-n" id="invRImpPorRollo">—</span><span class="result-l">Impresiones por rollo</span></div>
+                                <div class="result-stat"><span class="result-n" id="invRImpTotal">—</span><span class="result-l">Impresiones totales</span></div>
+                                <div class="result-stat"><span class="result-n" id="invRDias">—</span><span class="result-l">Días de producción</span></div>
+                                <div class="result-stat"><span class="result-n" id="invRMeses">—</span><span class="result-l">Meses aprox.</span></div>
+                            </div>
+                            <div class="result-detail" id="invRDetalle"></div>
+                            <div class="tip" id="invRTip"></div>
+                            <a class="wa-btn" id="invRWA" href="#" target="_blank" style="background:#059669">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Consultar stock por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </div><!-- /panel-inversa -->
+
+                <!-- ══ TAB 3: Poliamida textil ══ -->
+                <div class="calc-panel" id="panel-poliamida">
+                <div class="calc-card">
+                    <div class="calc-head" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+                        <h2>Calculadora de Poliamida Textil</h2>
+                        <p>¿Cuántos rollos de poliamida necesitás para tu producción? Ingresá los datos de tu etiqueta y tu volumen.</p>
+                    </div>
+                    <div class="calc-body">
+                        <div class="calc-grid2">
+                            <div class="calc-group">
+                                <label class="calc-lbl" for="poliAncho">Ancho de la cinta</label>
+                                <select class="calc-select" id="poliAncho" onchange="calcPoli()">
+                                    <option value="20">20 mm</option>
+                                    <option value="25" selected>25 mm (la más común)</option>
+                                    <option value="30">30 mm</option>
+                                    <option value="40">40 mm</option>
+                                    <option value="50">50 mm</option>
+                                </select>
+                            </div>
+                            <div class="calc-group">
+                                <label class="calc-lbl" for="poliLargoEtq">Largo de la etiqueta (cm)</label>
+                                <span class="calc-sub">Ej: 4 para una etiqueta de 4 cm</span>
+                                <input type="number" class="calc-input" id="poliLargoEtq" value="4" min="1" max="50" step="0.5" oninput="calcPoli()">
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="poliTipoRollo">Tipo de rollo</label>
+                            <select class="calc-select" id="poliTipoRollo" onchange="calcPoli()">
+                                <option value="100" selected>100 metros — impresoras de escritorio</option>
+                                <option value="200">200 metros — impresoras industriales</option>
+                            </select>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="poliPrendas">Prendas por mes</label>
+                            <span class="calc-sub">Cantidad de prendas o productos que etiquetás mensualmente</span>
+                            <div class="range-row">
+                                <input type="range" id="poliPrendas" min="100" max="50000" value="2000" step="100"
+                                    oninput="document.getElementById('poliPrendasV').textContent=Number(this.value).toLocaleString('es-AR');calcPoli()">
+                                <span class="range-val" id="poliPrendasV">2.000</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-lbl" for="poliEtqPrenda">Etiquetas por prenda</label>
+                            <span class="calc-sub">Ej: talla + contenido + precio = 3 etiquetas</span>
+                            <div class="range-row">
+                                <input type="range" id="poliEtqPrenda" min="1" max="6" value="2" step="1"
+                                    oninput="document.getElementById('poliEtqPrendaV').textContent=this.value;calcPoli()">
+                                <span class="range-val" id="poliEtqPrendaV">2</span>
+                            </div>
+                        </div>
+
+                        <button class="calc-btn" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)" onclick="calcPoli()">Calcular rollos necesarios →</button>
+
+                        <div class="result-box-poli" id="resultadoPoli">
+                            <h3 style="margin:0 0 1.1rem;color:#4c1d95;font-size:1.05rem;font-weight:700;">Estimación para tu producción textil</h3>
+                            <div class="result-grid">
+                                <div class="result-stat"><span class="result-n" id="poliRPorRollo">—</span><span class="result-l">Etiquetas por rollo</span></div>
+                                <div class="result-stat"><span class="result-n" id="poliRTotalEtq">—</span><span class="result-l">Etiquetas / mes</span></div>
+                                <div class="result-stat"><span class="result-n" id="poliRRollos">—</span><span class="result-l">Rollos / mes</span></div>
+                                <div class="result-stat"><span class="result-n" id="poliRAnual">—</span><span class="result-l">Rollos / año</span></div>
+                            </div>
+                            <div class="result-detail" id="poliRDetalle"></div>
+                            <div class="tip" id="poliRTip"></div>
+                            <a class="wa-btn" id="poliRWA" href="#" target="_blank" style="background:#7c3aed">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Cotizar poliamida por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </div><!-- /panel-poliamida -->
+
             </div>
         </div>
     </section>
@@ -221,32 +418,48 @@
     <a href="https://wa.me/541122656818" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
     <script>
+    /* ── Helpers ── */
     function fmt(n){return Math.round(n).toLocaleString('es-AR')}
+    function fmtDec(n,d){return Number(n).toFixed(d).replace('.',',')}
+
+    /* ── Tabs ── */
+    function switchTab(id, btn){
+        document.querySelectorAll('.calc-panel').forEach(p=>p.classList.remove('active'));
+        document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
+        document.getElementById('panel-'+id).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    /* ══════════════════════════════════════════════
+       TAB 1 — Consumo mensual
+    ══════════════════════════════════════════════ */
     function toggleRibbon(){
         document.getElementById('ribbonGrp').style.display=
             document.getElementById('tipoImp').value==='ribbon'?'block':'none';
     }
     function calc(){
-        const prodDia=parseInt(document.getElementById('prodDia').value)||500;
-        const etqProd=parseInt(document.getElementById('etqProd').value)||1;
-        const diasMes=parseInt(document.getElementById('diasMes').value)||22;
-        const medida=parseFloat(document.getElementById('medida').value)||0.006;
-        const tipo=document.getElementById('tipoImp').value;
-        const largoR=parseInt(document.getElementById('largoRibbon').value)||300;
+        const prodDia  = parseInt(document.getElementById('prodDia').value)||500;
+        const etqProd  = parseInt(document.getElementById('etqProd').value)||1;
+        const diasMes  = parseInt(document.getElementById('diasMes').value)||22;
+        const medida   = parseFloat(document.getElementById('medida').value)||0.10;
+        const tipo     = document.getElementById('tipoImp').value;
+        const largoR   = parseInt(document.getElementById('largoRibbon').value)||300;
 
-        const etqMes=prodDia*etqProd*diasMes;
-        const etqAnual=etqMes*12;
-        const rollos=Math.ceil(etqMes/1000);
-        const ribbons=tipo==='ribbon'?Math.ceil((etqMes*medida)/largoR):0;
+        const etqMes   = prodDia * etqProd * diasMes;
+        const etqAnual = etqMes * 12;
+        const rollos   = Math.ceil(etqMes / 1000);
+        const ribbons  = tipo==='ribbon' ? Math.ceil((etqMes * medida) / largoR) : 0;
 
-        document.getElementById('rEtqMes').textContent=fmt(etqMes);
-        document.getElementById('rRollos').textContent=fmt(rollos);
-        document.getElementById('rAnual').textContent=fmt(etqAnual);
-        const sr=document.getElementById('statRibbon');
-        if(tipo==='ribbon'){sr.style.display='block';document.getElementById('rRibbon').textContent=fmt(ribbons);}
-        else{sr.style.display='none';}
+        document.getElementById('rEtqMes').textContent  = fmt(etqMes);
+        document.getElementById('rRollos').textContent  = fmt(rollos);
+        document.getElementById('rAnual').textContent   = fmt(etqAnual);
+        const sr = document.getElementById('statRibbon');
+        if(tipo==='ribbon'){
+            sr.style.display='block';
+            document.getElementById('rRibbon').textContent=fmt(ribbons);
+        } else { sr.style.display='none'; }
 
-        let det=`<strong>Tu operación:</strong><br>
+        let det = `<strong>Tu operación:</strong><br>
 ${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${diasMes} días = <strong>${fmt(etqMes)} etiquetas/mes</strong><br>`;
         if(tipo==='ribbon') det+=`Consumo estimado de ribbon: <strong>${fmt(ribbons)} rollos/mes</strong> (ribbon ${largoR}m)<br>`;
         else det+=`Usás térmica directa — no necesitás ribbon.<br>`;
@@ -263,10 +476,109 @@ ${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${di
         if(tipo==='ribbon') msg+=`\n- ${fmt(ribbons)} ribbons/mes`;
         msg+='\n¿Me podés dar precio?';
         document.getElementById('rWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
-
         document.getElementById('resultado').classList.add('show');
     }
     calc();
+
+    /* ══════════════════════════════════════════════
+       TAB 2 — Rendimiento de ribbon (inversa)
+    ══════════════════════════════════════════════ */
+    function toggleInvTipo(){
+        const esPoli = document.getElementById('invTipo').value==='poliamida';
+        document.getElementById('invRibbonCampos').style.display = esPoli?'none':'block';
+        document.getElementById('invPoliCampos').style.display   = esPoli?'block':'none';
+    }
+
+    function calcInversa(){
+        const tipo       = document.getElementById('invTipo').value;
+        const cantRollos = parseInt(document.getElementById('invCantRollos').value)||5;
+        const prodDia    = parseInt(document.getElementById('invProdDia').value)||500;
+
+        let impPorRollo;
+        let descripcion;
+
+        if(tipo==='ribbon'){
+            const largoR  = parseInt(document.getElementById('invLargoRibbon').value)||300;
+            const medida  = parseFloat(document.getElementById('invMedidaEtq').value)||0.10;
+            // largo ribbon en metros / largo etiqueta en metros = impresiones
+            impPorRollo  = Math.floor(largoR / medida);
+            descripcion  = `ribbon de ${largoR}m con etiquetas de ${medida*100} cm`;
+        } else {
+            const largoP     = parseInt(document.getElementById('invLargoPoli').value)||100;
+            const largoEtqCm = parseFloat(document.getElementById('invLargoEtqPoli').value)||4;
+            if(largoEtqCm<=0){ return; }
+            // rollo en cm / largo etiqueta en cm
+            impPorRollo  = Math.floor((largoP * 100) / largoEtqCm);
+            descripcion  = `poliamida de ${largoP}m con etiquetas de ${largoEtqCm} cm`;
+        }
+
+        const impTotal = impPorRollo * cantRollos;
+        const dias     = prodDia > 0 ? impTotal / prodDia : 0;
+        const meses    = dias / 22;
+
+        document.getElementById('invRImpPorRollo').textContent = fmt(impPorRollo);
+        document.getElementById('invRImpTotal').textContent    = fmt(impTotal);
+        document.getElementById('invRDias').textContent        = fmt(dias);
+        document.getElementById('invRMeses').textContent       = fmtDec(meses,1);
+
+        document.getElementById('invRDetalle').innerHTML =
+            `<strong>Detalle:</strong><br>
+1 rollo de ${descripcion} rinde <strong>${fmt(impPorRollo)} impresiones</strong>.<br>
+${cantRollos} rollo${cantRollos>1?'s':''} = <strong>${fmt(impTotal)} impresiones en total</strong>.<br>
+A ${fmt(prodDia)} etiquetas/día te duran <strong>${fmt(dias)} días hábiles</strong> (${fmtDec(meses,1)} meses aprox.).`;
+
+        let tip='';
+        if(meses < 1) tip='💡 Tu stock dura menos de un mes — considerá pedir con más frecuencia o aumentar la cantidad por pedido para evitar quiebres.';
+        else if(meses > 6) tip='💡 Tenés stock para más de 6 meses. Revisá si tiene sentido inmovilizar tanto capital — quizás conviene pedir en lotes más chicos.';
+        else tip='💡 Un stock de 1-3 meses es lo ideal: no parás producción y no inmovilizás capital de más.';
+        document.getElementById('invRTip').textContent=tip;
+
+        const tipoLabel = tipo==='ribbon'?'ribbon':'poliamida';
+        const msg=`Hola! Calculé el rendimiento de mi ${tipoLabel} en Label Tech:\n- ${fmt(impPorRollo)} impresiones por rollo (${descripcion})\n- Necesito cotizar ${cantRollos} rollos\n¿Tienen stock?`;
+        document.getElementById('invRWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
+        document.getElementById('resultadoInv').classList.add('show');
+    }
+    calcInversa();
+
+    /* ══════════════════════════════════════════════
+       TAB 3 — Poliamida textil
+    ══════════════════════════════════════════════ */
+    function calcPoli(){
+        const largoRollo  = parseInt(document.getElementById('poliTipoRollo').value)||100;
+        const largoEtqCm  = parseFloat(document.getElementById('poliLargoEtq').value)||4;
+        const ancho       = parseInt(document.getElementById('poliAncho').value)||25;
+        const prendas     = parseInt(document.getElementById('poliPrendas').value)||2000;
+        const etqPrenda   = parseInt(document.getElementById('poliEtqPrenda').value)||2;
+
+        if(largoEtqCm<=0) return;
+
+        const etqPorRollo = Math.floor((largoRollo * 100) / largoEtqCm);
+        const etqMes      = prendas * etqPrenda;
+        const rollosMes   = Math.ceil(etqMes / etqPorRollo);
+        const rollosAnio  = rollosMes * 12;
+
+        document.getElementById('poliRPorRollo').textContent = fmt(etqPorRollo);
+        document.getElementById('poliRTotalEtq').textContent = fmt(etqMes);
+        document.getElementById('poliRRollos').textContent   = fmt(rollosMes);
+        document.getElementById('poliRAnual').textContent    = fmt(rollosAnio);
+
+        document.getElementById('poliRDetalle').innerHTML =
+            `<strong>Detalle:</strong><br>
+Cinta de ${ancho}mm, etiquetas de ${largoEtqCm} cm → <strong>${fmt(etqPorRollo)} etiquetas por rollo</strong> (rollo de ${largoRollo}m).<br>
+${fmt(prendas)} prendas × ${etqPrenda} etiqueta${etqPrenda>1?'s':''}/prenda = <strong>${fmt(etqMes)} etiquetas/mes</strong>.<br>
+Necesitás <strong>${fmt(rollosMes)} rollo${rollosMes>1?'s':''}/mes</strong> → ${fmt(rollosAnio)} rollos por año.`;
+
+        let tip='';
+        if(rollosMes>=10) tip='💡 Con tu volumen te convienen precios por caja. Consultanos para armar un plan de reposición mensual con precio preferencial.';
+        else if(rollosMes>=4) tip='💡 Pedí de a 3-4 rollos para tener un mes de stock de seguridad sin inmovilizar demasiado.';
+        else tip='💡 Para producciones chicas tenemos rollos sueltos sin mínimo de compra.';
+        document.getElementById('poliRTip').textContent=tip;
+
+        const msg=`Hola! Calculé mi consumo de poliamida en Label Tech:\n- Cinta ${ancho}mm, etiquetas de ${largoEtqCm}cm, rollo ${largoRollo}m\n- Necesito ${fmt(rollosMes)} rollos/mes (${fmt(etqMes)} etiquetas)\n¿Me podés cotizar?`;
+        document.getElementById('poliRWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
+        document.getElementById('resultadoPoli').classList.add('show');
+    }
+    calcPoli();
     </script>
     <script src="../script.js"></script>
     <site-footer></site-footer>
