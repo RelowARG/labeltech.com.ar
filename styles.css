@@ -2016,3 +2016,35 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+/* ── Tabla comparativa de modelos ── */
+.comp-section{padding:3.5rem 0;background:#f8fafc}
+.comp-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+.comp-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+.comp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #e2e8f0}
+.comp-table{width:100%;border-collapse:collapse;background:white;min-width:560px}
+.comp-table th{background:var(--primary,#1e3a5f);color:white;padding:.875rem 1rem;font-size:.875rem;font-weight:700;text-align:left;border-right:1px solid rgba(255,255,255,.15);white-space:nowrap}
+.comp-table th:first-child{min-width:160px;border-radius:.9rem 0 0 0}
+.comp-table th:last-child{border-right:none;border-radius:0 .9rem 0 0}
+.comp-table td{padding:.75rem 1rem;font-size:.875rem;color:var(--text-primary,#1e293b);border-bottom:1px solid #f1f5f9;border-right:1px solid #f1f5f9;vertical-align:top;line-height:1.5}
+.comp-table td:first-child{font-weight:600;color:var(--text-secondary,#64748b);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;background:#fafbfc;white-space:nowrap}
+.comp-table td:last-child{border-right:none}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:#f8faff}
+.comp-table tr:hover td:first-child{background:#f1f5fb}
+/* Badge de nivel */
+.comp-badge{display:inline-block;padding:.2rem .55rem;border-radius:.4rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.comp-badge--entry{background:#dcfce7;color:#166534}
+.comp-badge--mid{background:#dbeafe;color:#1e40af}
+.comp-badge--pro{background:#f3e8ff;color:#6b21a8}
+.comp-badge--ind{background:#fff7ed;color:#9a3412}
+/* Check / X */
+.comp-yes{color:#16a34a;font-weight:700}
+.comp-no{color:#94a3b8}
+/* CTA row */
+.comp-table tr.comp-cta-row td{background:#f8fafc;padding:.625rem 1rem;border-bottom:none}
+.comp-table tr.comp-cta-row td:first-child{background:#f8fafc}
+.comp-cta{display:inline-block;padding:.45rem 1rem;background:var(--primary,#1e3a5f);color:white;border-radius:.5rem;font-size:.8rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.comp-cta:hover{opacity:.8}
+@media(max-width:640px){
+  .comp-table th,.comp-table td{padding:.625rem .75rem;font-size:.8rem}
+}

@@ -9,10 +9,10 @@
     <meta name="description" content="Impresoras Honeywell para etiquetas en Argentina. Modelos PC42T, PC42E-T, PD45 y PD45S. Distribuidor oficial con stock permanente, soporte técnico certificado y entrega en 48hs.">
     <meta name="keywords" content="impresoras Honeywell Argentina, impresora Honeywell PC42T, impresora Honeywell PD45, distribuidores Honeywell Argentina, impresoras etiquetas térmicas Argentina, Honeywell PC42E Argentina">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.labeltech.com.ar/productos/impresoras-honeywell.html">
+    <link rel="canonical" href="https://labeltech.com.ar/productos/impresoras-honeywell.html">
     <meta property="og:title" content="Impresoras Honeywell Argentina | Distribuidor Oficial | Label Tech">
     <meta property="og:description" content="Distribuidor oficial Honeywell en Argentina. Impresoras de escritorio e industriales. Stock permanente y servicio técnico certificado.">
-    <meta property="og:url" content="https://www.labeltech.com.ar/productos/impresoras-honeywell.html">
+    <meta property="og:url" content="https://labeltech.com.ar/productos/impresoras-honeywell.html">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="es_AR">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,49 @@
     .pcard-thumb { width:52px; height:52px; border:2px solid transparent; border-radius:.375rem; overflow:hidden; cursor:pointer; background:#fff; flex-shrink:0; transition:border-color .15s; }
     .pcard-thumb:hover, .pcard-thumb.active { border-color:var(--primary); }
     .pcard-thumb img { width:100%; height:100%; object-fit:contain; padding:2px; }
+
+    /* ── Tabla comparativa de modelos ── */
+    .comp-section{padding:3.5rem 0;background:#f8fafc}
+    .comp-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .comp-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .comp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #e2e8f0}
+    .comp-table{width:100%;border-collapse:collapse;background:white;min-width:560px}
+    .comp-table th{background:var(--primary,#1e3a5f);color:white;padding:.875rem 1rem;font-size:.875rem;font-weight:700;text-align:left;border-right:1px solid rgba(255,255,255,.15);white-space:nowrap}
+    .comp-table th:first-child{min-width:160px}
+    .comp-table td{padding:.75rem 1rem;font-size:.875rem;color:var(--text-primary,#1e293b);border-bottom:1px solid #f1f5f9;border-right:1px solid #f1f5f9;vertical-align:top;line-height:1.5}
+    .comp-table td:first-child{font-weight:600;color:var(--text-secondary,#64748b);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;background:#fafbfc;white-space:nowrap}
+    .comp-table td:last-child,.comp-table th:last-child{border-right:none}
+    .comp-table tr:last-child td{border-bottom:none}
+    .comp-table tr:hover td{background:#f8faff}
+    .comp-table tr:hover td:first-child{background:#f1f5fb}
+    .comp-badge{display:inline-block;padding:.2rem .55rem;border-radius:.4rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .comp-badge--entry{background:#dcfce7;color:#166534}
+    .comp-badge--mid{background:#dbeafe;color:#1e40af}
+    .comp-badge--pro{background:#f3e8ff;color:#6b21a8}
+    .comp-badge--ind{background:#fff7ed;color:#9a3412}
+    .comp-yes{color:#16a34a;font-weight:700}
+    .comp-no{color:#94a3b8}
+    .comp-table tr.comp-cta-row td{background:#f8fafc;padding:.625rem 1rem;border-bottom:none}
+    .comp-table tr.comp-cta-row td:first-child{background:#f8fafc}
+    .comp-cta{display:inline-block;padding:.45rem 1rem;background:var(--primary,#1e3a5f);color:white;border-radius:.5rem;font-size:.8rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+    .comp-cta:hover{opacity:.8}
+    /* ── FAQ accordion ── */
+    .faq-section{padding:3.5rem 0;background:white}
+    .faq-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .faq-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .faq-list{max-width:760px;display:flex;flex-direction:column;gap:.625rem}
+    .faq-item{border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden}
+    .faq-q{width:100%;background:none;border:none;padding:1.1rem 1.375rem;text-align:left;font-size:.95rem;font-weight:600;color:var(--text-primary,#1e293b);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:inherit;line-height:1.4}
+    .faq-q:hover{background:#f8fafc}
+    .faq-q .faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;transition:transform .25s,background .2s}
+    .faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--primary,#1e3a5f)}
+    .faq-item.open .faq-q .faq-icon svg{stroke:white}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:400px}
+    .faq-a-inner{padding:.25rem 1.375rem 1.1rem;font-size:.9rem;color:var(--text-secondary,#64748b);line-height:1.75}
+    @media(max-width:640px){
+      .comp-table th,.comp-table td{padding:.625rem .75rem;font-size:.8rem}
+    }
     </style>
 <script type="application/ld+json">
 {
@@ -304,6 +347,140 @@
         </div>
     </section>
 
+
+    <!-- ── Tabla comparativa Honeywell ── -->
+    <section class="comp-section">
+        <div class="container">
+            <h2 class="section-title">Comparativa de modelos Honeywell</h2>
+            <p class="section-sub">Todos los modelos incluyen soporte técnico certificado, stock permanente y entrega en 48hs en Argentina.</p>
+            <div class="comp-wrap">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>PC42T Plus<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Escritorio entrada</span></th>
+                            <th>PC45<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Escritorio conectado</span></th>
+                            <th>PD45<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Industrial</span></th>
+                            <th>PD45S<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Industrial alta precisión</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Segmento</td><td><span class="comp-badge comp-badge--entry">Entrada</span></td><td><span class="comp-badge comp-badge--mid">Escritorio+</span></td><td><span class="comp-badge comp-badge--ind">Industrial</span></td><td><span class="comp-badge comp-badge--pro">Premium</span></td></tr>
+                        <tr><td>Método</td><td>TD / Transferencia</td><td>TD / Transferencia</td><td>TD / Transferencia</td><td>TD / Transferencia</td></tr>
+                        <tr><td>Resolución</td><td>203 dpi</td><td>203 / 300 dpi</td><td>203 / 300 dpi</td><td>203 / 300 dpi</td></tr>
+                        <tr><td>Velocidad máx.</td><td>100 mm/seg</td><td>127 mm/seg</td><td>200 mm/seg</td><td>200 mm/seg</td></tr>
+                        <tr><td>Ancho máx.</td><td>110 mm (4.3")</td><td>110 mm (4.3")</td><td>110 mm (4.3")</td><td>110 mm</td></tr>
+                        <tr><td>Conectividad</td><td>USB · Serie opcional</td><td>USB · Ethernet · BT opcional</td><td>USB · Ethernet · WiFi · BT</td><td>USB · Ethernet · WiFi · BT</td></tr>
+                        <tr><td>Pantalla</td><td><span class="comp-no">—</span></td><td>LCD color</td><td>LCD</td><td>LCD</td></tr>
+                        <tr><td>Carcasa</td><td>Plástico</td><td>Plástico reforzado</td><td>100% metálica</td><td>100% metálica</td></tr>
+                        <tr><td>Precisión posicionamiento</td><td>Estándar</td><td>Estándar</td><td>Sensor dual patentado</td><td><span class="comp-yes">±0,5 mm</span></td></tr>
+                        <tr><td>Gestión remota</td><td><span class="comp-no">No</span></td><td><span class="comp-yes">Printer Edge™</span></td><td><span class="comp-yes">Sí</span></td><td><span class="comp-yes">Sí</span></td></tr>
+                        <tr><td>Lenguajes</td><td>ZPL · DPL</td><td>ZPL · DPL</td><td>ZPL · DPL · IPL · FP</td><td>ZPL · DPL · IPL · FP · DP</td></tr>
+                        <tr><td>Ribbon máx.</td><td>300 m (núcleo 1")</td><td>300 m</td><td>450 m</td><td>450 m</td></tr>
+                        <tr><td>Ideal para</td><td>MercadoLibre · Retail · Inventario</td><td>Retail · Logística · Farmacia</td><td>Manufactura · Logística · Gran volumen</td><td>Farmacéutica · Electrónica · Laboratorio</td></tr>
+                        <tr class="comp-cta-row">
+                            <td></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20Honeywell%20PC42T." target="_blank">Consultar PC42T</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20Honeywell%20PC45." target="_blank">Consultar PC45</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20Honeywell%20PD45." target="_blank">Consultar PD45</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20Honeywell%20PD45S." target="_blank">Consultar PD45S</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:.8rem;color:#94a3b8;margin-top:.75rem">* Especificaciones según modelo base 203 dpi. Consultanos por versiones 300 dpi, WiFi o BT integrado.</p>
+        </div>
+    </section>
+
+    <!-- ── FAQ Honeywell ── -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre la PC42T Plus y la PC45?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La PC42T Plus es la más económica: USB, sin pantalla, ideal para empezar. La PC45 agrega pantalla LCD a color, Ethernet nativa, Bluetooth opcional y gestión remota via Honeywell Printer Edge™. Si necesitás conectarla a una red o gestionarla junto con otras impresoras, la PC45 es la evolución natural."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las impresoras Honeywell son compatibles con diseños de etiqueta de Zebra?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Todos los modelos Honeywell soportan lenguaje ZPL de forma nativa, además del propio DPL. Podés migrar desde Zebra sin cambiar ni un formato de etiqueta existente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo conviene una PD45 o PD45S en lugar de la PC45?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cuando el volumen supera las 5.000–8.000 etiquetas diarias, el entorno es industrial (polvo, humedad, vibraciones) o necesitás alta precisión de posicionamiento. La carcasa 100% metálica de las PD hace una diferencia enorme en entornos de producción continua. La PD45S agrega precisión de ±0,5 mm, clave para etiquetas muy pequeñas en farmacéutica o electrónica."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué ribbon necesito para las Honeywell?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para etiquetas de papel, ribbon cera (wax) estándar. Para materiales sintéticos (polipropileno, polyester), ribbon mixto o resina. Las PC42T y PC45 usan núcleo de 1\" con rollos de hasta 300 m. Las PD45 soportan hasta 450 m. Tenemos ribbons compatibles en stock con entrega inmediata."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las Honeywell tienen garantía oficial en Argentina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Al comprar en Label Tech, la garantía es válida localmente con repuestos originales disponibles en Argentina. No necesitás enviar el equipo al exterior ni gestionar importaciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo imprimir etiquetas para MercadoLibre con la PC42T Plus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, es perfectamente válida. La PC42T Plus es una de las más usadas para envíos de MercadoLibre, Tiendanube y OCA. Conectás por USB, instalás el driver, configurás el ancho de etiqueta (generalmente 100 mm) y listo."
+      }
+    }
+  ]
+}
+    </script>
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes sobre impresoras Honeywell</h2>
+            <p class="section-sub">Las dudas más comunes de nuestros clientes antes de elegir modelo.</p>
+            <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-q">¿Cuál es la diferencia entre la PC42T Plus y la PC45?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">La PC42T Plus es la más económica: USB, sin pantalla, ideal para empezar. La PC45 agrega pantalla LCD a color, Ethernet nativa, Bluetooth opcional y gestión remota via Honeywell Printer Edge™. Si necesitás conectarla a una red o gestionarla junto con otras impresoras, la PC45 es la evolución natural.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Las impresoras Honeywell son compatibles con diseños de etiqueta de Zebra?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sí. Todos los modelos Honeywell soportan lenguaje ZPL de forma nativa, además del propio DPL. Podés migrar desde Zebra sin cambiar ni un formato de etiqueta existente.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Cuándo conviene una PD45 o PD45S en lugar de la PC45?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Cuando el volumen supera las 5.000–8.000 etiquetas diarias, el entorno es industrial (polvo, humedad, vibraciones) o necesitás alta precisión de posicionamiento. La carcasa 100% metálica de las PD hace una diferencia enorme en entornos de producción continua. La PD45S agrega precisión de ±0,5 mm, clave para etiquetas muy pequeñas en farmacéutica o electrónica.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Qué ribbon necesito para las Honeywell?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Para etiquetas de papel, ribbon cera (wax) estándar. Para materiales sintéticos (polipropileno, polyester), ribbon mixto o resina. Las PC42T y PC45 usan núcleo de 1" con rollos de hasta 300 m. Las PD45 soportan hasta 450 m. Tenemos ribbons compatibles en stock con entrega inmediata.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Las Honeywell tienen garantía oficial en Argentina?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sí. Al comprar en Label Tech, la garantía es válida localmente con repuestos originales disponibles en Argentina. No necesitás enviar el equipo al exterior ni gestionar importaciones.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Puedo imprimir etiquetas para MercadoLibre con la PC42T Plus?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sí, es perfectamente válida. La PC42T Plus es una de las más usadas para envíos de MercadoLibre, Tiendanube y OCA. Conectás por USB, instalás el driver, configurás el ancho de etiqueta (generalmente 100 mm) y listo.</div></div>
+        </div>
+            </div>
+        </div>
+    </section>
     <section class="industries-section">
         <div class="container">
             <div class="section-header" style="text-align:left">
@@ -351,5 +528,16 @@
     <script src="../script.js"></script>
     <site-footer></site-footer>
     <script src="../components.js"></script>
+
+    <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+    </script>
 </body>
 </html>

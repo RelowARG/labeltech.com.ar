@@ -172,13 +172,9 @@
                                 <input type="number" class="calc-input" id="diasMes" value="22" min="1" max="31" oninput="calc()">
                             </div>
                             <div class="calc-group" style="margin-bottom:0">
-                                <label class="calc-lbl" for="medida">Tamaño de etiqueta</label>
-                                <select class="calc-select" id="medida" onchange="calc()">
-                                    <option value="0.05">Pequeña — hasta 4×5 cm</option>
-                                    <option value="0.10" selected>Mediana — 5×10 cm (la más común)</option>
-                                    <option value="0.15">Grande — 10×15 cm</option>
-                                    <option value="0.20">Muy grande — 10×20 cm o mayor</option>
-                                </select>
+                                <label class="calc-lbl" for="medida">Alto de la etiqueta (cm)</label>
+                                <span class="calc-sub">Solo el alto — el ribbon se consume por largo de impresión</span>
+                                <input type="number" class="calc-input" id="medida" value="10" min="1" max="50" step="0.5" oninput="calc()">
                             </div>
                         </div>
                         <div class="calc-group" style="margin-top:1.625rem">
@@ -257,13 +253,8 @@
                                     </select>
                                 </div>
                                 <div class="calc-group" style="margin-bottom:0">
-                                    <label class="calc-lbl" for="invMedidaEtq">Tamaño de etiqueta</label>
-                                    <select class="calc-select" id="invMedidaEtq" onchange="calcInversa()">
-                                        <option value="0.05">Pequeña — hasta 4×5 cm</option>
-                                        <option value="0.10" selected>Mediana — 5×10 cm</option>
-                                        <option value="0.15">Grande — 10×15 cm</option>
-                                        <option value="0.20">Muy grande — 10×20 cm+</option>
-                                    </select>
+                                    <label class="calc-lbl" for="invMedidaEtq">Alto de la etiqueta (cm)</label>
+                                    <input type="number" class="calc-input" id="invMedidaEtq" value="10" min="1" max="50" step="0.5" oninput="calcInversa()">
                                 </div>
                             </div>
                         </div>
@@ -310,8 +301,8 @@
                         <div class="result-box-inv" id="resultadoInv">
                             <h3 style="margin:0 0 1.1rem;color:#065f46;font-size:1.05rem;font-weight:700;">Rendimiento estimado</h3>
                             <div class="result-grid">
-                                <div class="result-stat"><span class="result-n" id="invRImpPorRollo">—</span><span class="result-l">Impresiones por rollo</span></div>
-                                <div class="result-stat"><span class="result-n" id="invRImpTotal">—</span><span class="result-l">Impresiones totales</span></div>
+                                <div class="result-stat"><span class="result-n" id="invRImpPorRollo">—</span><span class="result-l" id="invLabelPorRollo">Rollos de etiquetas<br>por ribbon</span></div>
+                                <div class="result-stat"><span class="result-n" id="invRImpTotal">—</span><span class="result-l" id="invLabelTotal">Rollos totales<br>con tu stock</span></div>
                                 <div class="result-stat"><span class="result-n" id="invRDias">—</span><span class="result-l">Días de producción</span></div>
                                 <div class="result-stat"><span class="result-n" id="invRMeses">—</span><span class="result-l">Meses aprox.</span></div>
                             </div>
@@ -441,14 +432,16 @@
         const prodDia  = parseInt(document.getElementById('prodDia').value)||500;
         const etqProd  = parseInt(document.getElementById('etqProd').value)||1;
         const diasMes  = parseInt(document.getElementById('diasMes').value)||22;
-        const medida   = parseFloat(document.getElementById('medida').value)||0.10;
+        const medida   = parseFloat(document.getElementById('medida').value)||10; // en cm
         const tipo     = document.getElementById('tipoImp').value;
         const largoR   = parseInt(document.getElementById('largoRibbon').value)||300;
 
         const etqMes   = prodDia * etqProd * diasMes;
         const etqAnual = etqMes * 12;
         const rollos   = Math.ceil(etqMes / 1000);
-        const ribbons  = tipo==='ribbon' ? Math.ceil((etqMes * medida) / largoR) : 0;
+        // fórmula: (alto_mm + 3mm_gap) × rollos_etiquetas / metros_ribbon
+        const altoMm   = medida * 10; // cm → mm
+        const ribbons  = tipo==='ribbon' ? (altoMm + 3) * rollos / largoR : 0;
 
         document.getElementById('rEtqMes').textContent  = fmt(etqMes);
         document.getElementById('rRollos').textContent  = fmt(rollos);
@@ -456,12 +449,12 @@
         const sr = document.getElementById('statRibbon');
         if(tipo==='ribbon'){
             sr.style.display='block';
-            document.getElementById('rRibbon').textContent=fmt(ribbons);
+            document.getElementById('rRibbon').textContent = fmtDec(ribbons,2);
         } else { sr.style.display='none'; }
 
         let det = `<strong>Tu operación:</strong><br>
-${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${diasMes} días = <strong>${fmt(etqMes)} etiquetas/mes</strong><br>`;
-        if(tipo==='ribbon') det+=`Consumo estimado de ribbon: <strong>${fmt(ribbons)} rollos/mes</strong> (ribbon ${largoR}m)<br>`;
+${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${diasMes} días = <strong>${fmt(etqMes)} etiquetas/mes</strong> (${fmt(rollos)} rollos de 1.000u)<br>`;
+        if(tipo==='ribbon') det+=`Consumo ribbon: (${altoMm}mm + 3mm) × ${fmt(rollos)} rollos / ${largoR}m = <strong>${fmtDec(ribbons,2)} ribbons/mes</strong><br>`;
         else det+=`Usás térmica directa — no necesitás ribbon.<br>`;
         det+=`Stock de seguridad recomendado (1 mes extra): <strong>${fmt(etqMes)} etiquetas</strong>`;
         document.getElementById('rDetalle').innerHTML=det;
@@ -494,48 +487,81 @@ ${fmt(prodDia)} productos/día × ${etqProd} etiqueta${etqProd>1?'s':''} × ${di
         const cantRollos = parseInt(document.getElementById('invCantRollos').value)||5;
         const prodDia    = parseInt(document.getElementById('invProdDia').value)||500;
 
-        let impPorRollo;
+        // Labels dinámicas según tipo
+        const lPorRollo = document.getElementById('invLabelPorRollo');
+        const lTotal    = document.getElementById('invLabelTotal');
+
+        let rendPorRollo;
         let descripcion;
+        let detalle;
+        let msgWA;
 
         if(tipo==='ribbon'){
-            const largoR  = parseInt(document.getElementById('invLargoRibbon').value)||300;
-            const medida  = parseFloat(document.getElementById('invMedidaEtq').value)||0.10;
-            // largo ribbon en metros / largo etiqueta en metros = impresiones
-            impPorRollo  = Math.floor(largoR / medida);
-            descripcion  = `ribbon de ${largoR}m con etiquetas de ${medida*100} cm`;
+            const largoR    = parseInt(document.getElementById('invLargoRibbon').value)||300;
+            const altoEtqCm = parseFloat(document.getElementById('invMedidaEtq').value)||10;
+            if(altoEtqCm<=0) return;
+            const altoMm    = altoEtqCm * 10;
+            // fórmula: metros_ribbon / (alto_mm + 3) = rollos de etiquetas (de 1000u) por ribbon
+            rendPorRollo = largoR / (altoMm + 3);
+            const rendTotal  = rendPorRollo * cantRollos;           // rollos etiquetas con cantRollos ribbons
+            const etqTotal   = rendTotal * 1000;                    // etiquetas individuales totales
+            const dias       = prodDia > 0 ? etqTotal / prodDia : 0;
+            const meses      = dias / 22;
+            descripcion = `ribbon de ${largoR}m, etiquetas de ${altoEtqCm}cm`;
+
+            lPorRollo.innerHTML = 'Rollos de etiquetas<br>por ribbon';
+            lTotal.innerHTML    = `Rollos de etiquetas<br>con ${cantRollos} ribbon${cantRollos>1?'s':''}`;
+            document.getElementById('invRImpPorRollo').textContent = fmtDec(rendPorRollo,2);
+            document.getElementById('invRImpTotal').textContent    = fmtDec(rendTotal,2);
+            document.getElementById('invRDias').textContent        = fmt(dias);
+            document.getElementById('invRMeses').textContent       = fmtDec(meses,1);
+
+            detalle = `<strong>Fórmula:</strong> ${largoR}m ribbon ÷ (${altoMm}mm + 3mm) = <strong>${fmtDec(rendPorRollo,2)} rollos de etiquetas por ribbon</strong><br>`
+                    + `${cantRollos} ribbon${cantRollos>1?'s':''} × ${fmtDec(rendPorRollo,2)} = <strong>${fmtDec(rendTotal,2)} rollos de etiquetas</strong> (${fmt(etqTotal)} etiquetas individuales)<br>`
+                    + `A ${fmt(prodDia)} etiquetas/día: <strong>${fmt(dias)} días hábiles</strong> (${fmtDec(meses,1)} meses aprox.)`;
+
+            msgWA = `Hola! Calculé el rendimiento de ribbon en Label Tech:\n- Ribbon ${largoR}m con etiquetas ${altoEtqCm}cm → ${fmtDec(rendPorRollo,2)} rollos/ribbon\n- Necesito cotizar ${cantRollos} ribbons\n¿Tienen stock?`;
+
+            let tip='';
+            if(meses < 1) tip='💡 Tu stock dura menos de un mes — considerá pedir con más frecuencia o aumentar la cantidad por pedido para evitar quiebres.';
+            else if(meses > 6) tip='💡 Tenés stock para más de 6 meses. Revisá si tiene sentido inmovilizar tanto capital.';
+            else tip='💡 Un stock de 1-3 meses es lo ideal: no parás producción y no inmovilizás capital de más.';
+            document.getElementById('invRTip').textContent=tip;
+
         } else {
+            // POLIAMIDA
             const largoP     = parseInt(document.getElementById('invLargoPoli').value)||100;
             const largoEtqCm = parseFloat(document.getElementById('invLargoEtqPoli').value)||4;
-            if(largoEtqCm<=0){ return; }
-            // rollo en cm / largo etiqueta en cm
-            impPorRollo  = Math.floor((largoP * 100) / largoEtqCm);
-            descripcion  = `poliamida de ${largoP}m con etiquetas de ${largoEtqCm} cm`;
+            if(largoEtqCm<=0) return;
+            // fórmula: cm_del_rollo / largo_etiqueta_cm = etiquetas por rollo
+            rendPorRollo     = Math.floor((largoP * 100) / largoEtqCm);
+            const etqTotal   = rendPorRollo * cantRollos;
+            const dias       = prodDia > 0 ? etqTotal / prodDia : 0;
+            const meses      = dias / 22;
+            descripcion = `poliamida ${largoP}m, etiquetas de ${largoEtqCm}cm`;
+
+            lPorRollo.innerHTML = 'Etiquetas<br>por rollo';
+            lTotal.innerHTML    = `Etiquetas con<br>${cantRollos} rollo${cantRollos>1?'s':''}`;
+            document.getElementById('invRImpPorRollo').textContent = fmt(rendPorRollo);
+            document.getElementById('invRImpTotal').textContent    = fmt(etqTotal);
+            document.getElementById('invRDias').textContent        = fmt(dias);
+            document.getElementById('invRMeses').textContent       = fmtDec(meses,1);
+
+            detalle = `<strong>Fórmula:</strong> ${largoP*100}cm ÷ ${largoEtqCm}cm = <strong>${fmt(rendPorRollo)} etiquetas por rollo</strong><br>`
+                    + `${cantRollos} rollo${cantRollos>1?'s':''} × ${fmt(rendPorRollo)} = <strong>${fmt(etqTotal)} etiquetas totales</strong><br>`
+                    + `A ${fmt(prodDia)} etiquetas/día: <strong>${fmt(dias)} días hábiles</strong> (${fmtDec(meses,1)} meses aprox.)`;
+
+            msgWA = `Hola! Calculé el rendimiento de poliamida en Label Tech:\n- Poliamida ${largoP}m con etiquetas ${largoEtqCm}cm → ${fmt(rendPorRollo)} etiquetas/rollo\n- Necesito cotizar ${cantRollos} rollos\n¿Tienen stock?`;
+
+            let tip='';
+            if(meses < 1) tip='💡 Tu stock dura menos de un mes — considerá pedir con más frecuencia para evitar quiebres.';
+            else if(meses > 6) tip='💡 Tenés stock para más de 6 meses. Quizás conviene pedir en lotes más chicos.';
+            else tip='💡 Un stock de 1-3 meses es lo ideal: no parás producción y no inmovilizás capital de más.';
+            document.getElementById('invRTip').textContent=tip;
         }
 
-        const impTotal = impPorRollo * cantRollos;
-        const dias     = prodDia > 0 ? impTotal / prodDia : 0;
-        const meses    = dias / 22;
-
-        document.getElementById('invRImpPorRollo').textContent = fmt(impPorRollo);
-        document.getElementById('invRImpTotal').textContent    = fmt(impTotal);
-        document.getElementById('invRDias').textContent        = fmt(dias);
-        document.getElementById('invRMeses').textContent       = fmtDec(meses,1);
-
-        document.getElementById('invRDetalle').innerHTML =
-            `<strong>Detalle:</strong><br>
-1 rollo de ${descripcion} rinde <strong>${fmt(impPorRollo)} impresiones</strong>.<br>
-${cantRollos} rollo${cantRollos>1?'s':''} = <strong>${fmt(impTotal)} impresiones en total</strong>.<br>
-A ${fmt(prodDia)} etiquetas/día te duran <strong>${fmt(dias)} días hábiles</strong> (${fmtDec(meses,1)} meses aprox.).`;
-
-        let tip='';
-        if(meses < 1) tip='💡 Tu stock dura menos de un mes — considerá pedir con más frecuencia o aumentar la cantidad por pedido para evitar quiebres.';
-        else if(meses > 6) tip='💡 Tenés stock para más de 6 meses. Revisá si tiene sentido inmovilizar tanto capital — quizás conviene pedir en lotes más chicos.';
-        else tip='💡 Un stock de 1-3 meses es lo ideal: no parás producción y no inmovilizás capital de más.';
-        document.getElementById('invRTip').textContent=tip;
-
-        const tipoLabel = tipo==='ribbon'?'ribbon':'poliamida';
-        const msg=`Hola! Calculé el rendimiento de mi ${tipoLabel} en Label Tech:\n- ${fmt(impPorRollo)} impresiones por rollo (${descripcion})\n- Necesito cotizar ${cantRollos} rollos\n¿Tienen stock?`;
-        document.getElementById('invRWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
+        document.getElementById('invRDetalle').innerHTML = detalle;
+        document.getElementById('invRWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msgWA);
         document.getElementById('resultadoInv').classList.add('show');
     }
     calcInversa();
@@ -552,29 +578,31 @@ A ${fmt(prodDia)} etiquetas/día te duran <strong>${fmt(dias)} días hábiles</s
 
         if(largoEtqCm<=0) return;
 
-        const etqPorRollo = Math.floor((largoRollo * 100) / largoEtqCm);
+        const etqPorRollo = Math.floor((largoRollo * 100) / largoEtqCm);  // cm del rollo / cm por etiqueta
         const etqMes      = prendas * etqPrenda;
-        const rollosMes   = Math.ceil(etqMes / etqPorRollo);
-        const rollosAnio  = rollosMes * 12;
+        // fórmula real: (largo_etq_cm × etqMes) / (largoRollo * 100)
+        const rollosMes   = (largoEtqCm * etqMes) / (largoRollo * 100);
+        const rollosMesCeil = Math.ceil(rollosMes);
+        const rollosAnio  = rollosMesCeil * 12;
 
         document.getElementById('poliRPorRollo').textContent = fmt(etqPorRollo);
         document.getElementById('poliRTotalEtq').textContent = fmt(etqMes);
-        document.getElementById('poliRRollos').textContent   = fmt(rollosMes);
+        document.getElementById('poliRRollos').textContent   = fmtDec(rollosMes, 2);
         document.getElementById('poliRAnual').textContent    = fmt(rollosAnio);
 
         document.getElementById('poliRDetalle').innerHTML =
             `<strong>Detalle:</strong><br>
 Cinta de ${ancho}mm, etiquetas de ${largoEtqCm} cm → <strong>${fmt(etqPorRollo)} etiquetas por rollo</strong> (rollo de ${largoRollo}m).<br>
 ${fmt(prendas)} prendas × ${etqPrenda} etiqueta${etqPrenda>1?'s':''}/prenda = <strong>${fmt(etqMes)} etiquetas/mes</strong>.<br>
-Necesitás <strong>${fmt(rollosMes)} rollo${rollosMes>1?'s':''}/mes</strong> → ${fmt(rollosAnio)} rollos por año.`;
+Fórmula: (${largoEtqCm} cm × ${fmt(etqMes)} etiquetas) / ${largoRollo*100} cm = <strong>${fmtDec(rollosMes,2)} rollos/mes</strong> → redondeado: ${rollosMesCeil} rollo${rollosMesCeil>1?'s':''}.`;
 
         let tip='';
-        if(rollosMes>=10) tip='💡 Con tu volumen te convienen precios por caja. Consultanos para armar un plan de reposición mensual con precio preferencial.';
-        else if(rollosMes>=4) tip='💡 Pedí de a 3-4 rollos para tener un mes de stock de seguridad sin inmovilizar demasiado.';
+        if(rollosMesCeil>=10) tip='💡 Con tu volumen te convienen precios por caja. Consultanos para armar un plan de reposición mensual con precio preferencial.';
+        else if(rollosMesCeil>=4) tip='💡 Pedí de a 3-4 rollos para tener un mes de stock de seguridad sin inmovilizar demasiado.';
         else tip='💡 Para producciones chicas tenemos rollos sueltos sin mínimo de compra.';
         document.getElementById('poliRTip').textContent=tip;
 
-        const msg=`Hola! Calculé mi consumo de poliamida en Label Tech:\n- Cinta ${ancho}mm, etiquetas de ${largoEtqCm}cm, rollo ${largoRollo}m\n- Necesito ${fmt(rollosMes)} rollos/mes (${fmt(etqMes)} etiquetas)\n¿Me podés cotizar?`;
+        const msg=`Hola! Calculé mi consumo de poliamida en Label Tech:\n- Cinta ${ancho}mm, etiquetas de ${largoEtqCm}cm, rollo ${largoRollo}m\n- Necesito ${rollosMesCeil} rollos/mes (${fmt(etqMes)} etiquetas)\n¿Me podés cotizar?`;
         document.getElementById('poliRWA').href='https://wa.me/541122656818?text='+encodeURIComponent(msg);
         document.getElementById('resultadoPoli').classList.add('show');
     }

@@ -9,10 +9,10 @@
     <meta name="description" content="Impresoras térmicas TSC para etiquetas en Argentina. Modelos TE200, TE300, TE310, TTP-244 Pro y TTP-247. Stock permanente, soporte técnico y entrega en 48hs.">
     <meta name="keywords" content="impresoras TSC Argentina, impresora TSC TE200, impresora TSC TE300, impresora TSC TTP-244 Pro, impresora TSC TTP-247, impresoras térmicas Argentina, impresoras etiquetas TSC">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.labeltech.com.ar/productos/impresoras-tsc.html">
+    <link rel="canonical" href="https://labeltech.com.ar/productos/impresoras-tsc.html">
     <meta property="og:title" content="Impresoras TSC Argentina | Serie TE y TTP | Label Tech">
     <meta property="og:description" content="Impresoras térmicas TSC en Argentina. Serie TE de escritorio y TTP de alta performance. Stock permanente y servicio técnico.">
-    <meta property="og:url" content="https://www.labeltech.com.ar/productos/impresoras-tsc.html">
+    <meta property="og:url" content="https://labeltech.com.ar/productos/impresoras-tsc.html">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="es_AR">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +29,49 @@
     .pcard-thumb { width:52px; height:52px; border:2px solid transparent; border-radius:.375rem; overflow:hidden; cursor:pointer; background:#fff; flex-shrink:0; transition:border-color .15s; }
     .pcard-thumb:hover, .pcard-thumb.active { border-color:var(--primary); }
     .pcard-thumb img { width:100%; height:100%; object-fit:contain; padding:2px; }
+
+    /* ── Tabla comparativa de modelos ── */
+    .comp-section{padding:3.5rem 0;background:#f8fafc}
+    .comp-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .comp-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .comp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #e2e8f0}
+    .comp-table{width:100%;border-collapse:collapse;background:white;min-width:560px}
+    .comp-table th{background:var(--primary,#1e3a5f);color:white;padding:.875rem 1rem;font-size:.875rem;font-weight:700;text-align:left;border-right:1px solid rgba(255,255,255,.15);white-space:nowrap}
+    .comp-table th:first-child{min-width:160px}
+    .comp-table td{padding:.75rem 1rem;font-size:.875rem;color:var(--text-primary,#1e293b);border-bottom:1px solid #f1f5f9;border-right:1px solid #f1f5f9;vertical-align:top;line-height:1.5}
+    .comp-table td:first-child{font-weight:600;color:var(--text-secondary,#64748b);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;background:#fafbfc;white-space:nowrap}
+    .comp-table td:last-child,.comp-table th:last-child{border-right:none}
+    .comp-table tr:last-child td{border-bottom:none}
+    .comp-table tr:hover td{background:#f8faff}
+    .comp-table tr:hover td:first-child{background:#f1f5fb}
+    .comp-badge{display:inline-block;padding:.2rem .55rem;border-radius:.4rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .comp-badge--entry{background:#dcfce7;color:#166534}
+    .comp-badge--mid{background:#dbeafe;color:#1e40af}
+    .comp-badge--pro{background:#f3e8ff;color:#6b21a8}
+    .comp-badge--ind{background:#fff7ed;color:#9a3412}
+    .comp-yes{color:#16a34a;font-weight:700}
+    .comp-no{color:#94a3b8}
+    .comp-table tr.comp-cta-row td{background:#f8fafc;padding:.625rem 1rem;border-bottom:none}
+    .comp-table tr.comp-cta-row td:first-child{background:#f8fafc}
+    .comp-cta{display:inline-block;padding:.45rem 1rem;background:var(--primary,#1e3a5f);color:white;border-radius:.5rem;font-size:.8rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+    .comp-cta:hover{opacity:.8}
+    /* ── FAQ accordion ── */
+    .faq-section{padding:3.5rem 0;background:white}
+    .faq-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .faq-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .faq-list{max-width:760px;display:flex;flex-direction:column;gap:.625rem}
+    .faq-item{border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden}
+    .faq-q{width:100%;background:none;border:none;padding:1.1rem 1.375rem;text-align:left;font-size:.95rem;font-weight:600;color:var(--text-primary,#1e293b);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:inherit;line-height:1.4}
+    .faq-q:hover{background:#f8fafc}
+    .faq-q .faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;transition:transform .25s,background .2s}
+    .faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--primary,#1e3a5f)}
+    .faq-item.open .faq-q .faq-icon svg{stroke:white}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:400px}
+    .faq-a-inner{padding:.25rem 1.375rem 1.1rem;font-size:.9rem;color:var(--text-secondary,#64748b);line-height:1.75}
+    @media(max-width:640px){
+      .comp-table th,.comp-table td{padding:.625rem .75rem;font-size:.8rem}
+    }
     </style>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Product","name":"Impresoras TSC Argentina","description":"Impresoras térmicas TSC para etiquetas industriales. Serie TE y TTP disponibles en Argentina.","brand":{"@type":"Brand","name":"TSC Auto ID"},"offers":{"@type":"AggregateOffer","priceCurrency":"ARS","availability":"https://schema.org/InStock","seller":{"@type":"Organization","name":"Label Tech Argentina","url":"https://www.labeltech.com.ar"}}}</script>
@@ -437,6 +480,141 @@
     </section>
 
     <!-- Industrias que las usan -->
+
+    <!-- ── Tabla comparativa TSC ── -->
+    <section class="comp-section">
+        <div class="container">
+            <h2 class="section-title">Comparativa de modelos TSC</h2>
+            <p class="section-sub">Todos los modelos incluyen garantía 2 años, soporte técnico y stock permanente en Argentina.</p>
+            <div class="comp-wrap">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>TE200<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Entrada</span></th>
+                            <th>TE300<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Alta resolución</span></th>
+                            <th>TE310<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Red corporativa</span></th>
+                            <th>TTP-244 Pro<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Clásico rediseñado</span></th>
+                            <th>TTP-247<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Alto volumen</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Segmento</td><td><span class="comp-badge comp-badge--entry">Entrada</span></td><td><span class="comp-badge comp-badge--mid">Escritorio</span></td><td><span class="comp-badge comp-badge--mid">Escritorio+</span></td><td><span class="comp-badge comp-badge--mid">Escritorio</span></td><td><span class="comp-badge comp-badge--ind">Alto volumen</span></td></tr>
+                        <tr><td>Método</td><td>TD / Transferencia</td><td>TD / Transferencia</td><td>TD / Transferencia</td><td>TD / Transferencia</td><td>TD / Transferencia</td></tr>
+                        <tr><td>Resolución</td><td>203 dpi</td><td>300 dpi</td><td>300 dpi</td><td>203 dpi</td><td>203 dpi</td></tr>
+                        <tr><td>Velocidad máx.</td><td>152 mm/seg</td><td>127 mm/seg</td><td>127 mm/seg</td><td>127 mm/seg</td><td><span class="comp-yes">177 mm/seg</span></td></tr>
+                        <tr><td>Ancho máx.</td><td>108 mm</td><td>105,7 mm</td><td>105,7 mm</td><td>108 mm</td><td>108 mm</td></tr>
+                        <tr><td>Conectividad</td><td>USB 2.0</td><td>USB 2.0</td><td>USB · Ethernet · RS-232 · USB Host</td><td>USB · RS-232</td><td>USB · Serie · Paralelo · Ethernet opt.</td></tr>
+                        <tr><td>Memoria</td><td>16 MB / 8 MB Flash</td><td>16 MB / 8 MB Flash</td><td><span class="comp-yes">64 MB / 128 MB Flash</span></td><td>8 MB / 4 MB Flash</td><td>8 MB / 4 MB + SDHC</td></tr>
+                        <tr><td>Ribbon máx.</td><td>Estándar</td><td>Estándar</td><td>Estándar</td><td>300 m (núcleo 1")</td><td>300 m (núcleo 1")</td></tr>
+                        <tr><td>Rollo etiquetas máx.</td><td>Estándar</td><td>Estándar</td><td>Estándar</td><td>110 mm OD</td><td><span class="comp-yes">214 mm OD (8,4")</span></td></tr>
+                        <tr><td>Almacenamiento extra</td><td><span class="comp-no">No</span></td><td><span class="comp-no">No</span></td><td><span class="comp-no">No</span></td><td><span class="comp-no">No</span></td><td><span class="comp-yes">Lector SDHC</span></td></tr>
+                        <tr><td>Lenguaje</td><td>TSPL-EZ · ZPL · EPL</td><td>TSPL-EZ · ZPL · EPL</td><td>TSPL-EZ · ZPL · EPL</td><td>TSPL-EZ · ZPL · EPL</td><td>TSPL-EZ · ZPL · EPL</td></tr>
+                        <tr><td>Ideal para</td><td>Envíos · Retail · MercadoLibre</td><td>Farmacia · QR · Joyería</td><td>Manufactura · Laboratorio · Red</td><td>Logística · Comercio · Inventario</td><td>Depósito · Distribución · Gran volumen</td></tr>
+                        <tr class="comp-cta-row">
+                            <td></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20TSC%20TE200." target="_blank">Consultar TE200</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20TSC%20TE300." target="_blank">Consultar TE300</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20TSC%20TE310." target="_blank">Consultar TE310</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20TSC%20TTP-244." target="_blank">Consultar TTP-244</a></td>
+                            <td><a class="comp-cta" href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20la%20TSC%20TTP-247." target="_blank">Consultar TTP-247</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-size:.8rem;color:#94a3b8;margin-top:.75rem">* Todos los modelos TSC incluyen emulación ZPL y EPL — compatibles con diseños existentes sin modificaciones.</p>
+        </div>
+    </section>
+
+    <!-- ── FAQ TSC ── -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre la TE200 y la TE300?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La diferencia principal es la resolución: la TE200 imprime a 203 dpi (8 puntos/mm) y la TE300 a 300 dpi (12 puntos/mm). Si imprimís códigos de barras 1D simples o etiquetas de texto grande, la TE200 es suficiente y más económica. Si necesitás códigos QR, Data Matrix, textos pequeños o logos con detalle, la TE300 da una calidad notablemente mejor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Para qué sirve la TE310 sobre la TE300?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La TE310 tiene la misma resolución y velocidad que la TE300, pero agrega Ethernet (para conectarla a la red de la empresa), RS-232 (para sistemas legacy), USB Host (para conectar un teclado o escáner directamente) y cuatro veces más memoria. Es la TE para entornos corporativos o donde la impresora necesita estar en red."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuándo conviene la TTP-247 sobre la serie TE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cuando el volumen es alto (más de 3.000–5.000 etiquetas por día) o necesitás rollos de etiquetas muy grandes. La TTP-247 soporta rollos de hasta 214 mm de diámetro exterior (8,4\"), frente a los ~110 mm estándar de la serie TE. Eso significa menos cambios de rollo y más autonomía. Además, su velocidad de 7 ips es la más alta de la gama de escritorio TSC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Las impresoras TSC son compatibles con Zebra ZPL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Todos los modelos TSC incluyen el firmware TSPL-EZ con emulación ZPL y EPL incorporada. Podés usar los mismos formatos de etiqueta que usabas en una Zebra sin ningún cambio. También son compatibles con BarTender, NiceLabel y la mayoría de ERPs del mercado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué ribbon y qué etiquetas necesito para una TSC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Para etiquetas de papel bond con impresión estándar, ribbon cera (wax) estándar de 1\" de núcleo. Para materiales sintéticos, ribbon mixto o resina. Los modelos TE usan ribbons cortos (hasta 110 mm de ancho), mientras que TTP-244 y TTP-247 aceptan rollos de 300 m con núcleo de 1\". Tenemos insumos compatibles con stock local."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tienen garantía las TSC compradas en Label Tech?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, 2 años de garantía oficial con servicio técnico local. Los repuestos están disponibles en Argentina — no hay que importar ni esperar semanas. En caso de falla, el soporte es directo con nuestro equipo técnico."
+      }
+    }
+  ]
+}
+    </script>
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes sobre impresoras TSC</h2>
+            <p class="section-sub">Las dudas más comunes de nuestros clientes antes de elegir modelo.</p>
+            <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-q">¿Cuál es la diferencia entre la TE200 y la TE300?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">La diferencia principal es la resolución: la TE200 imprime a 203 dpi (8 puntos/mm) y la TE300 a 300 dpi (12 puntos/mm). Si imprimís códigos de barras 1D simples o etiquetas de texto grande, la TE200 es suficiente y más económica. Si necesitás códigos QR, Data Matrix, textos pequeños o logos con detalle, la TE300 da una calidad notablemente mejor.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Para qué sirve la TE310 sobre la TE300?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">La TE310 tiene la misma resolución y velocidad que la TE300, pero agrega Ethernet (para conectarla a la red de la empresa), RS-232 (para sistemas legacy), USB Host (para conectar un teclado o escáner directamente) y cuatro veces más memoria. Es la TE para entornos corporativos o donde la impresora necesita estar en red.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Cuándo conviene la TTP-247 sobre la serie TE?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Cuando el volumen es alto (más de 3.000–5.000 etiquetas por día) o necesitás rollos de etiquetas muy grandes. La TTP-247 soporta rollos de hasta 214 mm de diámetro exterior (8,4"), frente a los ~110 mm estándar de la serie TE. Eso significa menos cambios de rollo y más autonomía. Además, su velocidad de 7 ips es la más alta de la gama de escritorio TSC.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Las impresoras TSC son compatibles con Zebra ZPL?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sí. Todos los modelos TSC incluyen el firmware TSPL-EZ con emulación ZPL y EPL incorporada. Podés usar los mismos formatos de etiqueta que usabas en una Zebra sin ningún cambio. También son compatibles con BarTender, NiceLabel y la mayoría de ERPs del mercado.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Qué ribbon y qué etiquetas necesito para una TSC?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Para etiquetas de papel bond con impresión estándar, ribbon cera (wax) estándar de 1" de núcleo. Para materiales sintéticos, ribbon mixto o resina. Los modelos TE usan ribbons cortos (hasta 110 mm de ancho), mientras que TTP-244 y TTP-247 aceptan rollos de 300 m con núcleo de 1". Tenemos insumos compatibles con stock local.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Tienen garantía las TSC compradas en Label Tech?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Sí, 2 años de garantía oficial con servicio técnico local. Los repuestos están disponibles en Argentina — no hay que importar ni esperar semanas. En caso de falla, el soporte es directo con nuestro equipo técnico.</div></div>
+        </div>
+            </div>
+        </div>
+    </section>
     <section class="industries-section">
         <div class="container">
             <span class="section-badge">Aplicaciones</span>
@@ -511,6 +689,17 @@
         gallery.querySelectorAll('.pcard-thumb').forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
     }
+    </script>
+
+    <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
     </script>
 </body>
 </html>
