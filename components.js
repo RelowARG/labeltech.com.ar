@@ -261,6 +261,12 @@ class SiteFooter extends HTMLElement {
               <ul class="footer-list">
                 <li><a href="https://wa.me/541122656818">+54 11 2265-6818</a></li>
                 <li><a href="mailto:ventas@labeltech.com.ar">ventas@labeltech.com.ar</a></li>
+                <li style="color:var(--text-muted,#9ca3af);font-size:0.85rem;line-height:1.4;margin-top:0.5rem;">
+                  Perdriel 1485 3°C<br>Barracas, CABA
+                </li>
+                <li style="color:var(--text-muted,#9ca3af);font-size:0.85rem;margin-top:0.25rem;">
+                  Cobertura en todo el país
+                </li>
               </ul>
             </div>
           </div>
