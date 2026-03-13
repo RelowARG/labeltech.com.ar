@@ -44,26 +44,7 @@ class SiteNavbar extends HTMLElement {
       ['ribbon-transferencia-termica.html', 'Ribbon Transferencia Térmica'],
     ];
 
-    // Sub-pages live under /productos/ (use pp)
-    const productos = [
-      ['impresoras-zebra.html',        'Impresoras Zebra'],
-      ['impresoras-honeywell.html',    'Impresoras Honeywell'],
-      ['impresoras-tsc.html',          'Impresoras TSC'],
-      ['etiquetas-termicas.html',      'Etiquetas Térmicas'],
-      ['etiquetas-opp.html',           'Etiquetas OPP'],
-      ['etiquetas-ilustracion.html',   'Etiquetas Ilustración'],
-      ['etiquetas-void.html',          'Etiquetas VOID'],
-      ['poliamida-textil.html',        'Poliamida Textil'],
-      ['ribbons.html',                 'Ribbons'],
-      ['ribbon-por-modelo.html',       'Ribbon por Modelo'],
-      ['lectores-codigo-barras.html',  'Lectores de Código de Barras'],
-      ['etiquetadoras-manuales.html',  'Etiquetadoras Manuales'],
-      ['pistolas-aplicadoras.html',    'Pistolas Aplicadoras'],
-      ['hilos-plasticos.html',         'Hilos Plásticos'],
-      ['rollos-entintadores.html',     'Rollos y Entintadores'],
-      ['rebobinadores.html',           'Rebobinadores'],
-      ['medidas-y-colores.html',       'Medidas y Colores'],
-    ];
+
 
     const servicios = [
       ['servicio-impresion.html',      'Servicio de Impresión'],
@@ -76,6 +57,41 @@ class SiteNavbar extends HTMLElement {
       items.map(([f, l]) => `<li><a href="${p}${prefix}${f}">${l}</a></li>`).join('\n');
 
     const ac = (key) => active === key ? ' active' : '';
+
+    // Grupos para el mega-menú de Productos
+    const grupoImpresoras = [
+      ['impresoras-zebra.html',       'Impresoras Zebra'],
+      ['impresoras-honeywell.html',   'Impresoras Honeywell'],
+      ['impresoras-tsc.html',         'Impresoras TSC'],
+    ];
+    const grupoLectores = [
+      ['lectores-codigo-barras.html', 'Lectores de Código de Barras'],
+      ['etiquetadoras-manuales.html', 'Etiquetadoras Manuales'],
+      ['pistolas-aplicadoras.html',   'Pistolas Aplicadoras'],
+    ];
+    const grupoEtiquetas = [
+      ['etiquetas-termicas.html',     'Etiquetas Térmicas'],
+      ['etiquetas-opp.html',          'Etiquetas OPP'],
+      ['etiquetas-ilustracion.html',  'Etiquetas Ilustración'],
+      ['etiquetas-void.html',         'Etiquetas VOID'],
+      ['poliamida-textil.html',       'Poliamida Textil'],
+    ];
+    const grupoInsumos = [
+      ['ribbons.html',                'Ribbons'],
+      ['ribbon-por-modelo.html',      'Ribbon por Modelo'],
+      ['hilos-plasticos.html',        'Hilos Plásticos'],
+      ['rollos-entintadores.html',    'Rollos y Entintadores'],
+    ];
+    const grupoAccesorios = [
+      ['rebobinadores.html',          'Rebobinadores'],
+      ['medidas-y-colores.html',      'Medidas y Colores'],
+    ];
+
+    const megaGroup = (title, items, prefix) => `
+      <div class="mega-group">
+        <p class="mega-group-title">${title}</p>
+        ${items.map(([f, l]) => `<a href="${p}${prefix}${f}" class="mega-product-link">${l}</a>`).join('\n')}
+      </div>`;
 
     this.innerHTML = `
       <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
@@ -95,12 +111,22 @@ class SiteNavbar extends HTMLElement {
                   ${dropdown(industries, 'industrias/')}
                 </ul>
               </li>
-              <li class="nav-dropdown">
+              <li class="nav-dropdown nav-dropdown--mega">
                 <a href="${p}index.html#productos" class="nav-link${ac('productos')}">Productos ▾</a>
-                <ul class="dropdown-menu">
-                  ${pillarProductos.map(([f, l]) => `<li><a href="${p}${f}">${l}</a></li>`).join('\n')}
-                  ${dropdown(productos, 'productos/')}
-                </ul>
+                <div class="mega-menu">
+                  <div class="mega-pillars">
+                    <p class="mega-pillars-label">Guías principales</p>
+                    ${pillarProductos.map(([f, l]) => `<a href="${p}${f}" class="mega-pillar-card">${l}</a>`).join('\n')}
+                    <a href="${p}index.html#productos" class="mega-ver-todos">Ver todos los productos →</a>
+                  </div>
+                  <div class="mega-products">
+                    ${megaGroup('Impresoras', grupoImpresoras, 'productos/')}
+                    ${megaGroup('Lectores y aplicadores', grupoLectores, 'productos/')}
+                    ${megaGroup('Etiquetas', grupoEtiquetas, 'productos/')}
+                    ${megaGroup('Insumos', grupoInsumos, 'productos/')}
+                    ${megaGroup('Accesorios', grupoAccesorios, 'productos/')}
+                  </div>
+                </div>
               </li>
               <li class="nav-dropdown">
                 <a href="${p}index.html#servicios" class="nav-link${ac('servicios')}">Servicios ▾</a>
@@ -119,6 +145,10 @@ class SiteNavbar extends HTMLElement {
               <li><a href="${p}index.html#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <div class="nav-social">
+              <a href="tel:+541122656818" class="nav-phone-badge" aria-label="Llamar">
+                <span class="nav-phone-dot"></span>
+                11 2265-6818
+              </a>
               <a href="https://wa.me/541122656818" target="_blank" class="social-link" aria-label="WhatsApp">${WA_SVG}</a>
               <a href="https://www.instagram.com/labeltech.ar/" target="_blank" class="social-link" aria-label="Instagram">${IG_SVG}</a>
               <a href="https://www.linkedin.com/company/labeltech-ar/" target="_blank" class="social-link" aria-label="LinkedIn">${LI_SVG}</a>

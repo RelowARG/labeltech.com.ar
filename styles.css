@@ -1823,3 +1823,196 @@ textarea {
     .whatsapp-float-label { display: none; }
     .whatsapp-float { padding: 1rem; border-radius: 50%; }
 }
+
+/* ============================================================
+   Mega-menú de Productos — agregar a styles.css
+   Buscar el bloque de .dropdown-menu y agregar esto después
+   ============================================================ */
+
+/* ── Badge de teléfono en navbar ────────────────────────────── */
+.nav-phone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #1a1a2e);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 20px;
+  padding: 5px 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-phone-badge:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+.nav-phone-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: phone-pulse 2s infinite;
+}
+@keyframes phone-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
+/* ── Contenedor del mega-menú ────────────────────────────────── */
+.nav-dropdown--mega {
+  position: static; /* permite que el mega-menú se extienda al ancho del nav */
+}
+
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(860px, 96vw);
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  padding: 1.25rem;
+  display: none;
+  grid-template-columns: 195px 1fr;
+  gap: 1.25rem;
+  z-index: 999;
+  margin-top: 8px;
+}
+
+.nav-dropdown--mega:hover .mega-menu,
+.nav-dropdown--mega:focus-within .mega-menu {
+  display: grid;
+}
+
+/* Ocultar el chevron viejo si el dropdown abre el mega */
+.nav-dropdown--mega > a::after { content: none; }
+
+/* ── Columna izquierda: pillar cards ─────────────────────────── */
+.mega-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid rgba(0,0,0,0.07);
+  padding-right: 1.25rem;
+}
+
+.mega-pillars-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.mega-pillar-card {
+  display: block;
+  background: #f8faff;
+  border: 1px solid #e0e7ff;
+  border-radius: 8px;
+  padding: 10px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a8a;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  line-height: 1.3;
+}
+.mega-pillar-card:hover {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.mega-ver-todos {
+  display: block;
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+.mega-ver-todos:hover { color: #1d4ed8; text-decoration: underline; }
+
+/* ── Columna derecha: grilla de grupos ───────────────────────── */
+.mega-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 1rem;
+  align-content: start;
+}
+
+/* Los grupos 4 y 5 (Insumos + Accesorios) van en la misma fila
+   ajustando el grid de 5 grupos en 3 columnas:
+   fila 1: Impresoras | Etiquetas | Insumos
+   fila 2: Lectores   |           | Accesorios
+   Se logra con order o simplemente dejando fluir — funciona bien
+   porque el contenido de cada columna es corto */
+
+.mega-group {
+  padding-bottom: 0.75rem;
+}
+
+.mega-group-title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.mega-product-link {
+  display: block;
+  font-size: 12.5px;
+  color: #374151;
+  text-decoration: none;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+.mega-product-link:hover { color: #2563eb; }
+
+/* ── Responsive: en mobile el mega-menú se aplana ───────────── */
+@media (max-width: 900px) {
+  .mega-menu {
+    grid-template-columns: 1fr;
+    left: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    position: static;
+    margin-top: 0;
+  }
+  .mega-pillars {
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+  .mega-products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-phone-badge {
+    display: none; /* en mobile ya tienen el ícono WA */
+  }
+}
+
+@media (max-width: 480px) {
+  .mega-products {
+    grid-template-columns: 1fr;
+  }
+}
