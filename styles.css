@@ -1997,6 +1997,16 @@ textarea {
     position: static;
     margin-top: 0;
   }
+  /* Puente invisible para evitar el hover gap en el mega-menú */
+.mega-menu::before {
+  content: "";
+  position: absolute;
+  top: -12px; /* Tiene que ser un poco mayor al margin-top */
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: transparent;
+}
   .mega-pillars {
     border-right: none;
     border-bottom: 1px solid rgba(0,0,0,0.07);
