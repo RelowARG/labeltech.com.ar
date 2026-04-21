@@ -44,8 +44,6 @@ class SiteNavbar extends HTMLElement {
       ['ribbon-transferencia-termica.html', 'Ribbon Transferencia Térmica'],
     ];
 
-
-
     const servicios = [
       ['servicio-impresion.html',      'Servicio de Impresión'],
       ['servicio-tecnico.html',        'Servicio Técnico'],
@@ -157,14 +155,47 @@ class SiteNavbar extends HTMLElement {
         </div>
       </nav>`;
 
-    // Re-init mobile menu toggle (script.js lo busca por ID al cargar,
-    // pero como este elemento se inserta después, lo inicializamos acá)
+    this._initDropdowns();
     this._initMobileMenu();
-
-    // Navbar scroll effect
     this._initScroll();
   }
 
+  // ── Dropdowns con timer anti-gap ─────────────────────────
+  // Maneja TODOS los .nav-dropdown (simples y mega-menú) con
+  // mouseenter/mouseleave + un pequeño delay de cierre.
+  // Esto elimina el parpadeo causado por el espacio vacío entre
+  // el nav-link y el panel desplegable.
+  _initDropdowns() {
+    const dropdowns = this.querySelectorAll('.nav-dropdown');
+    const CLOSE_DELAY = 120; // ms — suficiente para cruzar el gap sin notar el retraso
+
+    dropdowns.forEach(dropdown => {
+      let closeTimer = null;
+
+      const open = () => {
+        clearTimeout(closeTimer);
+        // Cerrar los demás dropdowns inmediatamente
+        dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
+        dropdown.classList.add('open');
+      };
+
+      const scheduleClose = () => {
+        closeTimer = setTimeout(() => dropdown.classList.remove('open'), CLOSE_DELAY);
+      };
+
+      dropdown.addEventListener('mouseenter', open);
+      dropdown.addEventListener('mouseleave', scheduleClose);
+    });
+
+    // Cerrar todo al hacer click fuera del navbar
+    document.addEventListener('click', (e) => {
+      if (!this.contains(e.target)) {
+        dropdowns.forEach(d => d.classList.remove('open'));
+      }
+    });
+  }
+
+  // ── Mobile menu toggle ───────────────────────────────────
   _initMobileMenu() {
     const toggle = this.querySelector('#mobileMenuToggle');
     const menu   = this.querySelector('#navMenu');
@@ -184,6 +215,7 @@ class SiteNavbar extends HTMLElement {
     });
   }
 
+  // ── Navbar scroll effect ─────────────────────────────────
   _initScroll() {
     const nav = this.querySelector('.navbar');
     if (!nav) return;
