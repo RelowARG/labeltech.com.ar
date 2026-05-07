@@ -1,0 +1,52 @@
+# =========================
+# INDUSTRIAS
+# =========================
+
+/transporte-logistica /industrias/transporte-logistica 301
+/industria-alimenticia /industrias/industria-alimenticia 301
+/industria-automotriz /industrias/industria-automotriz 301
+/industria-farmaceutica /industrias/industria-farmaceutica 301
+/industria-general /industrias/industria-general 301
+/industria-quimica /industrias/industria-quimica 301
+/industria-textil /industrias/industria-textil 301
+/cuidado-personal-higiene /industrias/cuidado-personal-higiene 301
+
+# =========================
+# PRODUCTOS
+# =========================
+
+/ribbons /productos/ribbons 301
+/impresoras-zebra /productos/impresoras-zebra 301
+/impresoras-honeywell /productos/impresoras-honeywell 301
+/lectores-codigo-barras /productos/lectores-codigo-barras 301
+/etiquetadoras-manuales /productos/etiquetadoras-manuales 301
+/rollos-entintadores-agujas /productos/rollos-entintadores-agujas 301
+/software /productos/software 301
+/copia-de-rollos-etiquetadora-open /productos/copia-de-rollos-etiquetadora-open 301
+
+# =========================
+# SERVICIOS
+# =========================
+
+/servicio-impresion /servicios/servicio-impresion 301
+/servicio-tecnico /servicios/servicio-tecnico 301
+
+# =========================
+# BLOG
+# =========================
+
+/blog/zebra-vs-honeywell.html /blog/zebra-vs-honeywell 301
+/blog/mantenimiento-impresora-etiquetas.html /blog/mantenimiento-impresora-etiquetas 301
+
+# =========================
+# PRODUCTOS .HTML -> CLEAN URL
+# =========================
+
+/productos/servicio-impresion.html /productos/servicio-impresion 301
+/productos/hilos-plasticos.html /productos/hilos-plasticos 301
+
+# =========================
+# NORMALIZACION GENERAL .HTML
+# =========================
+
+/*.html /:splat 301
