@@ -5,9 +5,9 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YVV0X54KK9');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etiquetadoras Manuales de Precios Argentina | 1 y 2 Líneas | Label Tech</title>
-    <meta name="description" content="Etiquetadoras manuales para precios, fechas y códigos en Argentina. Modelos de 1 y 2 líneas. Rollos y entintadores de repuesto disponibles. Stock permanente, entrega 48hs.">
-    <meta name="keywords" content="etiquetadoras manuales Argentina, etiquetadora de precios Argentina, pistola etiquetadora Argentina, etiquetadoras 1 línea 2 líneas Argentina, rollos para etiquetadora Argentina, etiquetadora barril open Argentina">
+    <title>Etiquetadoras Manuales Argentina | Jolly, Open C20, Open Tex | Label Tech</title>
+    <meta name="description" content="Etiquetadoras manuales Jolly y Open para precios, fechas y códigos en Argentina. Modelos de 1 y 2 líneas y sistema barril Open Tex. Rollos y entintadores siempre en stock. Entrega 48hs.">
+    <meta name="keywords" content="etiquetadoras manuales Argentina, etiquetadora de precios Argentina, pistola etiquetadora Argentina, etiquetadora Jolly Argentina, etiquetadora Open C20, etiquetadoras 1 línea 2 líneas Argentina, rollos para etiquetadora Argentina, etiquetadora barril Open Tex Argentina">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.labeltech.com.ar/productos/etiquetadoras-manuales.html">
     <meta property="og:title" content="Etiquetadoras Manuales Argentina | Label Tech">
@@ -31,6 +31,42 @@
     .pcard-thumb{width:52px;height:40px;border-radius:.375rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s;}
     .pcard-thumb.active{border-color:var(--primary,#2563eb);}
     .pcard-thumb img{width:100%;height:100%;object-fit:cover;}
+
+    /* ── Tabla comparativa de modelos ── */
+    .comp-section{padding:3.5rem 0;background:#f8fafc}
+    .comp-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .comp-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .comp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:1rem;box-shadow:0 4px 24px rgba(0,0,0,.08);border:1px solid #e2e8f0}
+    .comp-table{width:100%;border-collapse:collapse;background:white;min-width:560px}
+    .comp-table th{background:var(--primary,#1e3a5f);color:white;padding:.875rem 1rem;font-size:.875rem;font-weight:700;text-align:left;border-right:1px solid rgba(255,255,255,.15);white-space:nowrap}
+    .comp-table th:first-child{min-width:160px}
+    .comp-table td{padding:.75rem 1rem;font-size:.875rem;color:var(--text-primary,#1e293b);border-bottom:1px solid #f1f5f9;border-right:1px solid #f1f5f9;vertical-align:top;line-height:1.5}
+    .comp-table td:first-child{font-weight:600;color:var(--text-secondary,#64748b);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em;background:#fafbfc;white-space:nowrap}
+    .comp-table td:last-child,.comp-table th:last-child{border-right:none}
+    .comp-table tr:last-child td{border-bottom:none}
+    .comp-table tr:hover td{background:#f8faff}
+    .comp-table tr:hover td:first-child{background:#f1f5fb}
+    .comp-table tr.comp-cta-row td{background:#f8fafc;padding:.625rem 1rem;border-bottom:none}
+    .comp-table tr.comp-cta-row td:first-child{background:#f8fafc}
+    .comp-cta{display:inline-block;padding:.45rem 1rem;background:var(--primary,#1e3a5f);color:white;border-radius:.5rem;font-size:.8rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+    .comp-cta:hover{opacity:.8}
+    /* ── FAQ accordion ── */
+    .faq-section{padding:3.5rem 0;background:white}
+    .faq-section .section-title{font-size:clamp(1.35rem,2.5vw,1.75rem);font-weight:800;color:var(--text-primary,#1e293b);margin:0 0 .5rem}
+    .faq-section .section-sub{color:var(--text-secondary,#64748b);margin:0 0 2rem;font-size:.95rem}
+    .faq-list{max-width:760px;display:flex;flex-direction:column;gap:.625rem}
+    .faq-item{border:1px solid #e2e8f0;border-radius:.875rem;overflow:hidden}
+    .faq-q{width:100%;background:none;border:none;padding:1.1rem 1.375rem;text-align:left;font-size:.95rem;font-weight:600;color:var(--text-primary,#1e293b);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:inherit;line-height:1.4}
+    .faq-q:hover{background:#f8fafc}
+    .faq-q .faq-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;transition:transform .25s,background .2s}
+    .faq-item.open .faq-q .faq-icon{transform:rotate(45deg);background:var(--primary,#1e3a5f)}
+    .faq-item.open .faq-q .faq-icon svg{stroke:white}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .faq-item.open .faq-a{max-height:400px}
+    .faq-a-inner{padding:.25rem 1.375rem 1.1rem;font-size:.9rem;color:var(--text-secondary,#64748b);line-height:1.75}
+    @media(max-width:640px){
+      .comp-table th,.comp-table td{padding:.625rem .75rem;font-size:.8rem}
+    }
     </style>
 <script type="application/ld+json">
 {
@@ -124,7 +160,7 @@
 
                 <div class="product-card">
                     <div class="product-card-header">
-                        <div><div class="product-card-name">Etiquetadora 1 Línea</div><div class="product-card-model">Modelo estándar 26mm</div></div>
+                        <div><div class="product-card-name"><a href="etiquetadora-jolly-1-linea.html" style="color:inherit;text-decoration:none;">Etiquetadora Jolly 1 Línea</a></div><div class="product-card-model">Modelo estándar 26mm</div></div>
                         <span class="product-card-badge badge-eco">Económica</span>
                     </div>
                     <div class="product-card-body">
@@ -152,6 +188,7 @@
                         </div>
                     </div>
                     <div class="product-card-footer">
+                        <a href="etiquetadora-jolly-1-linea.html" class="btn-cotizar" style="margin-right:auto;">Ver ficha completa</a>
                         <a href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20etiquetadora%20manual%201%20l%C3%ADnea." target="_blank" class="btn-consultar">Consultar</a>
                         <a href="../index.html#contacto" class="btn-cotizar">Cotizar</a>
                     </div>
@@ -159,7 +196,7 @@
 
                 <div class="product-card">
                     <div class="product-card-header">
-                        <div><div class="product-card-name">Etiquetadora 2 Líneas</div><div class="product-card-model">Modelo 26x16mm</div></div>
+                        <div><div class="product-card-name"><a href="etiquetadora-open-c20.html" style="color:inherit;text-decoration:none;">Etiquetadora Open C20 2 Líneas</a></div><div class="product-card-model">Modelo 26x16mm</div></div>
                         <span class="product-card-badge badge-escritorio">Más vendida</span>
                     </div>
                     <div class="product-card-body">
@@ -187,6 +224,7 @@
                         </div>
                     </div>
                     <div class="product-card-footer">
+                        <a href="etiquetadora-open-c20.html" class="btn-cotizar" style="margin-right:auto;">Ver ficha completa</a>
                         <a href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20etiquetadora%20manual%202%20l%C3%ADneas." target="_blank" class="btn-consultar">Consultar</a>
                         <a href="../index.html#contacto" class="btn-cotizar">Cotizar</a>
                     </div>
@@ -194,7 +232,7 @@
 
                 <div class="product-card">
                     <div class="product-card-header">
-                        <div><div class="product-card-name">Sistema Barril Open</div><div class="product-card-model">Dispensador manual</div></div>
+                        <div><div class="product-card-name"><a href="etiquetadora-open-tex.html" style="color:inherit;text-decoration:none;">Sistema Barril Open Tex</a></div><div class="product-card-model">Dispensador manual</div></div>
                         <span class="product-card-badge badge-industrial">Industrial</span>
                     </div>
                     <div class="product-card-body">
@@ -222,6 +260,7 @@
                         </div>
                     </div>
                     <div class="product-card-footer">
+                        <a href="etiquetadora-open-tex.html" class="btn-cotizar" style="margin-right:auto;">Ver ficha completa</a>
                         <a href="https://wa.me/541122656818?text=Hola!%20Consulto%20por%20sistema%20barril%20open." target="_blank" class="btn-consultar">Consultar</a>
                         <a href="../index.html#contacto" class="btn-cotizar">Cotizar</a>
                     </div>
@@ -237,6 +276,70 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Tabla comparativa ── -->
+    <section class="comp-section">
+        <div class="container">
+            <h2 class="section-title">Comparativa de etiquetadoras manuales</h2>
+            <p class="section-sub">Los tres modelos que más se usan en comercios, depósitos y distribuidoras de Argentina, lado a lado.</p>
+            <div class="comp-wrap">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Jolly 1 Línea<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Económica</span></th>
+                            <th>Open C20 2 Líneas<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Más vendida</span></th>
+                            <th>Barril Open Tex<br><span style="font-weight:400;opacity:.8;font-size:.78rem">Industrial</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Líneas de texto</td>
+                            <td>1 línea</td>
+                            <td>2 líneas independientes</td>
+                            <td>Etiquetas pre-impresas</td>
+                        </tr>
+                        <tr>
+                            <td>Uso típico</td>
+                            <td>Precio o fecha</td>
+                            <td>Precio + fecha o lote</td>
+                            <td>Aplicación de códigos de barras</td>
+                        </tr>
+                        <tr>
+                            <td>Medida etiqueta</td>
+                            <td>26mm estándar</td>
+                            <td>26×16mm</td>
+                            <td>hasta 70mm</td>
+                        </tr>
+                        <tr>
+                            <td>Insumos</td>
+                            <td>Rollo entintador + rollos</td>
+                            <td>Rollo entintador + rollos</td>
+                            <td>Rollos pre-impresos</td>
+                        </tr>
+                        <tr>
+                            <td>Energía</td>
+                            <td>Sin electricidad</td>
+                            <td>Sin electricidad</td>
+                            <td>Sin electricidad</td>
+                        </tr>
+                        <tr>
+                            <td>Ideal para</td>
+                            <td>Comercios, ferias, almacenes</td>
+                            <td>Supermercados, distribuidoras</td>
+                            <td>Depósitos, distribución a alta velocidad</td>
+                        </tr>
+                        <tr class="comp-cta-row">
+                            <td></td>
+                            <td><a href="etiquetadora-jolly-1-linea.html" class="comp-cta">Ver ficha</a></td>
+                            <td><a href="etiquetadora-open-c20.html" class="comp-cta">Ver ficha</a></td>
+                            <td><a href="etiquetadora-open-tex.html" class="comp-cta">Ver ficha</a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -263,6 +366,95 @@
                     <div class="info-stat-card"><span class="info-stat-n">5</span><span class="info-stat-l">Colores de rollos disponibles</span></div>
                     <div class="info-stat-card"><span class="info-stat-n">48hs</span><span class="info-stat-l">Entrega de insumos en todo el país</span></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre una etiquetadora de 1 línea y una de 2 líneas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La de 1 línea (Jolly) imprime un solo dato, generalmente el precio, y es la opción más económica. La de 2 líneas (Open C20) imprime dos datos independientes en la misma etiqueta, como precio y fecha de vencimiento o precio y número de lote, ideal para supermercados y distribuidoras que necesitan más información en cada producto."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Las etiquetadoras manuales necesitan electricidad o batería?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Los tres modelos — Jolly 1 línea, Open C20 2 líneas y el sistema barril Open Tex — funcionan de forma completamente mecánica y manual. No requieren batería, cable ni computadora, así que podés usarlas en cualquier lugar del local o depósito."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué rollos y entintadores necesito para mi etiquetadora?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del modelo: la Jolly 1 línea y la Open C20 usan rollos de etiquetas adhesivas (26×12mm o 26×16mm según el modelo) más un entintador de repuesto. El sistema Open Tex trabaja con rollos de etiquetas pre-impresas de mayor formato. Mantenemos stock permanente de ambos tipos en varios colores."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Sirven las etiquetadoras manuales para códigos de barras?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las etiquetadoras manuales imprimen precios, fechas, lotes o dígitos simples — no códigos de barras escaneables. El sistema barril Open Tex sí permite aplicar etiquetas que ya vienen pre-impresas con código de barras. Si necesitás imprimir códigos de barras propios en el momento, lo que corresponde es una impresora de etiquetas térmica como las líneas Zebra, Honeywell o TSC."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cada cuánto hay que cambiar el rollo y el entintador?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Varía según el uso diario, pero un rollo estándar suele rendir varios días de etiquetado en un comercio de movimiento normal, y el entintador dura varios cambios de rollo antes de que la impresión empiece a verse tenue. Tené siempre uno de repuesto a mano — los tenemos en stock permanente con entrega en 48hs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Etiquetadora manual o impresora de etiquetas — cuál me conviene?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Si solo necesitás precio, fecha o un dato simple y de forma rápida, la etiquetadora manual es más económica y no requiere configuración. Si necesitás imprimir códigos de barras, logos, texto variable desde un sistema o grandes volúmenes por hora, conviene una impresora térmica como Zebra, Honeywell o TSC. Podemos asesorarte según tu operación diaria."
+          }
+        }
+      ]
+    }
+    </script>
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes sobre etiquetadoras manuales</h2>
+            <p class="section-sub">Las dudas más comunes antes de elegir modelo.</p>
+            <div class="faq-list">
+        <div class="faq-item">
+            <button class="faq-q">¿Cuál es la diferencia entre una etiquetadora de 1 línea y una de 2 líneas?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">La de 1 línea (Jolly) imprime un solo dato, generalmente el precio, y es la opción más económica. La de 2 líneas (Open C20) imprime dos datos independientes en la misma etiqueta, como precio y fecha de vencimiento o precio y número de lote, ideal para supermercados y distribuidoras que necesitan más información en cada producto.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Las etiquetadoras manuales necesitan electricidad o batería?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">No. Los tres modelos — Jolly 1 línea, Open C20 2 líneas y el sistema barril Open Tex — funcionan de forma completamente mecánica y manual. No requieren batería, cable ni computadora, así que podés usarlas en cualquier lugar del local o depósito.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Qué rollos y entintadores necesito para mi etiquetadora?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Depende del modelo: la Jolly 1 línea y la Open C20 usan rollos de etiquetas adhesivas (26×12mm o 26×16mm según el modelo) más un entintador de repuesto. El sistema Open Tex trabaja con rollos de etiquetas pre-impresas de mayor formato. Mantenemos stock permanente de ambos tipos en varios colores.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Sirven las etiquetadoras manuales para códigos de barras?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Las etiquetadoras manuales imprimen precios, fechas, lotes o dígitos simples — no códigos de barras escaneables. El sistema barril Open Tex sí permite aplicar etiquetas que ya vienen pre-impresas con código de barras. Si necesitás imprimir códigos de barras propios en el momento, lo que corresponde es una impresora de etiquetas térmica como las líneas <a href="impresoras-zebra.html">Zebra</a>, <a href="impresoras-honeywell.html">Honeywell</a> o <a href="impresoras-tsc.html">TSC</a>.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Cada cuánto hay que cambiar el rollo y el entintador?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Varía según el uso diario, pero un rollo estándar suele rendir varios días de etiquetado en un comercio de movimiento normal, y el entintador dura varios cambios de rollo antes de que la impresión empiece a verse tenue. Tené siempre uno de repuesto a mano — los tenemos en stock permanente con entrega en 48hs.</div></div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q">¿Etiquetadora manual o impresora de etiquetas — cuál me conviene?<span class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Si solo necesitás precio, fecha o un dato simple y de forma rápida, la etiquetadora manual es más económica y no requiere configuración. Si necesitás imprimir códigos de barras, logos, texto variable desde un sistema o grandes volúmenes por hora, conviene una impresora térmica como Zebra, Honeywell o TSC. Podemos asesorarte según tu operación diaria.</div></div>
+        </div>
             </div>
         </div>
     </section>
@@ -313,6 +505,16 @@
       g.querySelectorAll('.pcard-thumb').forEach(function(t){t.classList.remove('active');});
       el.classList.add('active');
     }
+    </script>
+    <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
     </script>
 </body>
 </html>
