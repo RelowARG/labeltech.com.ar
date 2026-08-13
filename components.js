@@ -61,6 +61,7 @@ class SiteNavbar extends HTMLElement {
       ['impresoras-zebra.html',       'Impresoras Zebra'],
       ['impresoras-honeywell.html',   'Impresoras Honeywell'],
       ['impresoras-tsc.html',         'Impresoras TSC'],
+      ['impresoras-3nstar.html',      'Impresoras 3nstar'],
     ];
     const grupoLectores = [
       ['lectores-codigo-barras.html', 'Lectores de Código de Barras'],
@@ -262,6 +263,7 @@ class SiteFooter extends HTMLElement {
                 <li><a href="${pp}impresoras-zebra.html">Impresoras Zebra</a></li>
                 <li><a href="${pp}impresoras-honeywell.html">Impresoras Honeywell</a></li>
                 <li><a href="${pp}impresoras-tsc.html">Impresoras TSC</a></li>
+                <li><a href="${pp}impresoras-3nstar.html">Impresoras 3nstar</a></li>
                 <li><a href="${p}etiquetas-adhesivas.html">Etiquetas Adhesivas</a></li>
                 <li><a href="${pp}etiquetas-termicas.html">Etiquetas Térmicas</a></li>
                 <li><a href="${pp}etiquetas-opp.html">Etiquetas OPP</a></li>
